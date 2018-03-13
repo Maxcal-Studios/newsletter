@@ -2,6 +2,8 @@ package com.login;
 
 import com.database.DBConnector;
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,12 +18,12 @@ extends HttpServlet {
         String pass  = request.getParameter("pass");
         String user = request.getParameter("user");
         if (DBConnector.check(user, pass)) {
-            HttpSession session = request.getSession();
-            session.setAttribute("user", user);
-            session.setAttribute("new", "true");
-            response.sendRedirect("../admin/");
-        } else {
-            response.sendRedirect("../login.jsp");
-        }
+		    HttpSession session = request.getSession();
+		    session.setAttribute("user", user);
+		    session.setAttribute("new", "true");
+		    response.sendRedirect("../admin/");
+		} else {
+		    response.sendRedirect("../login.jsp");
+		}
     }
 }

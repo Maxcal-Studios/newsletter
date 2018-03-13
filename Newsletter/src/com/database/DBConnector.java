@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class DBConnector {
     private static final String url = "jdbc:mysql://localhost:3306/newsletter";
@@ -11,8 +12,8 @@ public class DBConnector {
     private static final String DBpass = "maxcal";
 
     public static boolean check(String user, String pass) {
-        Connection con;
-        PreparedStatement st;
+        Connection con = null;
+        PreparedStatement st = null;
         try {
             String preSt = "SELECT * FROM admin WHERE user=? AND pass=?";
             Class.forName("com.mysql.jdbc.Driver");
@@ -28,6 +29,12 @@ public class DBConnector {
             }
         }
         catch (Exception e) {
+        	try {
+				st.close();
+				con.close();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
             e.printStackTrace();
         }
         return false;
