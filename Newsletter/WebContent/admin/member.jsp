@@ -403,7 +403,7 @@
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 
-<!-- Table Script -->
+<!-- Table Scripts -->
 <script>
   $(function () {
     $('#example1').DataTable()
