@@ -1,0 +1,103 @@
+body {
+    --light-blue: #647187;
+    --main-blue: #597b8e;
+    --dark-blue: #23303a;
+    --darker-blue: #1a2026;
+    --header: #34434c;
+    --menu-white: white;
+    --menu-grey: #d0d8e4;
+    --content-grey: #3B4D5B;
+
+    padding: 0px;
+    margin: 0px;
+    background-color: var(--main-blue);
+}
+
+.navbar {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: var(--dark-blue);
+    overflow: hidden;
+    width: 300px;
+}
+
+.navbar a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 50px;
+    text-decoration: none;
+    font-size: 25px;
+    color: var(--menu-grey);
+    display: block;
+}
+
+.navbar a:hover {
+    color: var(--menu-white);
+}
+
+.navbar a.active {
+    background-color: var(--main-blue);
+    color: var(--menu-white);
+}
+
+.logo {
+    background-color: var(--darker-blue);
+    padding-bottom: 30px;
+    padding-top: 30px;
+    text-align: center;
+    color: var(--menu-white);
+}
+
+.header {
+    background-color: var(--header);
+    height: 80px;
+    width: 100%;
+    position: fixed;
+}
+
+.headerText {
+    color: var(--menu-white);
+    text-decoration: none;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+
+    padding: 25px;
+    padding-left: 325px;
+    padding-top: 100px;
+}
+
+.wrapper div{
+    background-color: var(--dark-blue);
+    padding: 10px;
+    margin: 10px;
+}
+
+.box {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+}
+.box1 {
+
+}
+
+.box2 {
+    grid-column: 2/3;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .wrapper {
+        display: block;
+    }
+}
