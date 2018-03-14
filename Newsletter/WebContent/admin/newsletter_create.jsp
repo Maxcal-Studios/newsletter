@@ -342,8 +342,6 @@
                                 <option value="H3">&Uuml;berschrift 3</option>
                                 <option value="H4">&Uuml;berschrift 4</option>
                                 <option value="H5">&Uuml;berschrift 5</option>newsletter_create.jsp
-                                newsletter_status.jsp
-                                newsletter_status_more.html
                                 <option value="H6">&Uuml;berschrift 6</option>
                             </select>
                             <select onchange="execCmdWithArg('fontSize', this.value);" title="Textgröße">
@@ -358,7 +356,6 @@
                             <p style="display:inline-block">Textfarbe: <input type="color" onchange="execCmdWithArg('foreColor', this.value);"/></p>
                             <p style="display:inline-block">Text Hintergrund: <input type="color" onchange="execCmdWithArg('hiliteColor', this.value);"/></p>
                             <p style="display:inline-block"> Hintergrund: <input type="color" onchange="backgroundColor(this.value);"/></p>
-
                         </div>
                     </div>
                 </div>
