@@ -250,7 +250,7 @@
                   </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li  class="active"><a href="newsletter_create.html"><i class="fa fa-circle-o"></i>Erstellen</a></li>
+                        <li  class="active"><a href="newsletter_create.jsp"><i class="fa fa-circle-o"></i>Erstellen</a></li>
                         <li><a href="newsletter_publish.jsp"><i class="fa fa-circle-o"></i>Publizieren</a></li>
                         <li><a href="newsletter_history.jsp"><i class="fa fa-circle-o"></i>History</a></li>
                     </ul>
