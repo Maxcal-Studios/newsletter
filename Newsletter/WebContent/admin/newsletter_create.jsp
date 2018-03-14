@@ -17,18 +17,18 @@
     <title>Newsletter | Admin</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="../bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../bootstrap/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bootstrap/bower_components/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="../bootstrap/bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="bootstrap/bower_components/Ionicons/css/ionicons.min.css">
     <!-- jvectormap -->
-    <link rel="stylesheet" href="../bootstrap/bower_components/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="bootstrap/bower_components/jvectormap/jquery-jvectormap.css">
     <!-- DataTables -->
-    <link rel="stylesheet" href="../bootstrap/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../bootstrap/dist/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="../bootstrap/dist/css/skins/skin-blue.min.css">
+    <link rel="stylesheet" href="bootstrap/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="bootstrap/dist/css/skins/skin-blue.min.css">
 
     <link rel="stylesheet" href="popup.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -104,7 +104,7 @@
                                         <a href="#">
                                             <div class="pull-left">
                                                 <!-- User Image -->
-                                                <img src="../bootstrap/dist/img/user2-160x160.png" class="img-circle" alt="User Image">
+                                                <img src="bootstrap/dist/img/user2-160x160.png" class="img-circle" alt="User Image">
                                             </div>
                                             <!-- Message title and timestamp -->
                                             <h4>
@@ -189,14 +189,14 @@
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
-                            <img src="../bootstrap/dist/img/user2-160x160.png" class="user-image" alt="User Image">
+                            <img src="bootstrap/dist/img/user2-160x160.png" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs">$username</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
-                                <img src="../bootstrap/dist/img/user2-160x160.png" class="img-circle" alt="User Image">
+                                <img src="bootstrap/dist/img/user2-160x160.png" class="img-circle" alt="User Image">
 
                                 <p>
                                     $username - Admin
@@ -228,7 +228,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="../bootstrap/dist/img/user2-160x160.png" class="img-circle" alt="User Image">
+                    <img src="bootstrap/dist/img/user2-160x160.png" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p>$username</p>
@@ -502,14 +502,14 @@
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 3 -->
-<script src="../bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="../bootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../bootstrap/dist/js/adminlte.min.js"></script>
+<script src="bootstrap/dist/js/adminlte.min.js"></script>
 <!-- DataTables -->
-<script src="../bootstrap/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../bootstrap/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="bootstrap/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="bootstrap/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
 
 
