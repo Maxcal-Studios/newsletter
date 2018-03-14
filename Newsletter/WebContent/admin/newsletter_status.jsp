@@ -2,15 +2,15 @@
 <html>
 <head>
 
-    <%
-    if(session.getAttribute("user") == null) {
-    response.sendRedirect("../login.jsp");
-    }
+      <%
+      if(session.getAttribute("user") == null) {
+      response.sendRedirect("../login.jsp");
+      }
 
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    response.setHeader("Pragma", "no-cache");
-    response.setHeader("Expires", "0");
-    %>
+      response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+      response.setHeader("Pragma", "no-cache");
+      response.setHeader("Expires", "0");
+      %>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,11 +30,6 @@
     <link rel="stylesheet" href="../bootstrap/dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="../bootstrap/dist/css/skins/skin-blue.min.css">
 
-    <link rel="stylesheet" href="popup.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Archivo+Black|Dancing+Script|Inconsolata|Indie+Flower|Lobster|Montserrat|Open+Sans|Open+Sans+Condensed:300|Oswald|Playfair+Display|Poiret+One|Roboto|Rubik+Mono+One|Ubuntu" rel="stylesheet">
-
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -43,30 +38,13 @@
     <![endif]-->
 
     <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
-    <style>
-        #container i , select{color:black;}
-        button{margin-bottom:5px}
-        select{margin-bottom:5px}
-        .popup {display: none;position: fixed;z-index: 1;left: 0;top: 0;width: 100%;height: 100%;overflow: auto;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.3);}
-        .popup-content {background-color: #fefefe;margin: 15% auto;padding: 20px;border: 1px solid #888;width: 80%;}
-        .close {color: #4A4E51;float: right;font-size: 28px;font-weight: bold;}
-        .close:hover,
-        .close:focus {color: white;text-decoration: none;cursor: pointer;}
-        .popup-header {padding: 2px 16px;background-color: #3C8DBC;color: white;}
-        .popup-content {background-color: #FFFFFF;padding: 0;border: 1px solid #888;width: 65%;text-align:center;}
-        .popup-content input {font-size: 22;color: #4A4E51;background: #ECF0F5;width: 50%;border: 0;margin: 15px 0 15px;padding: 15px;box-sizing: border-box;}
-        .popup-content button {color:white;background: #3C8DBC;width: 50%;border: 0;margin: 15px 0 15px;padding: 15px;font-size: 22;cursor: pointer;}
-        .popup-content button:hover,.popup-content button:active,.popup-content button:focus {background: #367FA9;}
-    </style>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini"  onload="enableEditor();" style="margin: 0;">
-
+<body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
 
     <!-- Main Header -->
     <header class="main-header">
@@ -250,7 +228,7 @@
                   </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li  class="active"><a href="newsletter_create.jsp"><i class="fa fa-circle-o"></i>Erstellen</a></li>
+                        <li  class="active"><a href="newsletter_create.html"><i class="fa fa-circle-o"></i>Erstellen</a></li>
                         <li><a href="newsletter_publish.jsp"><i class="fa fa-circle-o"></i>Publizieren</a></li>
                         <li><a href="newsletter_history.jsp"><i class="fa fa-circle-o"></i>History</a></li>
                     </ul>
@@ -283,140 +261,86 @@
               | Your Page Content Here |
               -------------------------->
 
+            <ul class="timeline">
 
-            <div class="pagecontainer" style="width:100%;height:100vh;">
-                <div style="text-align: center; background-color:#3C8DBC;">
-                    <div style="color:white; padding:10px" id="container">
-                        <button onclick="execCmd('bold');" title="Fett" name="Web"><i class="material-icons">format_bold</i></button>
-                        <button onclick="execCmd('italic');" title="Kursiv" name="Web"><i class="material-icons">format_italic</i></button>
-                        <button onclick="execCmd('underline');" title="Unterstrichen" name="Web"><i class="material-icons">format_underline</i></button>
-                        <button onclick="execCmd('strikethrough');" title="Durchgestrichen" name="Web"><i class="material-icons">format_strikethrough</i></button>
-                        &nbsp;
-                        <button onclick="execCmd('justifyLeft');" title="Linksbündig" name="Web"><i class="material-icons">format_align_left</i></button>
-                        <button onclick="execCmd('justifyCenter');" title="Zentriert" name="Web"><i class="material-icons">format_align_center</i></button>
-                        <button onclick="execCmd('justifyRight');" title="Rechtsbündig" name="Web"><i class="material-icons">format_align_right</i></button>
-                        <button onclick="execCmd('justifyFull');" title="Blocksatz" name="Web"><i class="material-icons">format_align_justify</i></button>
-                        <button onclick="execCmd('indent');" title="Einzug vergrößern" name="Web"><i class="material-icons">format_indent_increase</i></button>
-                        <button onclick="execCmd('outdent');" title="Einzug verringern" name="Web"><i class="material-icons">format_indent_decrease</i></button>
-                        &nbsp;
-                        <button onclick="execCmd('insertUnorderedList');" title="Aufzählungsliste" name="Web"><i class="material-icons">format_list_bulleted</i></button>
-                        <button onclick="execCmd('insertOrderedList');" title="Nummerierte Liste" name="Web"><i class="material-icons">format_list_numbered</i></button>
-                        &nbsp;
-                        <button onclick="execCmdWithArg('insertImage',prompt('URL des Bildes eingeben'));" title="Bild einfügen" name="Web"><i class="material-icons">add_a_photo</i></button>
-                        <button onclick="execCmdWithArg('createLink', prompt('URL eingeben', 'http://'));" title="Link erstellen" name="Web"><i class="material-icons">link</i></button>
-                        &nbsp;
-                        <button onclick="execCmd('undo');" title="Rückgängig" name="Web"><i class="material-icons">undo</i></button>
-                        <button onclick="execCmd('redo');" title="Wiederholen" name="Web"><i class="material-icons">redo</i></button>
-                        &nbsp;
-                        <button onclick="showHTML();this.style.display='none';document.getElementById('showEditor').style.display='inline'" title="HTML Code anzeigen" id="showHTML" name="Web"><i class="material-icons">code</i></button>
-                        <button onclick="showEditor();this.style.display='none';document.getElementById('showHTML').style.display='inline'" title="Editor anzeigen" id="showEditor" name="Web"><i class="material-icons">web_asset</i></button>
-                        <div name = "Web">
-                            <br name = "Web">
-                            <select onclick="changeFloat(this.value);" title="Float">
-                                <option value="none">keiner</option>
-                                <option value="left">links</option>
-                                <option value="right">rechts</option>
-                            </select>
-
-                            <select onchange="execCmdWithArg('fontName', this.value);" title="font">
-                                <option value="Roboto" style="font-family: 'Roboto'!important;">Roboto</option>
-                                <option value="Open Sans" style="font-family: 'Open Sans'!important;">Open Sans</option>
-                                <option value="Open Sans Condensed" style="font-family: 'Open Sans Condensed'!important;">Open Sans Condensed</option>
-                                <option value="Montserrat" style="font-family: 'Montserrat'!important;">Montserrat</option>
-                                <option value="Courier" style="font-family: 'Courier'!important;">Courier</option>
-                                <option value="Oswald" style="font-family: 'Oswald'!important;">Oswald</option>
-                                <option value="Ubuntu" style="font-family: 'Ubuntu'!important;">Ubuntu</option>
-                                <option value="Playfair Display" style="font-family: 'Playfair Display'!important;">Playfair Display</option>
-                                <option value="Rubik Mono One" style="font-family: 'Rubik Mono One'!important;">Rubik Mono One</option>
-                                <option value="Inconsolata" style="font-family: 'Inconsolata'!important;">Inconsolata</option>
-                                <option value="Indie Flower" style="font-family: 'Indie Flower'!important;">Indie Flower</option>
-                                <option value="Lobster" style="font-family: 'Lobster'!important;">Lobster</option>
-                                <option value="Abril Fatface" style="font-family: 'Abril Fatface'!important;">Abril Fatface</option>
-                                <option value="Dancing Script" style="font-family: 'Dancing Script'!important;">Dancing Script</option>
-                                <option value="Archivo Black" style="font-family: 'Archivo Black'!important;">Archivo Black</option>
-                                <option value="Poiret One" style="font-family: 'Poiret One'!important;">Poiret One</option>
-                            </select>
-                            <select onclick="execCmdWithArg('formatBlock', '<'+this.value+'>');" title="Überschrift">
-                                <option value="H1">&Uuml;berschrift 1</option>
-                                <option value="H2">&Uuml;berschrift 2</option>
-                                <option value="H3">&Uuml;berschrift 3</option>
-                                <option value="H4">&Uuml;berschrift 4</option>
-                                <option value="H5">&Uuml;berschrift 5</option>
-                                <option value="H6">&Uuml;berschrift 6</option>
-                            </select>
-                            <select onchange="execCmdWithArg('fontSize', this.value);" title="Textgröße">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                            </select>
-                            <p style="display:inline-block">Textfarbe: <input type="color" onchange="execCmdWithArg('foreColor', this.value);"/></p>
-                            <p style="display:inline-block">Text Hintergrund: <input type="color" onchange="execCmdWithArg('hiliteColor', this.value);"/></p>
-                            <p style="display:inline-block"> Hintergrund: <input type="color" onchange="backgroundColor(this.value);"/></p>
-
+                <li class="time-label">
+                    <span class="bg-light-blue">
+                        Datum
+                    </span>
+                </li>
+                <li>
+                    <i class="fa fa-envelope bg-blue"></i>
+                    <div class="timeline-item">
+                        <span class="time">
+                            <i class="fa fa-clock-o"></i>
+                            Zeit
+                        </span>
+                        <h3 class="timeline-header">
+                            Newsletter <b>%betreff%</b> wurde versendet
+                        </h3>
+                        <div class="timeline-body">
+                            Versand an 50 Empfänger<br>
+                            Erhalten von 30 Empfängern<br>
+                            Geöffnet von 20 Empfängern<br>
+                        </div>
+                        <div class="timeline-footer">
+                            <a href="newsletter_status_more.html" class="btn btn-primary btn-xs">Genauere Übersicht</a>
                         </div>
                     </div>
-                </div>
+                </li>
 
-                <iframe name="editor" style="height:80%; width: 100%" frameborder="0" id="editor"></iframe>
-                <button onclick="test();" title="Testen"  style="margin:10px"><i class="material-icons">devices</i></button>
-                <button id="openSend" style="margin:10px" title="Senden"><i class="material-icons">send</i></button>
-
-                <div id="send" class="popup">
-                    <div class="popup-content">
-                        <div class="popup-header">
-                            <span class="close">&times;</span>
-                            <h1>Senden</h1>
+                <li>
+                    <i class="fa fa-envelope bg-blue"></i>
+                    <div class="timeline-item">
+                        <span class="time">
+                            <i class="fa fa-clock-o"></i>
+                            Zeit
+                        </span>
+                        <h3 class="timeline-header">
+                            Newsletter <b>%betreff%</b> wurde versendet
+                        </h3>
+                        <div class="timeline-body">
+                            Versand an 50 Empfänger<br>
+                            Erhalten von 30 Empfängern<br>
+                            Geöffnet von 20 Empfängern<br>
                         </div>
-                        <div class="popup-body">
-                            <input name="subject" type="text" placeholder="Betreff"/>
-                            <button>Senden</button>
+                        <div class="timeline-footer">
+                            <a class="btn btn-primary btn-xs">Genauere Übersicht</a>
                         </div>
                     </div>
-                </div>
-            </div>
-            <noscript>
-                <style type="text/css">
-                    .pagecontainer {
-                        display:none;
-                    }
+                </li>
 
-                    body {
-                        background: #D2D6DE;
-                    }
-
-                    .container {
-                        width: 500px;
-                        padding: 8% 0 0;
-                        margin: auto;
-                    }
-                    .form {
-                        border-radius: 10px;
-                        position: relative;
-                        background: #FFFFFF;
-                        max-width: 500px;
-                        margin: 0 auto 100px;
-                        padding: 45px;
-                        text-align: center;
-                    }
-                    .form .message a {
-                        color: #9AA0A6;
-                        text-decoration: none;
-                    }
-                </style>
-                <div class="container">
-                    <div class="form">
-                        Bitte aktivieren Sie Javascript, damit diese Seite korrekt funktioniert.
-
+                <li class="time-label">
+                    <span class="bg-light-blue">
+                        Datum
+                    </span>
+                </li>
+                <li>
+                    <i class="fa fa-envelope bg-blue"></i>
+                    <div class="timeline-item">
+                        <span class="time">
+                            <i class="fa fa-clock-o"></i>
+                            Zeit
+                        </span>
+                        <h3 class="timeline-header">
+                            Newsletter <b>%betreff%</b> wurde versendet
+                        </h3>
+                        <div class="timeline-body">
+                            Versand an 50 Empfänger<br>
+                            Erhalten von 30 Empfängern<br>
+                            Geöffnet von 20 Empfängern<br>
+                        </div>
+                        <div class="timeline-footer">
+                            <a class="btn btn-primary btn-xs">Genauere Übersicht</a>
+                        </div>
                     </div>
-                </div>
-            </noscript>
+                </li>
 
-            <!--Send Dialog-->
 
+                <li>
+                    <i class="fa fa-clock-o bg-gray"></i>
+                </li>
+            </ul>
         </section>
         <!-- /.content -->
 
@@ -514,134 +438,4 @@
      Both of these plugins are recommended to enhance the
      user experience. -->
 </body>
-
-<script>
-
-    document.getElementById('showEditor').style.display='none';
-    editor.document.body.style.background = 'white';
-
-    var src;
-    function enableEditor(){
-        editor.document.designMode = 'On';
-
-        var fontLink = document.createElement("link");
-        fontLink.href = "https://fonts.googleapis.com/css?family=Abril+Fatface|Archivo+Black|Dancing+Script|Inconsolata|Indie+Flower|Lobster|Montserrat|Open+Sans|Open+Sans+Condensed:300|Oswald|Playfair+Display|Poiret+One|Roboto|Rubik+Mono+One|Ubuntu";
-        fontLink.rel = "stylesheet";
-        frames['editor'].document.head.appendChild(fontLink);
-        editor.document.body.style.margin = 0;
-
-    }
-
-    function backgroundColor(arg){
-        editor.document.body.style.background = arg;
-
-    }
-
-    function execCmd(command){
-        editor.document.execCommand(command, false, null);
-    }
-
-    function execCmdWithArg(command, arg){
-        editor.document.execCommand(command, false, arg);
-    }
-
-    function showHTML(){
-        format();
-        document.getElementById('editor').contentWindow.document.body.innerText = src;
-        document.getElementById('editor').contentWindow.document.body.style.backgroundColor = 'white';
-        document.getElementById('editor').contentWindow.document.body.style.color = 'black';
-        var w = document.getElementsByName("Web");
-        for (i = 0; i < w.length; i++) {
-            w[i].style.display = 'none';
-        }
-    }
-
-    function showEditor(){
-        src = document.getElementById('editor').contentWindow.document.body.innerText;
-        src = src.replace(/(\r\n|\n|\r)/gm,"");
-        document.getElementById('editor').contentWindow.document.documentElement.innerHTML = src;
-        editor.document.designMode = 'On';
-        changeifb();
-        var w = document.getElementsByName("Web");
-        for (i = 0; i < w.length; i++) {
-            w[i].style.display = 'inline';
-        }
-    }
-
-    function format(){
-        src = document.getElementById('editor').contentWindow.document.documentElement.outerHTML;
-        var i = 0;
-        var z = 0;
-        while(i < src.length){
-
-            if (z == 0) {
-                var n = src.indexOf('<', i);
-                src = src.substr(0, n) + '\n' + src.substr(n);
-                if (n == -1){
-                    break;
-                }
-                i = n+2;
-                z = 1;
-            }
-            if (z == 1) {
-                var n = src.indexOf('>', i);
-                if (n == -1){
-                    break;
-                }
-                src = src.substr(0, n+1) + '\n' + src.substr(n+1);
-                i = n+2;
-                z = 0;
-            }
-        }
-
-    }
-    function test(){
-        if(document.getElementById('showHTML').style.display === 'none'){
-            src = document.getElementById('editor').contentWindow.document.body.innerText;
-        }else{
-            src = document.getElementById('editor').contentWindow.document.documentElement.outerHTML;
-        }
-        var test = window.open("", "", "width=600,height=800,location=0,menubar=0,resizable=1,status=0,toolbar=0,scrollbars=1");
-        test.document.open();
-        test.document.write(src);
-        test.document.close();
-    }
-
-    var popup = document.getElementById('send');
-    var btn = document.getElementById("openSend");
-    var span = document.getElementsByClassName("close")[0];
-
-    btn.onclick = function() {
-        popup.style.display = "block";
-    };
-
-    span.onclick = function() {
-        popup.style.display = "none";
-    };
-
-</script>
-<script src='https://code.jquery.com/jquery-1.10.1.js' type='text/javascript'></script>
-<script>
-    var img;
-    var iframeBody;
-    iframeBody = $('body', $('#editor')[0].contentWindow.document);
-    click();
-
-    function changeifb(){
-        iframeBody = $('body', $('#editor')[0].contentWindow.document);
-        $(iframeBody).off('click');
-        click();
-    }
-
-    function click(){
-        $(iframeBody).on('click', 'img', function() {
-            img = $(this);
-        });
-    }
-
-    function changeFloat(arg){
-        $(img).css('float', arg);
-    }
-</script>
-
 </html>
