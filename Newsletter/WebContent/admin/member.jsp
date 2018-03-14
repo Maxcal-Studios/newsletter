@@ -18,18 +18,18 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../../../Bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../../Bootstrap/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../bootstrap/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="../../../Bootstrap/bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../bootstrap/bower_components/Ionicons/css/ionicons.min.css">
   <!-- jvectormap -->
-  <link rel="stylesheet" href="../../../Bootstrap/bower_components/jvectormap/jquery-jvectormap.css">
+  <link rel="stylesheet" href="../bootstrap/bower_components/jvectormap/jquery-jvectormap.css">
   <!-- DataTables -->
-  <link rel="stylesheet" href="../../../Bootstrap/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../../Bootstrap/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="../../../Bootstrap/dist/css/skins/skin-blue.min.css">
+  <link rel="stylesheet" href="../bootstrap/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../bootstrap/dist/css/skins/skin-blue.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -388,20 +388,20 @@
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 3 -->
-<script src="../../../Bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="../../../Bootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../bootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../../Bootstrap/dist/js/adminlte.min.js"></script>
+<script src="../bootstrap/dist/js/adminlte.min.js"></script>
 <!-- DataTables -->
-<script src="../../../Bootstrap/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../../../Bootstrap/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="../bootstrap/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../bootstrap/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
-<script src="../../../Bootstrap/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../bootstrap/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="../../../Bootstrap/bower_components/fastclick/lib/fastclick.js"></script>
+<script src="../bootstrap/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="../../../Bootstrap/dist/js/adminlte.min.js"></script>
+<script src="../bootstrap/dist/js/adminlte.min.js"></script>
 
 <!-- Table Scripts -->
 <script>
