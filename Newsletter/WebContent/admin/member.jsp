@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.database.*, java.sql.*"%>
 <html>
 <head>
 
@@ -10,6 +11,18 @@
   response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
   response.setHeader("Pragma", "no-cache");
   response.setHeader("Expires", "0");
+  
+  Connection con = DBConnector.getConnection();
+  String sql = "SELECT * FROM member;";
+  PreparedStatement st = con.prepareStatement(sql);
+  ResultSet member = st.executeQuery();
+      
+  sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member';";
+  st = con.prepareStatement(sql);
+  ResultSet head = st.executeQuery();
+    
+  st.close();
+  con.close();
   %>
 
   <meta charset="utf-8">
@@ -264,36 +277,44 @@
             </div>
             <!-- /.box-header -->
               <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <td>C</td>
-                </tr>
-                </table>
+              <table id="table-member" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                  <!-- Ueberschriften -->
+                                  <%
+									while(head.next()) {
+										out.println("<th>" + head.getString(1) + "</th>");
+									}                                  
+                                   %>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                
+                                    <!-- Inhalte -->
+                                  <%
+                                  	out.println(head.getRow());
+                                  
+									while(member.next()) {
+										out.println("<tr>");
+										//for(int i = 1; i < head.getRow(); i++) {
+											//out.println("<td>" + member.getString(i) + "</td>");
+										//}
+										out.println("</tr>");
+									}                                  
+                                   %>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <!-- Ueberschriften Unten -->
+                                  <%
+                                  	do {
+                                  	head.first();
+                                  	out.println("<th>" + head.getString(1) + "</th>");
+									} while(head.next());
+                                   %>
+                                </tr>
+                                </tfoot>
+                              </table>
             </div>
             <!-- /.box-body -->
           </div>
