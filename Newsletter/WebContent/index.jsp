@@ -3,13 +3,6 @@
 <head>
 
 	<%
-	if(session.getAttribute("user") == null) {
-		response.sendRedirect("../login.jsp");
-	}
-	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-	response.setHeader("Pragma", "no-cache");
-	response.setHeader("Expires", "0");
-	
 	Connection con = DBConnector.getConnection();
 	String sql = "SELECT * FROM layout";	
 	PreparedStatement st = con.prepareStatement(sql);
@@ -51,25 +44,12 @@
 				}
 				
 				for(int i = 0; i < results.length; i++) {
-					if(results[i].getBoolean("full")) {
 						out.println("<tr>");
 						out.println("<th>" + results[i].getString("text") + "</th>");
 						out.println("</tr>");
 						out.println("<tr>");
 						out.println("<td colspan=\"2\"><input spellcheck=\"false\" type=\""+results[i].getString("type")+"\" name=\""+results[i].getString("db_name")+"\" class=\"span\"</td>");
-						out.println("</tr>");						
-					} else {
-						out.println("<tr>");
-						out.println("<th>" + results[i].getString("text") + "</th>");
-						out.println("<th>" + results[i+1].getString("text") + "</th>");
 						out.println("</tr>");
-						out.println("<tr>");
-						out.println("<td><input spellcheck=\"false\" type=\""+results[i].getString("type")+"\" name=\""+results[i].getString("db_name")+"\" class=\"span\"</td>");
-						out.println("<td><input spellcheck=\"false\" type=\""+results[i+1].getString("type")+"\" name=\""+results[i+1].getString("db_name")+"\" class=\"span\"</td>");
-						out.println("</tr>");
-						
-						i++;
-					}
 				}
 				
 				%>
@@ -86,7 +66,7 @@
 			<a href="login.jsp">Administration</a>
 		</div>
 		<div id="copy">
-			<p>BrandName, Copyright &copy; 2017</p>
+			<p>This is a testsite! Do not use any functions on this site! Please leave immediately! BrandName, Copyright &copy; 2017</p>
 		</div>
 	</footer>
 </body>

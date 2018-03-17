@@ -3,15 +3,18 @@
 <head>
 
     <%
-    if(session.getAttribute("user") == null) {
-    response.sendRedirect("../login.jsp");
-    }
-
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    response.setHeader("Pragma", "no-cache");
-    response.setHeader("Expires", "0");
+    String username = "admin";
     
-    String username = session.getAttribute("user").toString();
+    if(session.getAttribute("user") == null) {
+    	response.sendRedirect("../../login.jsp");
+    } else {
+
+    	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    	response.setHeader("Pragma", "no-cache");
+    	response.setHeader("Expires", "0");
+    
+    	username = session.getAttribute("user").toString();
+    }
     %>
 
     <meta charset="utf-8">
@@ -209,7 +212,7 @@
 
                             <!-- Edited Menu Footer-->
                             <li class="user-footer">
-                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="../Logout" class="btn btn-default btn-flat">Abmelden</a>
                             </li>
                         </ul>
                     </li>

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/Logout")
 public class Logout
 extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.removeAttribute("user");
         session.invalidate();

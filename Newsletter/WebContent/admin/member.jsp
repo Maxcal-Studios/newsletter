@@ -4,15 +4,18 @@
 <head>
 
     <%
+    String username = "admin";
+    
     if(session.getAttribute("user") == null) {
-    response.sendRedirect("../login.jsp");
+    	response.sendRedirect("../../login.jsp");
+    } else {
+
+    	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    	response.setHeader("Pragma", "no-cache");
+    	response.setHeader("Expires", "0");
+    
+    	username = session.getAttribute("user").toString();
     }
-
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    response.setHeader("Pragma", "no-cache");
-    response.setHeader("Expires", "0");
-
-	String username = session.getAttribute("user").toString();
 
     Connection con = DBConnector.getConnection();
     String sql = "SELECT * FROM member;";
