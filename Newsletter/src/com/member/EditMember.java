@@ -29,9 +29,10 @@ public class EditMember extends HttpServlet {
         	PreparedStatement st;
         	
         	//gets all the column headers of the table
-        	sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member';";
+        	sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member'";
         	st = con.prepareStatement(sql);
         	ResultSet rsLabel = st.executeQuery();
+        	
         	
         	//getting the data
         	int length = 0;
@@ -45,22 +46,34 @@ public class EditMember extends HttpServlet {
         		var[i] = request.getParameter(rsLabel.getString(1));
         	}
         	
-        	//update member table
-        	rsLabel.first();
-        	
+        	/*//update member table
         	sql = "UPDATE member SET";
-        	for(int i = 1; i < var.length; i++) {
-        		rsLabel.next();
-        		sql += " " + rsLabel.getString(1) + " = " + var[i] + ",";
-        	}
+        	
         	rsLabel.first();
+        	rsLabel.next();
+        	
+        	while(rsLabel.next()) {
+        		sql += " " + rsLabel.getString(1) + " = ?,";
+        	}
         	sql = sql.substring(0, sql.length() - 1);
-        	sql += "WHERE ID = " + rsLabel.getString(1);
+        	sql += " WHERE ID = ?";
         	
         	st = con.prepareStatement(sql);
-        	st.executeQuery();
+        	for(int i = 1; i < var.length; i++) {
+        		st.setString(i-1, var[i]);
+        	}
+        	
+        	st.setString(var.length, var[0]);*/
+        	
+        	sql = "UPDATE member SET name = 'MAX' WHERE ID = 1";
+        	st = con.prepareStatement(sql);
+        	
+        	st.executeUpdate();
+        	
+        	response.sendRedirect("../admin/member.jsp");
         	
 		} catch(Exception e) {e.printStackTrace();}
+		
 		
 	}
 
