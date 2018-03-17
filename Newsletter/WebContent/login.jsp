@@ -26,7 +26,7 @@
 			<input type="password" name="pass">
 			<button class="button1" type="submit" value="Login">Login</button>
 		</form>
-		<form action="index.jsp" method="get">
+		<form action="index.jsp" method="post">
 			<button style="margin-top: 15px;" type="submit" class="button1">Back</button>
 		</form>
 	</div>		
