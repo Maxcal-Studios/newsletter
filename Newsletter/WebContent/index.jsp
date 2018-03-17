@@ -70,4 +70,8 @@
 		</div>
 	</footer>
 </body>
+	<%
+	st.close();
+	con.close();
+	%>
 </html>

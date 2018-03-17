@@ -449,6 +449,9 @@
   })
 </script>
 
-
 </body>
+	<%
+	st.close();
+	con.close();
+	%>
 </html>

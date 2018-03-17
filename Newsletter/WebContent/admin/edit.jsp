@@ -53,4 +53,8 @@
 		</form>
 	</div>
 </body>
+	<%
+	st.close();
+	con.close();
+	%>
 </html>

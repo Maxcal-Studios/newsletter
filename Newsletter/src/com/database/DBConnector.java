@@ -27,6 +27,8 @@ public class DBConnector {
             	con.close();
             	return true;
             }
+            st.close();
+        	con.close();
         }
         catch (Exception e) {
         	try {
