@@ -22,8 +22,6 @@ import com.database.DBConnector;
 public class EditMember extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
 		
 		try {
         	//creating a connection to the DB
@@ -43,9 +41,9 @@ public class EditMember extends HttpServlet {
         	}
         	rsLabel.first();
         	
-        	String[] var = new String[length];
-        	for(int i = 0; i < var.length; i++) {
-        		var[i] = request.getParameter(rsLabel.getString(1));
+        	String[] val = new String[length];
+        	for(int i = 0; i < val.length; i++) {
+        		val[i] = request.getParameter(rsLabel.getString(1));
         		rsLabel.next();
         	}
         	
@@ -61,17 +59,18 @@ public class EditMember extends HttpServlet {
         	sql += " WHERE ID = ?";
         	
         	st = con.prepareStatement(sql);
-        	for(int i = 1; i < var.length; i++) {
-        		st.setString(i, var[i]);
+        	for(int i = 1; i < val.length; i++) {
+        		st.setString(i, val[i]);
         	}
-        	st.setInt(var.length, 1);
+        	st.setInt(val.length, Integer.parseInt(val[0]));
         	
         	st.executeUpdate();
         	
         	response.sendRedirect("../admin/member.jsp");
         	
+        	st.close();
+        	con.close();
 		} catch(Exception e) {e.printStackTrace();}
-		
 		
 	}
 

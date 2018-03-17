@@ -12,6 +12,8 @@
     response.setHeader("Pragma", "no-cache");
     response.setHeader("Expires", "0");
 
+	String username = session.getAttribute("user").toString();
+
     Connection con = DBConnector.getConnection();
     String sql = "SELECT * FROM member;";
     PreparedStatement st = con.prepareStatement(sql);
@@ -201,7 +203,7 @@
                             <!-- The user image in the navbar-->
                             <img src="../bootstrap/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">$username</span>
+                            <span class="hidden-xs"><% out.print(username); %></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
@@ -209,7 +211,7 @@
                                 <img src="../bootstrap/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    $username - Admin
+                                    <% out.print(username); %> - Admin
                                     <small>Mitglied seit $timestamp</small>
                                 </p>
                             </li>
@@ -241,7 +243,7 @@
                     <img src="../bootstrap/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>$username</p>
+                    <p><% out.print(username); %></p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
@@ -249,12 +251,12 @@
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu" data-widget="tree">
-                <li class="header">$INSERT CURRENT SITE</li>
+                <li class="header">NAVIGATION</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li><a href="index.jsp"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-                <li class="active"><a href="member.jsp"><i class="fa fa-users"></i> <span>Mitglieder</span></a></li>
+                <li><a href="index.jsp"><i class="fa fa-dashboard"></i><span> Dashboard</span></a></li>
+                <li class="active"><a href="member.jsp"><i class="fa fa-users"></i><span> Mitglieder</span></a></li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-paper-plane"></i> <span>Newsletter</span>
+                    <a href="#"><i class="fa fa-paper-plane"></i><span> Newsletter</span>
                         <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                   </span>
@@ -265,7 +267,8 @@
                         <li><a href="newsletter_history.jsp"><i class="fa fa-circle-o"></i>History</a></li>
                     </ul>
                 </li>
-                <li><a href="doc.jsp"><i class="fa fa-book"></i><span>Dokumentation</span></a></li>
+                <li><a href="layout.jsp"><i class="glyphicon glyphicon-th-large"></i><span> Layout</span></a></li>
+                <li><a href="doc.jsp"><i class="fa fa-book"></i><span> Dokumentation</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>
@@ -301,6 +304,7 @@
                             <tr>
                               <!-- Ueberschriften -->
                               <%
+                              		out.println("<th>Edit</th>");
                                 while(head.next()) {
                                     out.println("<th>" + head.getString(1) + "</th>");
                                 }
@@ -314,6 +318,7 @@
 
                                 while(member.next()) {
                                     out.println("<tr>");
+                                    out.println("<td><a href=\"edit.jsp?id=" + member.getString(1)  +"\"><i class=\"fa fa-edit\"></i></a>   <a href=\"../RemoveMember?id=" + member.getString(1) +"\"><i class=\"fa fa-trash\"></i></a></td>");
                                     for(int i = 1; i <= member.getMetaData().getColumnCount(); i++) {
                                         out.println("<td>" + member.getString(i) + "</td>");
                                     }
@@ -326,6 +331,7 @@
                                 <!-- Ueberschriften Unten -->
                               <%
                                 head.first();
+                                out.println("<th>Edit</th>");
                                 do {
                                     out.println("<th>" + head.getString(1) + "</th>");
                                 } while(head.next());
