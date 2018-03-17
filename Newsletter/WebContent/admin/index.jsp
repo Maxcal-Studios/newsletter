@@ -72,9 +72,9 @@
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="index.jsp" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini">Newsletter</span>
+            <span class="logo-mini">News</span>
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><b>News</b>letter</span>
         </a>
@@ -104,7 +104,7 @@
                                         <a href="#">
                                             <div class="pull-left">
                                                 <!-- User Image -->
-                                                <img src="../bootstrap/dist/img/user2-160x160.png" class="img-circle" alt="User Image">
+                                                <img src="../bootstrap/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                             </div>
                                             <!-- Message title and timestamp -->
                                             <h4>
@@ -189,14 +189,14 @@
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
-                            <img src="../bootstrap/dist/img/user2-160x160.png" class="user-image" alt="User Image">
+                            <img src="../bootstrap/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs">$username</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
-                                <img src="../bootstrap/dist/img/user2-160x160.png" class="img-circle" alt="User Image">
+                                <img src="../bootstrap/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                 <p>
                                     $username - Admin
@@ -228,7 +228,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="../bootstrap/dist/img/user2-160x160.png" class="img-circle" alt="User Image">
+                    <img src="../bootstrap/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p>$username</p>
@@ -241,7 +241,7 @@
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">$INSERT CURRENT SITE</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li><a href="index.jsp"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                <li class="active"><a href="index.jsp"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
                 <li><a href="member.jsp"><i class="fa fa-users"></i> <span>Mitglieder</span></a></li>
                 <li class="treeview active">
                     <a href="#"><i class="fa fa-paper-plane"></i> <span>Newsletter</span>
@@ -250,12 +250,12 @@
                   </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li  class="active"><a href="newsletter_create.jsp"><i class="fa fa-circle-o"></i>Erstellen</a></li>
+                        <li><a href="newsletter_create.jsp"><i class="fa fa-circle-o"></i>Erstellen</a></li>
                         <li><a href="newsletter_publish.jsp"><i class="fa fa-circle-o"></i>Publizieren</a></li>
                         <li><a href="newsletter_history.jsp"><i class="fa fa-circle-o"></i>History</a></li>
                     </ul>
                 </li>
-                <li><a href="documentation.jsp"><i class="fa fa-book"></i><span>Dokumentation</span></a></li>
+                <li><a href="doc.jsp"><i class="fa fa-book"></i><span>Dokumentation</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>
