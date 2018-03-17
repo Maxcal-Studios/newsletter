@@ -20,9 +20,7 @@
   sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member';";
   st = con.prepareStatement(sql);
   ResultSet head = st.executeQuery();
-    
-  st.close();
-  con.close();
+  
   %>
 
   <meta charset="utf-8">
@@ -292,13 +290,12 @@
                                 
                                     <!-- Inhalte -->
                                   <%
-                                  	out.println(head.getRow());
                                   
 									while(member.next()) {
 										out.println("<tr>");
-										//for(int i = 1; i < head.getRow(); i++) {
-											//out.println("<td>" + member.getString(i) + "</td>");
-										//}
+										for(int i = 1; i <= member.getMetaData().getColumnCount(); i++) {
+											out.println("<td>" + member.getString(i) + "</td>");
+										}
 										out.println("</tr>");
 									}                                  
                                    %>
@@ -307,9 +304,9 @@
                                 <tr>
                                     <!-- Ueberschriften Unten -->
                                   <%
-                                  	do {
                                   	head.first();
-                                  	out.println("<th>" + head.getString(1) + "</th>");
+                                  	do {
+                                  		out.println("<th>" + head.getString(1) + "</th>");
 									} while(head.next());
                                    %>
                                 </tr>
@@ -430,6 +427,11 @@
     $('#example1').DataTable()
   })
 </script>
+
+<%
+	st.close();
+	con.close();
+ %>
 
 </body>
 </html>
