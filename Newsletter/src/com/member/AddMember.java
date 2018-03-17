@@ -96,7 +96,7 @@ public class AddMember extends HttpServlet {
             for(int i = 0; i < val.length; i++) {
             	st.setString(i+1, val[i]);
             }
-            st.setString(4, hash);
+            st.setString(val.length + 1, hash);
             st.executeUpdate();
             
             //closing the connections

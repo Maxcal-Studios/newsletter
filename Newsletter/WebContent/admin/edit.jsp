@@ -25,7 +25,7 @@
 	
 	%>
 	<div class="container">
-		<form action="EditMember" method="post">
+		<form action="../EditMember" method="post">
 			<table width=100% >
 	
 	<%
@@ -48,7 +48,7 @@
 	%>
 			</table>
 		
-			<button style="width=100%" value="EditMember" class="button1">Save</button>
+			<button style="width=100%" value="../EditMember" type="submit" class="button1">Save</button>
 			<a href="member.jsp"></a>
 		</form>
 	</div>
