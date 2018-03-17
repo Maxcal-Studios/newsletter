@@ -253,7 +253,7 @@
                 <!-- Optionally, you can add icons to the links -->
                 <li><a href="index.jsp"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
                 <li class="active"><a href="member.jsp"><i class="fa fa-users"></i> <span>Mitglieder</span></a></li>
-                <li class="treeview active">
+                <li class="treeview">
                     <a href="#"><i class="fa fa-paper-plane"></i> <span>Newsletter</span>
                         <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
@@ -432,6 +432,14 @@
 <!-- DataTables -->
 <script src="../bootstrap/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../bootstrap/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+<!-- Table jQuery -->
+<script>
+  $(function () {
+    $('#table-member').DataTable()
+  })
+</script>
+
 
 </body>
 </html>
