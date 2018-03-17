@@ -1,6 +1,7 @@
 package com.member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,6 +22,8 @@ import com.database.DBConnector;
 public class EditMember extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
 		
 		try {
         	//creating a connection to the DB
@@ -33,7 +36,6 @@ public class EditMember extends HttpServlet {
         	st = con.prepareStatement(sql);
         	ResultSet rsLabel = st.executeQuery();
         	
-        	
         	//getting the data
         	int length = 0;
         	while(rsLabel.next()) {
@@ -44,13 +46,13 @@ public class EditMember extends HttpServlet {
         	String[] var = new String[length];
         	for(int i = 0; i < var.length; i++) {
         		var[i] = request.getParameter(rsLabel.getString(1));
+        		rsLabel.next();
         	}
         	
-        	/*//update member table
+        	//update member table
         	sql = "UPDATE member SET";
         	
         	rsLabel.first();
-        	rsLabel.next();
         	
         	while(rsLabel.next()) {
         		sql += " " + rsLabel.getString(1) + " = ?,";
@@ -60,13 +62,9 @@ public class EditMember extends HttpServlet {
         	
         	st = con.prepareStatement(sql);
         	for(int i = 1; i < var.length; i++) {
-        		st.setString(i-1, var[i]);
+        		st.setString(i, var[i]);
         	}
-        	
-        	st.setString(var.length, var[0]);*/
-        	
-        	sql = "UPDATE member SET name = 'MAX' WHERE ID = 1";
-        	st = con.prepareStatement(sql);
+        	st.setInt(var.length, 1);
         	
         	st.executeUpdate();
         	

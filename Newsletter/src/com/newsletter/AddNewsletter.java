@@ -28,7 +28,7 @@ public class AddNewsletter extends HttpServlet {
 		
 			//creating a connection to the DB
 			Connection con = DBConnector.getConnection();
-			String sql = "INSERT INTO newsletter (name, author, text) Values(?, ?, ?);";
+			String sql = "INSERT INTO newsletter (name, author, time, text) Values(?, ?, ?);";
 			PreparedStatement st;
 			
 			//getting the Data
@@ -38,7 +38,6 @@ public class AddNewsletter extends HttpServlet {
 			val[2] = request.getParameter("text");
 			
 			//Inserts new newsletter into table
-			
 			st = con.prepareStatement(sql);
 			for(int i = 0; i < val.length; i++) {
 				st.setString(i+1, val[i]);

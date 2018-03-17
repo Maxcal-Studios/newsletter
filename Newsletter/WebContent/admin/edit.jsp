@@ -36,12 +36,12 @@
 	}
 	rsLabel.first();
 	
-	rsVal.next();
+	rsVal.first();
 	
-	for(int i = 0; i < length; i++) {
+	for(int i = 1; i <= rsVal.getMetaData().getColumnCount(); i++) {
 		out.println("<tr>");
 		out.println("<td>" + rsLabel.getString(1) + "</td>");
-		out.println("<td><input spellcheck=\"false\" id=\"input\" name=\""+ rsVal.getString(i + 1) +"\"value=\"" + rsVal.getString(i + 1) + "\"</td>");
+		out.println("<td><input spellcheck=\"false\" id=\"input\" name=\""+ rsLabel.getString(1) +"\" value=\"" + rsVal.getString(i) + "\"></td>");
 		out.println("</tr>");
 		rsLabel.next();
 	}
