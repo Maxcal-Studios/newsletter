@@ -1,15 +1,21 @@
 <!DOCTYPE html>
+<%@ page import="java.sql.*, com.database.*;" %>
 <html>
 <head>
 
     <%
-    if(session.getAttribute("user") == null) {
-    response.sendRedirect("../login.jsp");
-    }
+    String username = "admin";
+    
+    if(!DBConnector.isLoggedIn(session)) {
+    	response.sendRedirect("../../login.jsp");
+    } else {
 
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    response.setHeader("Pragma", "no-cache");
-    response.setHeader("Expires", "0");
+    	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    	response.setHeader("Pragma", "no-cache");
+    	response.setHeader("Expires", "0");
+    
+    	username = session.getAttribute("user").toString();
+    }
     %>
 
     <meta charset="utf-8">
@@ -282,7 +288,7 @@
             <!--------------------------
               | Your Page Content Here |
               -------------------------->
-
+			<form action="../AddNewsletter" method="post">
 
             <div class="pagecontainer" style="width:100%;height:100vh;">
                 <div style="text-align: center; background-color:#3C8DBC;">
@@ -369,7 +375,6 @@
                 
                 <div class="modal fade" id="modal-save">
 		          <div class="modal-dialog">
-		          	<form action="addNewsletter" method="post">
 		            <div class="modal-content">
 		              <div class="modal-header">
 		                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -377,16 +382,25 @@
 		                <h4 class="modal-title">Newsletter speichern</h4>
 		              </div>
 		              <div class="modal-body">
-		                <label for="name">Name</label>
-                  		<input name="name" type="text" class="form-control" id="name" placeholder="Name">
+		              	<div class="form-group">
+		                	<label for="title" class="control-label">Titel</label>
+                  			<input name="title" type="text" class="form-control" id="title" placeholder="Titel">
+                  		</div>
+                  		<div class="form-group">
+		                	<label for="author" class="control-label">Author</label>
+                  			<input name="author" type="text" class="form-control" id="author" value="<% out.print(username); %>" readonly>
+                  		</div>
+                  		<div class="form-group">
+                 			<label>Beschreibung</label>
+                  			<textarea class="form-control" name="description" rows="3" placeholder="Beschreiben ..."></textarea>
+                		</div>
 		              </div>
 		              <div class="modal-footer">
 		                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Beenden</button>
-		                <button type="button submit" value="AddNewsletter" class="btn btn-primary">Speichern</button>
+		                <button type="button submit" value="../AddNewsletter" class="btn btn-primary">Speichern</button>
 		              </div>
 		            </div>
 		            <!-- /.modal-content -->
-		            </form>
 		          </div>
 		          <!-- /.modal-dialog -->
 		        </div>
@@ -435,8 +449,12 @@
         </section>
         <!-- /.content -->
 
+		</form>
+	
     </div>
     <!-- /.content-wrapper -->
+
+	
 
     <!-- Main Footer -->
     <footer class="main-footer" style="height: 50px">
