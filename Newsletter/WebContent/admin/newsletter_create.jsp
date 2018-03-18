@@ -367,7 +367,7 @@
                 Speichern
               	</button>
                 
-                <div class="modal fade" id="modal-default">
+                <div class="modal fade" id="modal-save">
 		          <div class="modal-dialog">
 		          	<form action="addNewsletter" method="post">
 		            <div class="modal-content">
