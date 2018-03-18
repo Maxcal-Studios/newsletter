@@ -16,14 +16,20 @@ import javax.servlet.http.HttpServletResponse;
 public class Authentication extends HttpServlet {
 	
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         String hash = request.getParameter("hash");
+    	
+    	//login check
+    	if(!DBConnector.isLoggedIn(request.getSession())) {
+    		response.sendRedirect("../../login.jsp");
+    	}
+    	
+    	String hash = request.getParameter("hash");
          
-         Connection con = DBConnector.getConnection();
-         String sql = "UPDATE member SET active = TRUE WHERE hash=?";
-         PreparedStatement st = null;
-         
-         try {
-            st = con.prepareStatement(sql);
+    	Connection con = DBConnector.getConnection();
+    	String sql = "UPDATE member SET active = TRUE WHERE hash=?";
+        PreparedStatement st = null;
+        
+        try {
+        	st = con.prepareStatement(sql);
             st.setString(1, hash);
             st.executeUpdate();
         }catch (SQLException e) {e.printStackTrace();}

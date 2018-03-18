@@ -21,10 +21,15 @@ public class RemoveMember extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//login check
+		if(!DBConnector.isLoggedIn(request.getSession())) {
+			response.sendRedirect("../../login.jsp");
+		} 
+		
 		//creating a connection to the DB
     	Connection con = DBConnector.getConnection();
-    	String sql;
     	PreparedStatement st = null;
+    	String sql;
 		
 		try {
         	
@@ -38,14 +43,14 @@ public class RemoveMember extends HttpServlet {
         	
         	st.executeUpdate();
         	
-        	response.sendRedirect("../admin/member.jsp");
-        	
 		} catch(Exception e) {e.printStackTrace();}
 		finally {
 		    try { st.close(); } catch (Exception e) { }
 		    try { con.close(); } catch (Exception e) { }
 		}
-	
+		
+		//redirect the user
+		response.sendRedirect("../admin/member.jsp");
 	}
 
 }

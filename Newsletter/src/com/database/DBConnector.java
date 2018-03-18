@@ -6,6 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 public class DBConnector {
     private static final String url = "jdbc:mysql://localhost:3306/newsletter";
     private static final String DBuser = "maxcal";
@@ -50,5 +53,13 @@ public class DBConnector {
             e.printStackTrace();
         }
         return con;
+    }
+    
+    public static boolean isLoggedIn(HttpSession session) {
+    	if(session.getAttribute("user") == null) {
+        	return false;
+        } else {
+        	return true;
+        }
     }
 }

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+<%@ page import="java.sql.*, com.database.*;" %>
 <html>
 <head>
 
     <%
     String username = "admin";
     
-    if(session.getAttribute("user") == null) {
+    if(DBConnector.isLoggedIn(session)) {
     	response.sendRedirect("../../login.jsp");
     } else {
 

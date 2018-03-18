@@ -22,6 +22,12 @@ public class AddNewsletter extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//login check
+		if(!DBConnector.isLoggedIn(request.getSession())) {
+			response.sendRedirect("../../login.jsp");
+		}
+		
 		int cols = 4;
 		
 		//creating a connection to the DB

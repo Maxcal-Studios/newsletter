@@ -23,6 +23,11 @@ public class EditMember extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		//login check
+		if(!DBConnector.isLoggedIn(request.getSession())) {
+			response.sendRedirect("../../login.jsp");
+		}
+		
 		//creating a connection to the DB
         Connection con = DBConnector.getConnection();
         String sql;
