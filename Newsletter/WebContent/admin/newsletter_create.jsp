@@ -362,20 +362,36 @@
 
                 <iframe name="editor" style="height:80%; width: 100%" frameborder="0" id="editor"></iframe>
                 <button onclick="test();" title="Testen"  style="margin:10px"><i class="material-icons">devices</i></button>
-                <button id="openSend" style="margin:10px" title="Senden"><i class="material-icons">send</i></button>
-
-                <div id="send" class="popup">
-                    <div class="popup-content">
-                        <div class="popup-header">
-                            <span class="close">&times;</span>
-                            <h1>Senden</h1>
-                        </div>
-                        <div class="popup-body">
-                            <input name="subject" type="text" placeholder="Betreff"/>
-                            <button>Senden</button>
-                        </div>
-                    </div>
-                </div>
+                
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-save">
+                Speichern
+              	</button>
+                
+                <div class="modal fade" id="modal-default">
+		          <div class="modal-dialog">
+		          	<form action="addNewsletter" method="post">
+		            <div class="modal-content">
+		              <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		                  <span aria-hidden="true">&times;</span></button>
+		                <h4 class="modal-title">Newsletter speichern</h4>
+		              </div>
+		              <div class="modal-body">
+		                <label for="name">Name</label>
+                  		<input name="name" type="text" class="form-control" id="name" placeholder="Name">
+		              </div>
+		              <div class="modal-footer">
+		                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Beenden</button>
+		                <button type="button submit" value="AddNewsletter" class="btn btn-primary">Speichern</button>
+		              </div>
+		            </div>
+		            <!-- /.modal-content -->
+		            </form>
+		          </div>
+		          <!-- /.modal-dialog -->
+		        </div>
+		        <!-- /.modal -->
+                
             </div>
             <noscript>
                 <style type="text/css">
