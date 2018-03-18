@@ -20,19 +20,22 @@ import com.database.DBConnector;
 public class Deactivation extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String hash = request.getParameter("hash");
+        Connection con = DBConnector.getConnection();
+        String sql = "UPDATE member SET active = FALSE WHERE hash=?";
+        PreparedStatement st = null;
+		
 		try {
-            String hash = request.getParameter("hash");
-            Connection con = DBConnector.getConnection();
-            String sql = "UPDATE member SET active = FALSE WHERE hash=?";
-            PreparedStatement st = con.prepareStatement(sql);
             st = con.prepareStatement(sql);
             st.setString(1, hash);
             st.executeUpdate();
-            con.close();
-            st.close();
-        }catch (SQLException e) {
-            e.printStackTrace();
-        }
+        }catch (SQLException e) {e.printStackTrace();}
+		finally {
+		    try { st.close(); } catch (Exception e) { }
+		    try { con.close(); } catch (Exception e) { }
+		}
+		
         response.sendRedirect("../deactivated.html");
 	}
 

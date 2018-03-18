@@ -71,6 +71,7 @@
 	</footer>
 </body>
 	<%
+	rs.close();
 	st.close();
 	con.close();
 	%>

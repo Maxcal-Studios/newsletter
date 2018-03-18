@@ -22,6 +22,12 @@ public class AddMember extends HttpServlet {
 	
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
+    	//creating a connection to the DB
+    	Connection con = DBConnector.getConnection();
+    	PreparedStatement st = null;
+    	ResultSet rs = null;
+    	String sql;
+    	
     	//create cookie to track the time the last member was added to prevent spam
         Cookie cookie = new Cookie("newsletter.time", Long.toString(System.currentTimeMillis()));
         Cookie[] cookies = request.getCookies();
@@ -40,8 +46,6 @@ public class AddMember extends HttpServlet {
         }
         
         try {
-        	//creating a connection to the DB
-        	Connection con = DBConnector.getConnection();
         
         	//A list of all DB values wich need to be safed
         	LinkedList<String> DBcols = new LinkedList<String>();
@@ -50,9 +54,9 @@ public class AddMember extends HttpServlet {
         	int emailIndex = 0;
         	
         	//getting all db_name's from layout ordered by ID and adding them to the list
-        	String sql = "SELECT db_name FROM layout ORDER BY ID";
-        	PreparedStatement st = con.prepareStatement(sql);
-        	ResultSet rs = st.executeQuery();
+        	sql = "SELECT db_name FROM layout ORDER BY ID";
+        	st = con.prepareStatement(sql);
+        	rs = st.executeQuery();
         	while(rs.next()) {
         		DBcols.add(rs.getString(1));
         	}
@@ -103,9 +107,13 @@ public class AddMember extends HttpServlet {
             con.close();
             st.close();
         }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        catch (Exception e) {e.printStackTrace();}
+        finally {
+        	try { rs.close(); } catch (Exception e) { }
+		    try { st.close(); } catch (Exception e) { }
+		    try { con.close(); } catch (Exception e) { }
+		}
+        
         //adding the cookie with a timestamp
         response.addCookie(cookie);
         

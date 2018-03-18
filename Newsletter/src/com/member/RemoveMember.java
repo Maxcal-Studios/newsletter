@@ -20,19 +20,16 @@ import com.database.DBConnector;
 public class RemoveMember extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
+		
+		//creating a connection to the DB
+    	Connection con = DBConnector.getConnection();
+    	String sql;
+    	PreparedStatement st = null;
 		
 		try {
-        	//creating a connection to the DB
-        	Connection con = DBConnector.getConnection();
-        	String sql;
-        	PreparedStatement st;
         	
         	//get Data
         	int id = Integer.parseInt(request.getParameter("id"));
-        	
-        	out.println(id);
         	
         	//Remove entry in member table
         	sql = "DELETE FROM member WHERE id = ?";
@@ -41,13 +38,13 @@ public class RemoveMember extends HttpServlet {
         	
         	st.executeUpdate();
         	
-        	//close connections
-        	st.close();
-        	con.close();
-        	
         	response.sendRedirect("../admin/member.jsp");
         	
 		} catch(Exception e) {e.printStackTrace();}
+		finally {
+		    try { st.close(); } catch (Exception e) { }
+		    try { con.close(); } catch (Exception e) { }
+		}
 	
 	}
 

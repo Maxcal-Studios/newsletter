@@ -16,19 +16,22 @@ import javax.servlet.http.HttpServletResponse;
 public class Authentication extends HttpServlet {
 	
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            String hash = request.getParameter("hash");
-            Connection con = DBConnector.getConnection();
-            String sql = "UPDATE member SET active = TRUE WHERE hash=?";
-            PreparedStatement st = con.prepareStatement(sql);
+         String hash = request.getParameter("hash");
+         
+         Connection con = DBConnector.getConnection();
+         String sql = "UPDATE member SET active = TRUE WHERE hash=?";
+         PreparedStatement st = null;
+         
+         try {
             st = con.prepareStatement(sql);
             st.setString(1, hash);
             st.executeUpdate();
-            con.close();
-            st.close();
-        }catch (SQLException e) {
-            e.printStackTrace();
-        }
+        }catch (SQLException e) {e.printStackTrace();}
+        finally {
+		    try { st.close(); } catch (Exception e) { }
+		    try { con.close(); } catch (Exception e) { }
+		}
+        
         response.sendRedirect("../activated.html");
     }
 }

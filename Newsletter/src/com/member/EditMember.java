@@ -22,12 +22,13 @@ import com.database.DBConnector;
 public class EditMember extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
+		//creating a connection to the DB
+        Connection con = DBConnector.getConnection();
+        String sql;
+       	PreparedStatement st = null;
+       	
 		try {
-        	//creating a connection to the DB
-        	Connection con = DBConnector.getConnection();
-        	String sql;
-        	PreparedStatement st;
         	
         	//gets all the column headers of the table
         	sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member'";
@@ -68,9 +69,11 @@ public class EditMember extends HttpServlet {
         	
         	response.sendRedirect("../admin/member.jsp");
         	
-        	st.close();
-        	con.close();
 		} catch(Exception e) {e.printStackTrace();}
+		finally {
+		    try { st.close(); } catch (Exception e) { }
+		    try { con.close(); } catch (Exception e) { }
+		}
 		
 	}
 

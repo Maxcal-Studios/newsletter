@@ -14,6 +14,8 @@ public class DBConnector {
     public static boolean check(String user, String pass) {
         Connection con = null;
         PreparedStatement st = null;
+        ResultSet rs = null;
+        
         try {
             String preSt = "SELECT * FROM admin WHERE user=? AND pass=?";
             Class.forName("com.mysql.jdbc.Driver");
@@ -21,24 +23,20 @@ public class DBConnector {
             st = con.prepareStatement(preSt);
             st.setString(1, user);
             st.setString(2, pass);
-            ResultSet rs = st.executeQuery();
+            rs = st.executeQuery();
             if(rs.next()) {
             	st.close();
             	con.close();
             	return true;
             }
-            st.close();
-        	con.close();
         }
-        catch (Exception e) {
-        	try {
-				st.close();
-				con.close();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-            e.printStackTrace();
-        }
+        catch (Exception e) {e.printStackTrace();}
+        finally {
+        	try { rs.close(); } catch (Exception e) { }
+		    try { st.close(); } catch (Exception e) { }
+		    try { con.close(); } catch (Exception e) { }
+		}
+        
         return false;
     }
 

@@ -24,13 +24,13 @@ public class AddNewsletter extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int cols = 4;
 		
+		//creating a connection to the DB
+		Connection con = DBConnector.getConnection();
+		String sql = "INSERT INTO newsletter (name, author, time, text) Values(?, ?, ?);";
+		PreparedStatement st = null;
+		
 		try {
 		
-			//creating a connection to the DB
-			Connection con = DBConnector.getConnection();
-			String sql = "INSERT INTO newsletter (name, author, time, text) Values(?, ?, ?);";
-			PreparedStatement st;
-			
 			//getting the Data
 			String[] val = new String[cols];
 			val[0] = request.getParameter("title");
@@ -44,10 +44,11 @@ public class AddNewsletter extends HttpServlet {
 			}
 			st.executeQuery();
 		
-			st.close();
-	    	con.close();
-			
 		} catch (SQLException e) {e.printStackTrace();}
+		finally {
+		    try { st.close(); } catch (Exception e) { }
+		    try { con.close(); } catch (Exception e) { }
+		}
 	}
 
 }

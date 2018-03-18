@@ -54,6 +54,8 @@
 	</div>
 </body>
 	<%
+	rsVal.close();
+	rsLabel.close();
 	st.close();
 	con.close();
 	%>

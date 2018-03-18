@@ -451,6 +451,8 @@
 
 </body>
 	<%
+	head.close();
+	member.close();
 	st.close();
 	con.close();
 	%>
