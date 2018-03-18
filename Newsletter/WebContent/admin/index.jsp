@@ -6,7 +6,7 @@
     <%
     String username = "admin";
     
-    if(DBConnector.isLoggedIn(session)) {
+    if(!DBConnector.isLoggedIn(session)) {
     	response.sendRedirect("../../login.jsp");
     } else {
 
