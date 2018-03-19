@@ -3,6 +3,7 @@ package com.member;
 import com.database.DBConnector;
 import com.email.MailUtils;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.sql.Connection;
@@ -43,8 +44,8 @@ public class AddMember extends HttpServlet {
             while (n2 < n) {
                 Cookie iCookie = arrcookie[n2];
                 //checking if the last time the owner of the cookie created a member is larger then 15sec.
-                if (cookie.getName().equals(iCookie.getName()) && Long.parseLong(iCookie.getValue()) > System.currentTimeMillis() - 15000) {
-                    return;
+                if (cookie.getName().equals(iCookie.getName()) && Long.parseLong(iCookie.getValue()) > System.currentTimeMillis() - 1500) {
+                	response.sendRedirect("index.jsp");
                 }
                 ++n2;
             }
@@ -65,10 +66,17 @@ public class AddMember extends HttpServlet {
         	while(rs.next()) {
         		DBcols.add(rs.getString(1));
         	}
-	        
+        	
+        	//getting the colcount from the member table
+        	sql = "SELECT * FROM member";
+        	st = con.prepareStatement(sql);
+        	rs = st.executeQuery();
+        	rs.first();
+        	int cols = rs.getMetaData().getColumnCount();
+        	
         	//getting all form inputs and adding them in the Array
-        	String[] val = new String[DBcols.size()];
-        	for(int i = 0; i < val.length; i++) {
+        	String[] val = new String[DBcols.size() + 1];
+        	for(int i = 0; i < val.length - 1; i++) {
         		val[i] = request.getParameter(DBcols.get(i));
         		if(val[i] == "email") emailIndex = i;
         	}
@@ -86,6 +94,11 @@ public class AddMember extends HttpServlet {
             while(hash.length() < 32) {
                 hash = "0" + hash;
             }
+            
+            val[val.length - 1] = hash;
+            
+            System.out.println(val.length);
+            System.out.println(DBcols.size());
             
             //send email
             MailUtils.sendMail(val[emailIndex], "Newsletter", ("maxcal.hopto.org/Authentication?hash=" + hash));
@@ -105,12 +118,8 @@ public class AddMember extends HttpServlet {
             for(int i = 0; i < val.length; i++) {
             	st.setString(i+1, val[i]);
             }
-            st.setString(val.length + 1, hash);
             st.executeUpdate();
             
-            //closing the connections
-            con.close();
-            st.close();
         }
         catch (Exception e) {e.printStackTrace();}
         finally {
