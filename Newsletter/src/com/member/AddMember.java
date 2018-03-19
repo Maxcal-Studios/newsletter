@@ -97,8 +97,8 @@ public class AddMember extends HttpServlet {
             
             val[val.length - 1] = hash;
             
-            System.out.println(val.length);
-            System.out.println(DBcols.size());
+            //set response Bufferize
+            response.setBufferSize(4 * val.length * 1024);
             
             //send email
             MailUtils.sendMail(val[emailIndex], "Newsletter", ("maxcal.hopto.org/Authentication?hash=" + hash));
@@ -130,8 +130,6 @@ public class AddMember extends HttpServlet {
         
         //adding the cookie with a timestamp
         response.addCookie(cookie);
-        
-        System.out.println("test");
         
         //redirect to auth.html
         response.sendRedirect("../auth.html");
