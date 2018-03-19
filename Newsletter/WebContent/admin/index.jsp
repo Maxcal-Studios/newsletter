@@ -51,22 +51,6 @@
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-    <style>
-        #container i , select{color:black;}
-        button{margin-bottom:5px}
-        select{margin-bottom:5px}
-        .popup {display: none;position: fixed;z-index: 1;left: 0;top: 0;width: 100%;height: 100%;overflow: auto;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.3);}
-        .popup-content {background-color: #fefefe;margin: 15% auto;padding: 20px;border: 1px solid #888;width: 80%;}
-        .close {color: #4A4E51;float: right;font-size: 28px;font-weight: bold;}
-        .close:hover,
-        .close:focus {color: white;text-decoration: none;cursor: pointer;}
-        .popup-header {padding: 2px 16px;background-color: #3C8DBC;color: white;}
-        .popup-content {background-color: #FFFFFF;padding: 0;border: 1px solid #888;width: 65%;text-align:center;}
-        .popup-content input {font-size: 22;color: #4A4E51;background: #ECF0F5;width: 50%;border: 0;margin: 15px 0 15px;padding: 15px;box-sizing: border-box;}
-        .popup-content button {color:white;background: #3C8DBC;width: 50%;border: 0;margin: 15px 0 15px;padding: 15px;font-size: 22;cursor: pointer;}
-        .popup-content button:hover,.popup-content button:active,.popup-content button:focus {background: #367FA9;}
-    </style>
-
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini"  onload="enableEditor();" style="margin: 0;">
