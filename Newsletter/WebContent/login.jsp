@@ -38,11 +38,11 @@
 
     <form action="Login" method="post">
       <div class="form-group has-feedback">
-        <input type="text" name="user"class="form-control" placeholder="username">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <input type="text" name="user"class="form-control" placeholder="Benutzer">
+        <span class="fa fa-users form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" name="pass" class="form-control" placeholder="Password">
+        <input type="password" name="pass" class="form-control" placeholder="Passwort">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
