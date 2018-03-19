@@ -345,6 +345,99 @@
 			    </div>
 			  <!-- /.row -->
 
+		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-publish">Publizieren</button>
+
+		<div class="modal fade" id="modal-publish">
+		 	<div class="modal-dialog">
+		  	    <div class="modal-content">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		 	          	<span aria-hidden="true">&times;</span></button>
+		 	         	<h4 class="modal-title">Newsletter publizieren</h4>
+			    	</div>
+		            <div class="modal-body">
+		            	
+		            	<!-- Beschreibung -->
+		              	<div class="box-body">
+				       		<dl class="dl-horizontal">
+				           		<dt>Titel</dt>
+				                <dd>$Titel</dd>
+				                <dt>Autor</dt>
+				                <dd>$Autor</dd>
+				                <dt>Erstellt</dt>
+				                <dd>$13.13.13</dd>
+				                <dt>Beschreibung</dt>
+				                <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+				                  sit amet risus.Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+				                  sit amet risus.
+				                </dd>
+				         	</dl>
+                 		</div>
+                 		
+                 		<!-- Kriterium -->
+                 		<div class="form-group">
+			                <label>Kriterium</label>
+			               	<select class="form-control select2" data-placeholder="Wähle ein Kriterium aus" style="width: 100%;">
+			                 	<option>Alabama</option>
+					            <option>Alaska</option>
+					            <option>California</option>
+					            <option>Delaware</option>
+					            <option>Tennessee</option>
+					            <option>Texas</option>
+					            <option>Washington</option>
+			               	</select>
+			        	</div>
+			        	
+			        	<!-- Element -->
+			        	<div class="form-group">
+			                <label>Element</label>
+			                <select class="form-control select2" multiple="multiple" data-placeholder="Wähle ein Element aus" style="width: 100%;" disabled>
+			                  	<option>Alabama</option>
+			                  	<option>Alaska</option>
+			                  	<option>California</option>
+			                  	<option>Delaware</option>
+			                  	<option>Tennessee</option>
+			                  	<option>Texas</option>
+			                  	<option>Washington</option>
+			                </select>
+			          	</div>
+			          	
+			          	<!-- Datum -->
+			          	<div class="form-group">
+			           		<label>Datum</label>
+			                <div class="input-group date">
+			                  	<div class="input-group-addon">
+			                    	<i class="fa fa-calendar"></i>
+			                  	</div>
+			                  	<input type="text" class="form-control pull-right" id="datepicker">
+			                </div>
+			          	</div>
+			          	
+			          	<!-- Uhrzeit -->
+			          	<div class="bootstrap-timepicker">
+			                <div class="form-group">
+			                  	<label>Uhrzeit</label>
+			                  	<div class="input-group">
+			                    	<input type="text" class="form-control timepicker">
+			                    	<div class="input-group-addon">
+			                      		<i class="fa fa-clock-o"></i>
+			                    	</div>
+			                  	</div>
+			               	</div>
+			         	</div>
+			         	
+		        	</div>
+		        	<div class="modal-footer">
+		           		<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Beenden</button>
+		                <button type="button submit" value="../AddNewsletter" class="btn btn-primary">Publizieren</button>
+		        	</div>
+		       	</div>
+		       	<!-- /.modal-content -->
+		 	</div>
+		    <!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+
         </section>
         <!-- /.content -->
 
@@ -435,11 +528,31 @@
 <!-- DataTables -->
 <script src="../bootstrap/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../bootstrap/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- Select2 -->
+<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
+<!-- bootstrap datepicker -->
+<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- bootstrap time picker -->
+<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 
 <!-- Table jQuery -->
 <script>
   $(function () {
+  	//Table
     $('#table-member').DataTable()
+    
+    //Timepicker
+    $('.timepicker').timepicker({
+      showInputs: false
+    })
+    
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    })
+    
+    //Initialize Select2 Elements
+    $('.select2').select2()
   })
 </script>
 

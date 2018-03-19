@@ -369,9 +369,7 @@
                 <iframe name="editor" style="height:80%; width: 100%" frameborder="0" id="editor"></iframe>
                 <button onclick="test();" title="Testen"  style="margin:10px"><i class="material-icons">devices</i></button>
                 
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-save">
-                Speichern
-              	</button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-save">Speichern</button>
                 
                 <div class="modal fade" id="modal-save">
 		          <div class="modal-dialog">
@@ -387,7 +385,7 @@
                   			<input name="title" type="text" class="form-control" id="title" placeholder="Titel">
                   		</div>
                   		<div class="form-group">
-		                	<label for="author" class="control-label">Author</label>
+		                	<label for="author" class="control-label">Autor</label>
                   			<input name="author" type="text" class="form-control" id="author" value="<% out.print(username); %>" readonly>
                   		</div>
                   		<div class="form-group">

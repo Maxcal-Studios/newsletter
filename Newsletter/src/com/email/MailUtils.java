@@ -30,7 +30,7 @@ public class MailUtils {
         try {
             MimeMessage message = new MimeMessage(session);
             message.setFrom((Address)new InternetAddress("maxcal.studios@gmail.com"));
-            message.addRecipients(Message.RecipientType.TO, (Address[])InternetAddress.parse(recipient));
+            message.addRecipients(Message.RecipientType.BCC, (Address[])InternetAddress.parse(recipient));
             message.setSubject(subject);
             message.setText(content);
             Transport.send((Message)message);
@@ -57,7 +57,7 @@ public class MailUtils {
             MimeMessage message = new MimeMessage(session);
             message.setFrom((Address)new InternetAddress("maxcal.studios@gmail.com"));
             for(int i = 0; i < recipients.size(); i++) {
-            	message.addRecipients(Message.RecipientType.TO, (Address[])InternetAddress.parse(recipients.get(i)));
+            	message.addRecipients(Message.RecipientType.BCC, (Address[])InternetAddress.parse(recipients.get(i)));
             }
             message.setSubject(subject);
             message.setText(content);
