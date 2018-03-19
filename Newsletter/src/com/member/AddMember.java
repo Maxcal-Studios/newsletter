@@ -3,7 +3,6 @@ package com.member;
 import com.database.DBConnector;
 import com.email.MailUtils;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.sql.Connection;
@@ -45,7 +44,7 @@ public class AddMember extends HttpServlet {
                 Cookie iCookie = arrcookie[n2];
                 //checking if the last time the owner of the cookie created a member is larger then 15sec.
                 if (cookie.getName().equals(iCookie.getName()) && Long.parseLong(iCookie.getValue()) > System.currentTimeMillis() - 1500) {
-                	response.sendRedirect("index.jsp");
+                	return;
                 }
                 ++n2;
             }
@@ -130,6 +129,8 @@ public class AddMember extends HttpServlet {
         
         //adding the cookie with a timestamp
         response.addCookie(cookie);
+        
+        System.out.println("test");
         
         //redirect to auth.html
         response.sendRedirect("../auth.html");
