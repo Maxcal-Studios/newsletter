@@ -297,6 +297,79 @@
         <!-- Main content -->
         <section class="content container-fluid">
 
+
+		<div class="row">
+        <div class="col-xs-12">
+		<div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Geplante Newsletter</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table class="table table-bordered">
+                <tr>
+                  <th style="width: 10px">#</th>
+                  <th style="width: 25%;">Titel</th>
+                  <th>Progress</th>
+                  <th style="width: 40px">Label</th>
+                </tr>
+                <tr>
+                  <td>1.</td>
+                  <td>Update software</td>
+                  <td>
+                    <div class="progress progress-xs progress-striped active">
+                      <div class="progress-bar progress-bar-yellow" style="width: 90%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-red">x</span></td>
+                </tr>
+                <tr>
+                  <td>2.</td>
+                  <td>Clean database</td>
+                  <td>
+                    <div class="progress progress-xs progress-striped active">
+                      <div class="progress-bar progress-bar-yellow" style="width: 60%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-red">x</span></td>
+                </tr>
+                <tr>
+                  <td>3.</td>
+                  <td>Cron job running</td>
+                  <td>
+                    <div class="progress progress-xs progress-striped active">
+                      <div class="progress-bar progress-bar-yellow" style="width: 40%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-red">x</span></td>
+                </tr>
+                <tr>
+                  <td>4.</td>
+                  <td>Fix and squish bugs</td>
+                  <td>
+                    <div class="progress progress-xs progress-striped active">
+                      <div class="progress-bar progress-bar-yellow" style="width: 10%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-red">x</span></td>
+                </tr>
+              </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="#">&laquo;</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">&raquo;</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.box -->
+          </div>
+          </div>
+
 		<div class="row">
                 <div class="col-xs-12">
                   <div class="box">
