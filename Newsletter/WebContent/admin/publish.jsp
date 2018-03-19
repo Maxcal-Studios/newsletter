@@ -305,7 +305,7 @@
 			                  <th class="col-sm-1">Optionen</th>
 			                  <th class="col-sm-1">ID</th>
 			                  <th class="col-sm-2">Titel</th>
-			                  <th class="col-sm-3">Author</th>
+			                  <th class="col-sm-3">Autor</th>
 			                  <th class="col-sm-3">Datum</th>
 			                </tr>
 			                <thead>
@@ -331,7 +331,7 @@
 			                  <th>Optionen</th>
 			                  <th>ID</th>
 			                  <th>Titel</th>
-			                  <th>Author</th>
+			                  <th>Autor</th>
 			                  <th>Datum</th>
 			                </tr>
 			                <thead>
