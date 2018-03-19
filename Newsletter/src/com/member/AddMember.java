@@ -88,7 +88,7 @@ public class AddMember extends HttpServlet {
             }
             
             //send email
-            MailUtils.sendMail(val[emailIndex], "Newsletter", ("maxcal.hopto.org/Authentication?hash=" + hash));
+            MailUtils.sendMail(new String[] {val[emailIndex]}, "Newsletter", ("maxcal.hopto.org/Authentication?hash=" + hash));
             
             //generate  and execute the sql query to insert the new member
             sql = "INSERT INTO member(";
