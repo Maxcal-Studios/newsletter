@@ -529,11 +529,11 @@
 <script src="../bootstrap/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../bootstrap/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- Select2 -->
-<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="../bootstrap/bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- bootstrap datepicker -->
-<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="../bootstrap/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- bootstrap time picker -->
-<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="../bootstrap/plugins/timepicker/bootstrap-timepicker.min.js"></script>
 
 <!-- Table jQuery -->
 <script>
