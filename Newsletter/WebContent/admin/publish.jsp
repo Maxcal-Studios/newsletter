@@ -37,6 +37,12 @@
     <link rel="stylesheet" href="../bootstrap/bower_components/jvectormap/jquery-jvectormap.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="../bootstrap/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- Select2 -->
+  	<link rel="stylesheet" href="../bootstrap/bower_components/select2/dist/css/select2.min.css">
+  	<!-- Bootstrap time Picker -->
+  	<link rel="stylesheet" href="../bootstrap/plugins/timepicker/bootstrap-timepicker.min.css">
+  	<!-- bootstrap datepicker -->
+ 	<link rel="stylesheet" href="../bootstrap/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../bootstrap/dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="../bootstrap/dist/css/skins/skin-blue.min.css">
@@ -374,6 +380,8 @@
 				         	</dl>
                  		</div>
                  		
+                 		<hr>
+                 		
                  		<!-- Kriterium -->
                  		<div class="form-group">
 			                <label>Kriterium</label>
@@ -391,7 +399,7 @@
 			        	<!-- Element -->
 			        	<div class="form-group">
 			                <label>Element</label>
-			                <select class="form-control select2" multiple="multiple" data-placeholder="Wähle ein Element aus" style="width: 100%;" disabled>
+			                <select class="form-control select2" multiple="multiple" data-placeholder="Wähle ein Element aus" style="width: 100%;">
 			                  	<option>Alabama</option>
 			                  	<option>Alaska</option>
 			                  	<option>California</option>
@@ -401,6 +409,8 @@
 			                  	<option>Washington</option>
 			                </select>
 			          	</div>
+			          	
+			          	<hr>
 			          	
 			          	<!-- Datum -->
 			          	<div class="form-group">
@@ -418,18 +428,19 @@
 			                <div class="form-group">
 			                  	<label>Uhrzeit</label>
 			                  	<div class="input-group">
-			                    	<input type="text" class="form-control timepicker">
-			                    	<div class="input-group-addon">
+			                  		<div class="input-group-addon">
 			                      		<i class="fa fa-clock-o"></i>
 			                    	</div>
+			                    	<input type="text" class="form-control timepicker">
 			                  	</div>
 			               	</div>
 			         	</div>
-			         	
 		        	</div>
+		        	
 		        	<div class="modal-footer">
 		           		<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Beenden</button>
-		                <button type="button submit" value="../AddNewsletter" class="btn btn-primary">Publizieren</button>
+		           		<button type="button submit" value="../PlanNewsletter" class="btn btn-warning">Planen</button>
+		                <button type="button submit" value="../PublishNewsletter" class="btn btn-primary">Publizieren</button>
 		        	</div>
 		       	</div>
 		       	<!-- /.modal-content -->
