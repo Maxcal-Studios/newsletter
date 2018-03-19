@@ -18,7 +18,7 @@ import com.database.DBConnector;
 @WebServlet("/RemoveNewsletter")
 public class RemoveNewsletter extends HttpServlet {
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//login check
 		if(!DBConnector.isLoggedIn(request.getSession())) {
@@ -50,7 +50,7 @@ public class RemoveNewsletter extends HttpServlet {
 		    try { con.close(); } catch (Exception e) { }
     	}
     	
-    	response.sendRedirect("../admin/newsletter_publish.jsp");
+    	response.sendRedirect("../admin/publish.jsp");
     	
 	}
 
