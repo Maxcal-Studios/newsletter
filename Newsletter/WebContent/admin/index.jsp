@@ -257,11 +257,12 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="newsletter_create.jsp"><i class="fa fa-circle-o"></i>Erstellen</a></li>
-                        <li><a href="newsletter_publish.jsp"><i class="fa fa-circle-o"></i>Publizieren</a></li>
-                        <li><a href="newsletter_history.jsp"><i class="fa fa-circle-o"></i>History</a></li>
+                        <li><a href="publish.jsp"><i class="fa fa-circle-o"></i>Publizieren</a></li>
+                        <li><a href="history.jsp"><i class="fa fa-circle-o"></i>History</a></li>
                     </ul>
                 </li>
                 <li><a href="layout.jsp"><i class="glyphicon glyphicon-th-large"></i><span> Layout</span></a></li>
+                <li><a href="settings.jsp"><i class="fa fa-gears"></i><span> Settings</span></a></li>
                 <li><a href="doc.jsp"><i class="fa fa-book"></i><span> Dokumentation</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->

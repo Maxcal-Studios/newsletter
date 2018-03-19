@@ -59,7 +59,7 @@ public class AddNewsletter extends HttpServlet {
 		}
 		
 		//redirect user
-		response.sendRedirect("../admin/pusblish.jsp");
+		response.sendRedirect("../admin/publish.jsp");
 	}
 
 }

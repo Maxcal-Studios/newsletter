@@ -1,11 +1,30 @@
 <%@page import="com.database.DBConnector, java.sql.*"%>
 <html>
 <head>
+	
+	<%
+	
+	String username = "admin";
+    
+    if(!DBConnector.isLoggedIn(session)) {
+    	response.sendRedirect("../../login.jsp");
+    } else {
+
+    	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    	response.setHeader("Pragma", "no-cache");
+    	response.setHeader("Expires", "0");
+    
+    	username = session.getAttribute("user").toString();
+    }
+	
+	%>
+
 	<title>BrandName | name</title>
 	<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 	<%
+	
 	//retrieves the ID of the demanded member
 	String id = request.getParameter("id");
 	

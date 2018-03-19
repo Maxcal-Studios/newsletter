@@ -16,6 +16,11 @@
     
     	username = session.getAttribute("user").toString();
     }
+    
+    Connection con = DBConnector.getConnection();
+    PreparedStatement st = null;
+    ResultSet rs = null;
+    String sql;
     %>
 
     <meta charset="utf-8">
@@ -287,66 +292,58 @@
         <section class="content container-fluid">
 
 		<div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Newsletter</h3>
-
-              <div class="box-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                  <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
-                <tr>
-                  <th>ID</th>
-                  <th>User</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                  <th>Reason</th>
-                </tr>
-                <tr>
-                  <td>183</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-success">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>219</td>
-                  <td>Alexander Pierce</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-warning">Pending</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>657</td>
-                  <td>Bob Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-primary">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>175</td>
-                  <td>Mike Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-danger">Denied</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-      </div>
+                <div class="col-xs-12">
+                  <div class="box">
+                    <div class="box-header">
+                      <h3 class="box-title">Newsletter</h3>
+                    </div>
+                    <!-- /.box-header -->
+                      <div class="box-body">
+                      <table id="table-member" class="table table-bordered table-striped">
+                      		<thead>
+                            <tr>
+			                  <th class="col-sm-1">Optionen</th>
+			                  <th class="col-sm-1">ID</th>
+			                  <th class="col-sm-2">Titel</th>
+			                  <th class="col-sm-3">Author</th>
+			                  <th class="col-sm-3">Datum</th>
+			                </tr>
+			                <thead>
+			                <tbody>
+			                <%
+			                sql = "SELECT * FROM newsletter";
+			                st = con.prepareStatement(sql);
+			                rs = st.executeQuery();
+			                rs.first();
+			                
+			                while(rs.next()) {
+			                	out.println("<tr>");
+			                	out.println("<td><a href=\"#\"><i class=\"fa fa-paper-plane\"></i></a> &nbsp; <a href=\"#\"><i class=\"fa fa-edit\"></i></a> &nbsp; <a href=\"../RemoveNewsletter?id=" + rs.getString(1) +"\"><i class=\"fa fa-trash\"></i></a></td>");
+			                	for(int i = 1; i <= 4; i++) {
+			                		out.println("<td>" + rs.getString(i) +"</td>");
+			                	}
+			                	out.println("</tr>");
+			                }
+			                %>
+			                </tbody>
+			                <thead>
+                            <tr>
+			                  <th>Optionen</th>
+			                  <th>ID</th>
+			                  <th>Titel</th>
+			                  <th>Author</th>
+			                  <th>Datum</th>
+			                </tr>
+			                <thead>
+                          </table>
+			            </div>
+			            <!-- /.box-body -->
+			          </div>
+			          <!-- /.box -->
+			        </div>
+			      <!-- /.col -->
+			    </div>
+			  <!-- /.row -->
 
         </section>
         <!-- /.content -->
@@ -438,6 +435,13 @@
 <!-- DataTables -->
 <script src="../bootstrap/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../bootstrap/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+<!-- Table jQuery -->
+<script>
+  $(function () {
+    $('#table-member').DataTable()
+  })
+</script>
 
 </body>
 </html>

@@ -283,8 +283,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Dashboard
-                <small>Übersicht und Analyse</small>
+                Mitglieder
+                <small>&Uuml;bersichht der Mitglieder</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -298,7 +298,7 @@
                 <div class="col-xs-12">
                   <div class="box">
                     <div class="box-header">
-                      <h3 class="box-title">Hover Data Table</h3>
+                      <h3 class="box-title">Mitgliederliste</h3>
                     </div>
                     <!-- /.box-header -->
                       <div class="box-body">
@@ -321,7 +321,7 @@
 
                                 while(member.next()) {
                                     out.println("<tr>");
-                                    out.println("<td><a href=\"edit.jsp?id=" + member.getString(1)  +"\"><i class=\"fa fa-edit\"></i></a>   <a href=\"../RemoveMember?id=" + member.getString(1) +"\"><i class=\"fa fa-trash\"></i></a></td>");
+                                    out.println("<td class=\"col-sm-1\"><a href=\"edit.jsp?id=" + member.getString(1)  +"\"><i class=\"fa fa-edit\"></i></a> &nbsp; <a href=\"../RemoveMember?id=" + member.getString(1) +"\"><i class=\"fa fa-trash\"></i></a></td>");
                                     for(int i = 1; i <= member.getMetaData().getColumnCount(); i++) {
                                         out.println("<td>" + member.getString(i) + "</td>");
                                     }
