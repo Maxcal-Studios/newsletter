@@ -350,9 +350,6 @@
                 </section>
                 <!-- /.content -->
 
-        </section>
-        <!-- /.content -->
-
     </div>
     <!-- /.content-wrapper -->
 
@@ -512,8 +509,6 @@
       datasetStrokeWidth      : 2,
       //Boolean - Whether to fill the dataset with a color
       datasetFill             : true,
-      //String - A legend template
-      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].lineColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
       //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
       maintainAspectRatio     : true,
       //Boolean - whether to make the chart responsive to window resizing
