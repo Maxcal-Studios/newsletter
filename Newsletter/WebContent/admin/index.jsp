@@ -265,7 +265,6 @@
 
         <!-- Main content -->
         <section class="content container-fluid">
-        <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
@@ -364,8 +363,6 @@
 
                 </section>
                 <!-- /.content -->
-            </div>
-            <!-- /.content-wrapper -->
 
         </section>
         <!-- /.content -->
@@ -457,13 +454,11 @@
 <!-- DataTables -->
 <script src="../bootstrap/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../bootstrap/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- ChartJS -->
+<script src="../bootstrap/bower_components/chart.js/Chart.js"></script>
 
 <script>
   $(function () {
-    /* ChartJS
-     * -------
-     * Here we will create a few charts using ChartJS
-     */
 
     //--------------
     //- AREA CHART -
@@ -541,15 +536,6 @@
 
     //Create the line chart
     areaChart.Line(areaChartData, areaChartOptions)
-
-    //-------------
-    //- LINE CHART -
-    //--------------
-    var lineChartCanvas          = $('#lineChart').get(0).getContext('2d')
-    var lineChart                = new Chart(lineChartCanvas)
-    var lineChartOptions         = areaChartOptions
-    lineChartOptions.datasetFill = false
-    lineChart.Line(areaChartData, lineChartOptions)
 
   })
 </script>
