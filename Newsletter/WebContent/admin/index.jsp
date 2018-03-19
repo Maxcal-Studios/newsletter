@@ -260,7 +260,7 @@
         <section class="content-header">
             <h1>
                 Dashboard
-                <small>Übersicht und Analyse</small>
+                <small>&Uumlbersicht und Analyse</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
