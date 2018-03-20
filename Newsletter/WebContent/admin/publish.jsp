@@ -398,7 +398,7 @@
 			                
 			                while(rs.next()) {
 			                	out.println("<tr>");
-			                	out.println("<td><a id=\"" + rs.getString("id") + "\" data-toggle=\"modal\" data-target=\"#modal-publish\"onclick=\"replace(this.id);\"><i class=\"fa fa-paper-plane\"></i></a> &nbsp; <a href=\"#\"><i class=\"fa fa-edit\"></i></a> &nbsp; <a href=\"../RemoveNewsletter?id=" + rs.getString(1) +"\"><i class=\"fa fa-trash\"></i></a></td>");
+			                	out.println("<td><a id=\"" + rs.getString("id") + "\" onclick=\"replace(this.id);\"><i class=\"fa fa-paper-plane\"></i></a> &nbsp; <a href=\"#\"><i class=\"fa fa-edit\"></i></a> &nbsp; <a href=\"../RemoveNewsletter?id=" + rs.getString(1) +"\"><i class=\"fa fa-trash\"></i></a></td>");
 			                	for(int i = 1; i <= 5; i++) {
 			                		out.println("<td id=\"" + String.valueOf(i) + rs.getString("id") + "\">" + rs.getString(i) +"</td>");
 			                	}
@@ -537,7 +537,7 @@
 		    <!-- /.modal-dialog -->
 		</div>
 		<!-- /.modal -->
-
+        <input name="id" style="width:1px; height:1px; visibility: hidden;">
 		</form>
 
         </section>
@@ -545,6 +545,7 @@
 
     </div>
     <!-- /.content-wrapper -->
+    <iframe src="" id="frame" style="width: 0%; height: 0%; visibility: hidden;"></iframe>
 
     <!-- Main Footer -->
     <footer class="main-footer" style="height: 50px">
@@ -663,12 +664,21 @@
       var subject = document.getElementById("3" + id).innerText;
       var author = document.getElementById("4" + id).innerText;
       var date = document.getElementById("5" + id).innerText;
+      document.getElementById('frame').src = "http://maxcal.hopto.org/GetDescription?id=" + id;
+
 
       document.getElementById("id").innerText = idf;
+      document.getElementsByName("id").value = idf;
       document.getElementById("title").innerText = title;
       document.getElementById("subject").innerText = subject;
       document.getElementById("author").innerText = author;
       document.getElementById("date").innerText = date;
+
+      setTimeout(function(){
+          var description = document.getElementById('frame').contentWindow.document.body.innerText;
+          document.getElementById("description").innerText = description;
+          $('#modal-publish').modal();
+      }, 250);
   }
 
 
