@@ -400,7 +400,8 @@
 			                	out.println("<tr>");
 			                	out.println("<td><a id=\"btn" + rs.getString("id") + "\" data-toggle=\"modal\" data-target=\"#modal-publish\"><i class=\"fa fa-paper-plane\"></i></a> &nbsp; <a href=\"#\"><i class=\"fa fa-edit\"></i></a> &nbsp; <a href=\"../RemoveNewsletter?id=" + rs.getString(1) +"\"><i class=\"fa fa-trash\"></i></a></td>");
 			                	for(int i = 1; i <= 5; i++) {
-			                		out.println("<td id=\"" + rs.getString("id") + String.valueOf(i) + "\"" + rs.getString(i) +"</td>");
+			                		System.out.println("Hallo?");
+			                		out.println("<td id=\"" + rs.getString("id") + String.valueOf(i) + "\">" + rs.getString(i) +"</td>");
 			                	}
 			                	out.println("</tr>");
 			                }
