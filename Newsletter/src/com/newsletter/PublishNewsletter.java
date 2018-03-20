@@ -42,21 +42,23 @@ public class PublishNewsletter extends HttpServlet {
 			try {
 				
 				//getting the parameters
-				int newsletterID = Integer.parseInt(request.getParameter("id"));
+				
 				String creator = request.getSession().getAttribute("user").toString();
 				String date = request.getParameter("date");
 				String time = request.getParameter("time");
 				
-				System.out.println(date + "   " + time);
-				
 				String[] dates = time.split("/");
-				String[] times = time.split(":");
 				
 				SimpleDateFormat s12 = new SimpleDateFormat("hh:mm a");
 				SimpleDateFormat s24 = new SimpleDateFormat("hh:mm");
 				
+				String[] times = new String[2];
 				
-				times[1] = times[1].substring(0, times[1].length() - 3);
+				time = s24.format(s12.parse(time));
+				
+				times = time.split(":");
+				
+				System.out.println(" " + dates[1] + " " + dates[0] + " " + times[0] + " " + times[1]);
 				
 				Timestamp t = new Timestamp(Integer.parseInt(dates[2]), Integer.parseInt(dates[1]), Integer.parseInt(dates[0]), Integer.parseInt(times[0]), Integer.parseInt(times[1]), 0, 0);
 				
@@ -68,6 +70,8 @@ public class PublishNewsletter extends HttpServlet {
 					elements += element[i] + " ";
 				}
 				elements = elements.substring(0, elements.length() - 1);
+				
+				int newsletterID = Integer.parseInt(request.getParameter("id"));
 				
 				//prepare statement
 				st = con.prepareStatement(sql);
