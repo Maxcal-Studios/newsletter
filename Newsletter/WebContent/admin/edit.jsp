@@ -158,7 +158,8 @@
                 <small>Mitgliedsdaten bearbeiten</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-members"></i> Mitglieder</a></li>
+                <li><a href="index.jsp"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="members.jsp">Mitglieder</a></li>
                 <li class="active">Verwalten</li>
             </ol>
         </section>
