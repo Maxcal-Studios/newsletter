@@ -398,10 +398,10 @@
 			                
 			                while(rs.next()) {
 			                	out.println("<tr>");
-			                	out.println("<td><a id=\"btn" + rs.getString("id") + "\" data-toggle=\"modal\" data-target=\"#modal-publish\"><i class=\"fa fa-paper-plane\"></i></a> &nbsp; <a href=\"#\"><i class=\"fa fa-edit\"></i></a> &nbsp; <a href=\"../RemoveNewsletter?id=" + rs.getString(1) +"\"><i class=\"fa fa-trash\"></i></a></td>");
+			                	out.println("<td><a id=\"" + rs.getString("id") + "\" data-toggle=\"modal\" data-target=\"#modal-publish\"onclick=\"replace(this.id);\"><i class=\"fa fa-paper-plane\"></i></a> &nbsp; <a href=\"#\"><i class=\"fa fa-edit\"></i></a> &nbsp; <a href=\"../RemoveNewsletter?id=" + rs.getString(1) +"\"><i class=\"fa fa-trash\"></i></a></td>");
 			                	for(int i = 1; i <= 5; i++) {
 			                		System.out.println("Hallo?");
-			                		out.println("<td id=\"" + rs.getString("id") + String.valueOf(i) + "\">" + rs.getString(i) +"</td>");
+			                		out.println("<td id=\"" + String.valueOf(i) + rs.getString("id") + "\">" + rs.getString(i) +"</td>");
 			                	}
 			                	out.println("</tr>");
 			                }
@@ -446,6 +446,8 @@
 				                <dd name="id" id="id">$ID</dd>
 				           		<dt>Titel</dt>
 				                <dd id="tile">$Titel</dd>
+                                <dt>Betreff</dt>
+                                <dd name="subject" id="subject">$Betreff</dd>
 				                <dt>Autor</dt>
 				                <dd id="author">$Autor</dd>
 				                <dt>Erstellt</dt>
@@ -463,7 +465,7 @@
                  		<!-- Kriterium -->
                  		<div class="form-group">
 			                <label>Kriterium</label>
-			               	<select name="krit" class="form-control select2" data-placeholder="Wähle ein Kriterium aus" style="width: 100%;">
+			               	<select name="krit" class="form-control select2" data-placeholder="Wï¿½hle ein Kriterium aus" style="width: 100%;">
 								<%
 								
 								
@@ -475,7 +477,7 @@
 			        	<!-- Elements -->
 			        	<div class="form-group">
 			                <label>Element</label>
-			                <select name="elements" class="form-control select2" multiple="multiple" data-placeholder="Wähle ein Element aus" style="width: 100%;">
+			                <select name="elements" class="form-control select2" multiple="multiple" data-placeholder="Wï¿½hle ein Element aus" style="width: 100%;">
 			                  	<option>Alabama</option>
 			                  	<option>Alaska</option>
 			                  	<option>California</option>
@@ -643,6 +645,22 @@
     //Initialize Select2 Elements
     $('.select2').select2()
   })
+
+  function replace(id) {
+      var idf = document.getElementById("1" + id).innerText;
+      var title = document.getElementById("2" + id).innerText;
+      var subject = document.getElementById("3" + id).innerText;
+      var author = document.getElementById("4" + id).innerText;
+      var date = document.getElementById("5" + id).innerText;
+
+      document.getElementById("id").innerText = idf;
+      document.getElementById("title").innerText = title;
+      document.getElementById("subject").innerText = subject;
+      document.getElementById("author").innerText = author;
+      document.getElementById("date").innerText = date;
+  }
+
+
 </script>
 
 </body>
