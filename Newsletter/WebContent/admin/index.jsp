@@ -251,7 +251,7 @@
 
 			<%
 			
-			sql = "SELECT COUNT(ID) FROM member";
+			sql = "SELECT COUNT(ID) FROM member WHERE active = TRUE";
     		st = con.prepareStatement(sql);
     		data = st.executeQuery();
     		data.first();

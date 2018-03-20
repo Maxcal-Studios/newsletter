@@ -386,6 +386,10 @@
                   			<input name="title" type="text" class="form-control" id="title" placeholder="Titel">
                   		</div>
                   		<div class="form-group">
+		                	<label for="subject" class="control-label">Betreff</label>
+                  			<input name="subject" type="text" class="form-control" id="subject" placeholder="Betreff">
+                  		</div>
+                  		<div class="form-group">
 		                	<label for="author" class="control-label">Autor</label>
                   			<input name="author" type="text" class="form-control" id="author" value="<% out.print(username); %>" readonly>
                   		</div>

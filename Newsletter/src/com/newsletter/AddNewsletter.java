@@ -32,7 +32,7 @@ public class AddNewsletter extends HttpServlet {
 		
 		//creating a connection to the DB
 		Connection con = DBConnector.getConnection();
-		String sql = "INSERT INTO newsletter (title, author, description, text) Values(?, ?, ?, ?)";
+		String sql = "INSERT INTO newsletter (title, subject, author, description, text) Values(?, ?, ?, ?, ?)";
 		PreparedStatement st = null;
 		
 		try {
@@ -40,9 +40,10 @@ public class AddNewsletter extends HttpServlet {
 			//getting the Data
 			String[] val = new String[cols];
 			val[0] = request.getParameter("title");
-			val[1] = request.getParameter("author");
-			val[2] = request.getParameter("description");
-			val[3] = request.getParameter("text");
+			val[1] = request.getParameter("subject");
+			val[2] = request.getParameter("author");
+			val[3] = request.getParameter("description");
+			val[4] = request.getParameter("text");
 			
 			//Inserts new newsletter into table
 			st = con.prepareStatement(sql);
