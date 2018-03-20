@@ -10,7 +10,7 @@ import com.email.MailUtils;
 
 public class NewsletterSender {
 
-	public static void sendNewsletter(int id) {
+	public static void sendNewsletter(int id, String krit, String elements) {
 		
 		//creating a connection to the DB
     	Connection con = DBConnector.getConnection();

@@ -26,8 +26,7 @@
     st = con.prepareStatement(sql);
     ResultSet head = st.executeQuery();
     
-    sql = "SELECT ";
-    ResultSet data = st.executeQuery();
+    ResultSet data;
     %>
 
     <meta charset="utf-8">
@@ -250,9 +249,18 @@
           <div class="info-box">
             <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
+			<%
+			
+			sql = "SELECT COUNT(ID) FROM member";
+    		st = con.prepareStatement(sql);
+    		data = st.executeQuery();
+    		data.first();
+			
+			%>
+
             <div class="info-box-content">
               <span class="info-box-text">Mitglieder</span>
-              <span class="info-box-number">$amountOfMembers(activated)</span>
+              <span class="info-box-number"><% out.print(data.getString(1)); %></span>
             </div>
             <!-- /.info-box-content -->
           </div>

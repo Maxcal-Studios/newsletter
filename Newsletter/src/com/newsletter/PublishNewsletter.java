@@ -30,6 +30,8 @@ public class PublishNewsletter extends HttpServlet {
 		
 		//getting the formdata
 		int id = Integer.parseInt(request.getParameter("id"));
+		String krit = request.getParameter("krit");
+		String elements = request.getParameter("elements");
 		
 		NewsletterSender.sendNewsletter(id);
 		
