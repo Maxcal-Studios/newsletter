@@ -30,15 +30,19 @@ public class NewsletterSender {
 			String text = rs.getString(1);
 			String subject = rs.getString(2);
 			
-			//cutting elements
-			String[] element = elements.split(" ");
-			
-			//getting all members
-			sql = "SELECT email FROM member WHERE active = TRUE AND (";
-			for(int i = 0; i < element.length - 1; i++) {
-				sql += " " + krit + " = " + element[i] + " OR";
+			if(krit.equals("") || elements.equals("")) {
+				sql = "SELECT email FROM member WHERE active = TRUE";
+			} else {
+				//cutting elements
+				String[] element = elements.split(" ");
+				
+				//getting all members
+				sql = "SELECT email FROM member WHERE active = TRUE AND (";
+				for(int i = 0; i < element.length - 1; i++) {
+					sql += " " + krit + " = " + element[i] + " OR";
+				}
+				sql += " " + krit + " = " + element[element.length-1] + ")";
 			}
-			sql += " " + krit + " = " + element[element.length-1] + ")";
 			
 			st = con.prepareStatement(sql);
 			rs = st.executeQuery();
