@@ -446,7 +446,7 @@
 				           		<dt>Titel</dt>
 				                <dd id="title">$Titel</dd>
                                 <dt>Betreff</dt>
-                                <dd name="subject" id="subject">$Betreff</dd>
+                                <dd id="subject">$Betreff</dd>
 				                <dt>Autor</dt>
 				                <dd id="author">$Autor</dd>
 				                <dt>Erstellt</dt>
@@ -464,10 +464,22 @@
                  		<!-- Kriterium -->
                  		<div class="form-group">
 			                <label>Kriterium</label>
-			               	<select name="krit" class="form-control select2" data-placeholder="W�hle ein Kriterium aus" style="width: 100%;">
+			               	<select name="krit" class="form-control select2" data-placeholder="W&Auml;hle ein Kriterium aus" style="width: 100%;">
 								<%
+								//get all krit's
+								sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member'";
+								st = con.prepareStatement(sql);
+								rs = st.executeQuery();
 								
-								
+								while(rs.next()) {
+									if(!rs.getString(1).toLowerCase().equals("id") && 
+										!rs.getString(1).toLowerCase().equals("email") && 
+										!rs.getString(1).toLowerCase().equals("active") &&
+										!rs.getString(1).toLowerCase().equals("hash")) 
+									{
+										out.print("<option>" + rs.getString(1) +"</option>");										
+									}
+								}			
 								
 								%>					            
 			               	</select>

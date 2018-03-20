@@ -29,7 +29,9 @@ public class PublishNewsletter extends HttpServlet {
 			response.sendRedirect("../../login.jsp");
 		}
 
-		if(request.getParameter("method") == "schedule") {
+		System.out.println(request.getParameter("id"));
+		
+		if(request.getParameter("method").equals("schedule")) {
 			//creating a connection to the DB
 	    	Connection con = DBConnector.getConnection();
 	    	PreparedStatement st = null;
@@ -38,10 +40,10 @@ public class PublishNewsletter extends HttpServlet {
 			try {
 				
 				//getting the parameters
-				int newsletterID = Integer.parseInt(request.getParameter("id"));
 				String creator = request.getSession().getAttribute("user").toString();
 				String date = request.getParameter("date");
 				String time = request.getParameter("time");
+				int newsletterID = Integer.parseInt(request.getParameter("id"));
 				
 				System.out.println(date);
 				System.out.println(time);
@@ -65,11 +67,11 @@ public class PublishNewsletter extends HttpServlet {
 		} else {
 			
 			//getting the parameters
-			int id = Integer.parseInt(request.getParameter("id"));
+			int newsletterID = Integer.parseInt(request.getParameter("id"));
 			String krit = request.getParameter("krit");
 			String elements = request.getParameter("elements");
 			
-			NewsletterSender.sendNewsletter(id, krit, elements);
+			NewsletterSender.sendNewsletter(newsletterID, krit, elements);
 			
 			response.sendRedirect("../admin/publish.jsp");
 		
