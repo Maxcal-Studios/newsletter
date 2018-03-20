@@ -1,22 +1,6 @@
 <!DOCTYPE html>
-<%@ page import="java.sql.*, com.database.*;" %>
 <html>
 <head>
-
-    <%
-    String username = "admin";
-    
-    if(!DBConnector.isLoggedIn(session)) {
-    	response.sendRedirect("../../login.jsp");
-    } else {
-
-    	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    	response.setHeader("Pragma", "no-cache");
-    	response.setHeader("Expires", "0");
-    
-    	username = session.getAttribute("user").toString();
-    }
-    %>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -73,7 +57,7 @@
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-                                                   
+
                     <!-- Notifications Menu -->
                     <li class="dropdown notifications-menu">
                         <!-- Menu toggle button -->
@@ -88,22 +72,16 @@
                                 <ul class="menu">
                                     <li><!-- start notification -->
                                         <a href="#">
-                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                            <i class="fa fa-envelope-o text-aqua"></i> Es wurden $ANZ geplante Newsletter versand.
                                         </a>
                                     </li>
                                     <!-- end notification -->
                                 </ul>
                             </li>
-                            <li class="footer"><a href="#">View all</a></li>
+                            <li class="footer"><a href="#">Anzeigen</a></li>
                         </ul>
                     </li>
-                               </ul>
-                            </li>
-                            <li class="footer">
-                                <a href="#">View all tasks</a>
-                            </li>
-                        </ul>
-                    </li>
+
                     <!-- User Account Menu -->
                     <li class="dropdown user user-menu">
                         <!-- Menu Toggle Button -->
@@ -130,6 +108,10 @@
                                 <a href="../Logout" class="btn btn-default btn-flat">Abmelden</a>
                             </li>
                         </ul>
+                    </li>
+                    <!-- Control Sidebar Toggle Button -->
+                    <li>
+                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                     </li>
                 </ul>
             </div>
@@ -172,7 +154,7 @@
                     </ul>
                 </li>
                 <li><a href="layout.jsp"><i class="glyphicon glyphicon-th-large"></i><span> Layout</span></a></li>
-                <li><a href="settings.jsp"><i class="fa fa-gears"></i><span> Settings</span></a></li>
+                <li><a href="settings.jsp"><i class="fa fa-gears"></i><span> Einstellungen</span></a></li>
                 <li><a href="doc.jsp"><i class="fa fa-book"></i><span> Dokumentation</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->
@@ -190,97 +172,94 @@
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-                <!-- <li class="active">Here</li> -->
             </ol>
         </section>
 
-                <!-- Main content -->
-                <section class="content container-fluid">
-        	  <!-- Info boxes -->
-              <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                  <div class="info-box">
-                    <span class="info-box-icon bg-aqua"><i class="ion ion-paper-airplane"></i></span>
+        <!-- Main content -->
+        <section class="content container-fluid">
+	  <!-- Info boxes -->
+      <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="ion ion-paper-airplane"></i></span>
 
-                    <div class="info-box-content">
-                      <span class="info-box-text">Newsletter versendet</span>
-                      <span class="info-box-number">$lettersend</span>
-                    </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                  <div class="info-box">
-                    <span class="info-box-icon bg-red"><i class="ion ion-ios-calendar-outline"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Newsletter versendet</span>
+              <span class="info-box-number">$lettersend</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="ion ion-ios-calendar-outline"></i></span>
 
-                    <div class="info-box-content">
-                      <span class="info-box-text">Nächster Versand</span>
-                      <span class="info-box-number">$dateNextSend</span>
-                    </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
+            <div class="info-box-content">
+              <span class="info-box-text">Nächster Versand</span>
+              <span class="info-box-number">$dateNextSend</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
 
-                <!-- fix for small devices only -->
-                <div class="clearfix visible-sm-block"></div>
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
 
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                  <div class="info-box">
-                    <span class="info-box-icon bg-green"><i class="ion ion-ios-personadd-outline"></i></span>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="ion ion-ios-personadd-outline"></i></span>
 
-                    <div class="info-box-content">
-                      <span class="info-box-text">Neue Mitglieder</span>
-                      <span class="info-box-number">$newMembers</span>
-                    </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                  <div class="info-box">
-                    <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Neue Mitglieder</span>
+              <span class="info-box-number">$newMembers</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
-                    <div class="info-box-content">
-                      <span class="info-box-text">Mitglieder</span>
-                      <span class="info-box-number">$amountOfMembers(activated)</span>
-                    </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
+            <div class="info-box-content">
+              <span class="info-box-text">Mitglieder</span>
+              <span class="info-box-number">$amountOfMembers(activated)</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+	  <!-- AREA CHART -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Area Chart</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
               </div>
-              <!-- /.row -->
-
-        	  <!-- AREA CHART -->
-                  <div class="box box-primary">
-                    <div class="box-header with-border">
-                      <h3 class="box-title">Area Chart</h3>
-
-                      <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                      </div>
-                    </div>
-                    <div class="box-body">
-                      <div class="chart">
-                        <canvas id="areaChart" style="height:250px"></canvas>
-                      </div>
-                    </div>
-                    <!-- /.box-body -->
-                  </div>
-                  <!-- /.box -->
+            </div>
+            <div class="box-body">
+              <div class="chart">
+                <canvas id="areaChart" style="height:250px"></canvas>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
 
 
-                </section>
-                <!-- /.content -->
-
+        </section>
+        <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 
@@ -294,6 +273,66 @@
         <strong>Copyright &copy; 2018 <a href="https://github.com/Maxcal-Studios">Maxcal</a>.</strong> Alle Rechte vorbehalten.
     </footer>
 
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Create the tabs -->
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane active" id="control-sidebar-settings-tab">
+                <!-- /.control-sidebar-menu -->
+
+                <h3 class="control-sidebar-heading">Tasks Progress</h3>
+                <ul class="control-sidebar-menu">
+                    <!-- Settings Content -->
+                    <li>
+                        <a href="javascript:;">
+                            <h4 class="control-sidebar-subheading">
+                                Custom Template Design
+                                <span class="pull-right-container">
+                        <span class="label label-danger pull-right">70%</span>
+                      </span>
+                            </h4>
+
+                            <div class="progress progress-xxs">
+                                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.control-sidebar-menu -->
+
+
+            </div>
+            <!-- /.tab-pane -->
+            <!-- Stats tab content -->
+            <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+            <!-- /.tab-pane -->
+            <!-- Settings tab content -->
+            <div class="tab-pane" id="control-sidebar-settings-tab">
+                <form method="post">
+                    <h3 class="control-sidebar-heading">General Settings</h3>
+
+                    <div class="form-group">
+                        <label class="control-sidebar-subheading">
+                            Report panel usage
+                            <input type="checkbox" class="pull-right" checked>
+                        </label>
+
+                        <p>
+                            Some information about this general settings option
+                        </p>
+                    </div>
+                    <!-- /.form-group -->
+                </form>
+            </div>
+            <!-- /.tab-pane -->
+        </div>
+    </aside>
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
+    immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
 
@@ -305,14 +344,15 @@
 <script src="../bootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../bootstrap/dist/js/adminlte.min.js"></script>
-<!-- DataTables -->
-<script src="../bootstrap/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../bootstrap/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- ChartJS -->
 <script src="../bootstrap/bower_components/chart.js/Chart.js"></script>
 
 <script>
   $(function () {
+    /* ChartJS
+     * -------
+     * Here we will create a few charts using ChartJS
+     */
 
     //--------------
     //- AREA CHART -
@@ -324,20 +364,10 @@
     var areaChart       = new Chart(areaChartCanvas)
 
     var areaChartData = {
-      labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels  : ['Jannuar', 'Februar', 'März', 'April', 'May', 'June', 'July'],
       datasets: [
         {
-          label               : 'Electronics',
-          fillColor           : 'rgba(210, 214, 222, 1)',
-          strokeColor         : 'rgba(210, 214, 222, 1)',
-          pointColor          : 'rgba(210, 214, 222, 1)',
-          pointStrokeColor    : '#c1c7d1',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [65, 59, 80, 81, 56, 55, 40]
-        },
-        {
-          label               : 'Digital Goods',
+          label               : 'Subscribers',
           fillColor           : 'rgba(60,141,188,0.9)',
           strokeColor         : 'rgba(60,141,188,0.8)',
           pointColor          : '#3b8bba',
@@ -388,7 +418,6 @@
 
     //Create the line chart
     areaChart.Line(areaChartData, areaChartOptions)
-
   })
 </script>
 
