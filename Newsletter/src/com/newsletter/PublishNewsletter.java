@@ -43,13 +43,17 @@ public class PublishNewsletter extends HttpServlet {
 				String creator = request.getSession().getAttribute("user").toString();
 				String date = request.getParameter("date");
 				String time = request.getParameter("time");
+				
 				int newsletterID = Integer.parseInt(request.getParameter("id"));
 				
-				System.out.println(date);
-				System.out.println(time);
-				
 				String krit = request.getParameter("krit");
-				String elements = request.getParameter("elements");
+				String[] element = request.getParameterValues("elements");
+				
+				String elements = "";
+				for(int i = 0; i < element.length; i++) {
+					elements += element[i] + " ";
+				}
+				elements = elements.substring(0, elements.length() - 1);
 				
 				//prepare statement
 				st = con.prepareStatement(sql);

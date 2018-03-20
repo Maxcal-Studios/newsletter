@@ -6,7 +6,7 @@
     <%
     String username = "admin";
 
-    if(session.getAttribute("user") == null) {
+    if(!DBConnector.isLoggedIn(session)) {
     	response.sendRedirect("../../login.jsp");
     } else {
 
@@ -25,7 +25,7 @@
     sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member';";
     st = con.prepareStatement(sql);
     ResultSet head = st.executeQuery();
-    
+
     ResultSet data;
     %>
 
@@ -85,30 +85,6 @@
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
 
-                    <!-- Notifications Menu -->
-                    <li class="dropdown notifications-menu">
-                        <!-- Menu toggle button -->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">$cnt_not</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">Benachrichtigungen</li>
-                            <li>
-                                <!-- Inner Menu: contains the notifications -->
-                                <ul class="menu">
-                                    <li><!-- start notification -->
-                                        <a href="#">
-                                            <i class="fa fa-envelope-o text-aqua"></i> Es wurden $ANZ geplante Newsletter versand.
-                                        </a>
-                                    </li>
-                                    <!-- end notification -->
-                                </ul>
-                            </li>
-                            <li class="footer"><a href="#">Anzeigen</a></li>
-                        </ul>
-                    </li>
-
                     <!-- User Account Menu -->
                     <li class="dropdown user user-menu">
                         <!-- Menu Toggle Button -->
@@ -162,7 +138,7 @@
                 <li class="header">NAVIGATION</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active"><a href="index.jsp"><i class="fa fa-dashboard"></i><span> Dashboard</span></a></li>
-                <li><a href="member.jsp"><i class="fa fa-users"></i><span> Mitglieder</span></a></li>
+                <li><a href="member.jsp"><i class="fa fa-users"></i><span> Aktive Mitglieder</span></a></li>
                 <li class="treeview">
                     <a href="#"><i class="fa fa-paper-plane"></i><span> Newsletter</span>
                         <span class="pull-right-container">

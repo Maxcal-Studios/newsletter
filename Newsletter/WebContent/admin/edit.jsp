@@ -5,16 +5,28 @@
 
     <%
     String username = "admin";
-    
+
     if(!DBConnector.isLoggedIn(session)) {
     	response.sendRedirect("../../login.jsp");
     } else {
+
     	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     	response.setHeader("Pragma", "no-cache");
     	response.setHeader("Expires", "0");
-    
+
     	username = session.getAttribute("user").toString();
     }
+
+    Connection con = DBConnector.getConnection();
+    String sql = "SELECT * FROM member;";
+    PreparedStatement st = con.prepareStatement(sql);
+    ResultSet member = st.executeQuery();
+
+    sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member';";
+    st = con.prepareStatement(sql);
+    ResultSet head = st.executeQuery();
+
+    ResultSet data;
     %>
 
     <meta charset="utf-8">
@@ -72,54 +84,23 @@
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-                                                   
-                    <!-- Notifications Menu -->
-                    <li class="dropdown notifications-menu">
-                        <!-- Menu toggle button -->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">$cnt_not</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have $cnt_not notifications</li>
-                            <li>
-                                <!-- Inner Menu: contains the notifications -->
-                                <ul class="menu">
-                                    <li><!-- start notification -->
-                                        <a href="#">
-                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                        </a>
-                                    </li>
-                                    <!-- end notification -->
-                                </ul>
-                            </li>
-                            <li class="footer"><a href="#">View all</a></li>
-                        </ul>
-                    </li>
-                               </ul>
-                            </li>
-                            <li class="footer">
-                                <a href="#">View all tasks</a>
-                            </li>
-                        </ul>
-                    </li>
+
                     <!-- User Account Menu -->
                     <li class="dropdown user user-menu">
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
-                            <img src="../bootstrap/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                            <img src="../bootstrap/dist/img/160x160.png" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs"><% out.print(username); %></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
-                                <img src="../bootstrap/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                <img src="../bootstrap/dist/img/160x160.png" class="img-circle" alt="User Image">
 
                                 <p>
-                                    <% out.print(username); %> - Admin
-                                    <small>Mitglied seit $timestamp</small>
+                                    <% out.print(username); %> - Administrator
                                 </p>
                             </li>
                             <!-- Deleted Menu Body -->
@@ -143,7 +124,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="../bootstrap/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="../bootstrap/dist/img/160x160.png" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p><% out.print(username); %></p>
@@ -157,7 +138,7 @@
                 <li class="header">NAVIGATION</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active"><a href="index.jsp"><i class="fa fa-dashboard"></i><span> Dashboard</span></a></li>
-                <li><a href="member.jsp"><i class="fa fa-users"></i><span> Mitglieder</span></a></li>
+                <li><a href="member.jsp"><i class="fa fa-users"></i><span> Aktive Mitglieder</span></a></li>
                 <li class="treeview">
                     <a href="#"><i class="fa fa-paper-plane"></i><span> Newsletter</span>
                         <span class="pull-right-container">
@@ -171,7 +152,7 @@
                     </ul>
                 </li>
                 <li><a href="layout.jsp"><i class="glyphicon glyphicon-th-large"></i><span> Layout</span></a></li>
-                <li><a href="settings.jsp"><i class="fa fa-gears"></i><span> Settings</span></a></li>
+                <li><a href="settings.jsp"><i class="fa fa-gears"></i><span> Einstellungen</span></a></li>
                 <li><a href="doc.jsp"><i class="fa fa-book"></i><span> Dokumentation</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->
@@ -184,24 +165,22 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Editor
-                <small>Mitglieder bearbeiten</small>
+                Dashboard
+                <small>&Uumlbersicht und Analyse</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="index.jsp"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-		<<li><a href="member.jsp"> Mitglieder</a></li>
-                <<li class="active">Editor</li>
+                <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             </ol>
         </section>
-	    
-	<!-- Main content -->
-      	<section class="content container-fluid">
+
+        <!-- Main content -->
+        <section class="content container-fluid">
 
 		<!-- row -->
 		<div class="row">
 			<div class="col-md-2 col-sm-0"></div>
 			<div class="col-md-8 col-sm-12">
-			
+
 				<!-- Horizontal Form -->
 				  <div class="box box-info">
 				    <div class="box-header with-border">
@@ -245,62 +224,65 @@
 				  </div>
 				  <!-- /.box -->
 
-				
+
 			</div>
 			<div class="col-md-2 col-sm-0"></div>
 		</div>
-			
-	<%
-	
-	//retrieves the ID of the demanded member
-	String id = request.getParameter("id");
-	
-	//Create connection to DB
-	Connection con = DBConnector.getConnection();
-	
-	//gets all date of demanded member
-	String sql = "SELECT * FROM member WHERE ID = ?;";
-	PreparedStatement st = con.prepareStatement(sql);
-	st.setString(1, id);
-	ResultSet rsVal = st.executeQuery();
-	
-	//gets all the column headers of the table
-	sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member';";
-	st = con.prepareStatement(sql);
-	ResultSet rsLabel = st.executeQuery();
-	
-	%>
-	<div class="container">
-		<form action="../EditMember" method="post">
-			<table width=100% >
-	
-	<%
-	//generate HTML
-	int length = 0;
-	while(rsLabel.next()) {
-		length++;
-	}
-	rsLabel.first();
-	
-	rsVal.first();
-	
-	for(int i = 1; i <= rsVal.getMetaData().getColumnCount(); i++) {
-		out.println("<tr>");
-		out.println("<td>" + rsLabel.getString(1) + "</td>");
-		out.println("<td><input spellcheck=\"false\" id=\"input\" name=\""+ rsLabel.getString(1) +"\" value=\"" + rsVal.getString(i) + "\"></td>");
-		out.println("</tr>");
-		rsLabel.next();
-	}
-	%>
-			</table>
-		
-			<button style="width=100%" value="../EditMember" type="submit" class="button1">Save</button>
-			<a href="member.jsp"></a>
-		</form>
-	</div>
-		
-	</section>
-	</div>
+
+		<%
+
+		//retrieves the ID of the demanded member
+		String id = request.getParameter("id");
+
+		//Create connection to DB
+		Connection con = DBConnector.getConnection();
+
+		//gets all date of demanded member
+		String sql = "SELECT * FROM member WHERE ID = ?;";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, id);
+		ResultSet rsVal = st.executeQuery();
+
+		//gets all the column headers of the table
+		sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member';";
+		st = con.prepareStatement(sql);
+		ResultSet rsLabel = st.executeQuery();
+
+		%>
+		<div class="container">
+			<form action="../EditMember" method="post">
+				<table width=100% >
+
+		<%
+		//generate HTML
+		int length = 0;
+		while(rsLabel.next()) {
+			length++;
+		}
+		rsLabel.first();
+
+		rsVal.first();
+
+		for(int i = 1; i <= rsVal.getMetaData().getColumnCount(); i++) {
+			out.println("<tr>");
+			out.println("<td>" + rsLabel.getString(1) + "</td>");
+			out.println("<td><input spellcheck=\"false\" id=\"input\" name=\""+ rsLabel.getString(1) +"\" value=\"" + rsVal.getString(i) + "\"></td>");
+			out.println("</tr>");
+			rsLabel.next();
+		}
+		%>
+				</table>
+
+				<button style="width=100%" value="../EditMember" type="submit" class="button1">Save</button>
+				<a href="member.jsp"></a>
+			</form>
+		</div>
+
+
+
+        </section>
+        <!-- /.content -->
+    </div>
     <!-- /.content-wrapper -->
 
     <!-- Main Footer -->
@@ -327,14 +309,15 @@
 <!-- DataTables -->
 <script src="../bootstrap/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../bootstrap/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- ChartJS -->
-<script src="../bootstrap/bower_components/chart.js/Chart.js"></script>
-		
+
 </body>
-	<%
-	rsVal.close();
-	rsLabel.close();
+
+<%
+	head.close();
+	member.close();
+	data.close();
 	st.close();
 	con.close();
-	%>
+ %>
+
 </html>
