@@ -42,6 +42,10 @@ public class PublishNewsletter extends HttpServlet {
 				String creator = request.getSession().getAttribute("user").toString();
 				String date = request.getParameter("date");
 				String time = request.getParameter("time");
+				
+				System.out.println(date);
+				System.out.println(time);
+				
 				String krit = request.getParameter("krit");
 				String elements = request.getParameter("elements");
 				
