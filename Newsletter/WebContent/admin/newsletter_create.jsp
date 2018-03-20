@@ -288,7 +288,6 @@
             <!--------------------------
               | Your Page Content Here |
               -------------------------->
-			<form action="../AddNewsletter" method="post">
 
             <div class="pagecontainer" style="width:100%;height:100vh;">
                 <div style="text-align: center; background-color:#3C8DBC;">
@@ -369,6 +368,8 @@
                 <iframe name="editor" style="height:80%; width: 100%" frameborder="0" id="editor"></iframe>
                 <button onclick="test();" title="Testen"  style="margin:10px"><i class="material-icons">devices</i></button>
                 
+                <form action="../AddNewsletter" method="post">
+                
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-save">Speichern</button>
                 
                 <div class="modal fade" id="modal-save">
@@ -446,6 +447,9 @@
 
         </section>
         <!-- /.content -->
+
+		<!-- Ghost input for sending the test to the servlet -->
+		<input id="out" name="text">
 
 		</form>
 	

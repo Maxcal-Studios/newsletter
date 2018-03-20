@@ -41,6 +41,8 @@ public class GetDescription extends HttpServlet {
 			//getting the parameter
 			int id = Integer.parseInt(request.getParameter("id"));
 			
+			System.out.println("DIe IDDDDDDDDDDDDDDDDDD:     " + id);
+			
 			//prepare statement
 			st = con.prepareStatement(sql);
 			st.setInt(1, id);
