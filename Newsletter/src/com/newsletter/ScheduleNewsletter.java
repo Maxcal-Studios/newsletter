@@ -41,7 +41,8 @@ public class ScheduleNewsletter extends HttpServlet {
 			String krit = request.getParameter("krit");
 			String elements = request.getParameter("elements");
 			
-			//prepare Statement
+			//prepare statement
+			st = con.prepareStatement(sql);
 			st.setInt(1, newsletterID);
 			st.setString(2, creator);
 			st.setString(4, krit);

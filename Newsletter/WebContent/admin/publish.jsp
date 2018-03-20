@@ -382,10 +382,10 @@
                       		<thead>
                             <tr>
 			                  <th class="col-sm-1">Optionen</th>
-			                  <th class="col-sm-1">ID</th>
-			                  <th class="col-sm-2">Titel</th>
-			                  <th class="col-sm-3">Autor</th>
-			                  <th class="col-sm-3">Datum</th>
+			                  <th id="idt" class="col-sm-1">ID</th>
+			                  <th id="titlet" class="col-sm-2">Titel</th>
+			                  <th id="authort" class="col-sm-3">Autor</th>
+			                  <th id="datet" class="col-sm-3">Datum</th>
 			                </tr>
 			                <thead>
 			                <tbody>
