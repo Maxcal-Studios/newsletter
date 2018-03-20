@@ -138,7 +138,7 @@
                 <li class="header">NAVIGATION</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active"><a href="index.jsp"><i class="fa fa-dashboard"></i><span> Dashboard</span></a></li>
-                <li><a href="member.jsp"><i class="fa fa-users"></i><span> Mitglieder (aktiv)</span></a></li>
+                <li><a href="member.jsp"><i class="fa fa-users"></i><span> Mitglieder</span></a></li>
                 <li class="treeview">
                     <a href="#"><i class="fa fa-paper-plane"></i><span> Newsletter</span>
                         <span class="pull-right-container">
@@ -234,7 +234,7 @@
 			%>
 
             <div class="info-box-content">
-              <span class="info-box-text">Mitglieder</span>
+              <span class="info-box-text">Mitglieder (aktiv) </span>
               <span class="info-box-number"><% out.print(data.getString(1)); %></span>
             </div>
             <!-- /.info-box-content -->

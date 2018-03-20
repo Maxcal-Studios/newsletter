@@ -165,11 +165,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Dashboard
-                <small>&Uumlbersicht und Analyse</small>
+                Mitglieder
+                <small>Mitglieder verwalten</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-users"></i> Mitglieder</a></li>
+                <li><a href="index.jsp"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Mitglieder</li>
             </ol>
         </section>
 

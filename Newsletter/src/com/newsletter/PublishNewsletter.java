@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
@@ -46,14 +47,18 @@ public class PublishNewsletter extends HttpServlet {
 				String date = request.getParameter("date");
 				String time = request.getParameter("time");
 				
+				System.out.println(date + "   " + time);
+				
 				String[] dates = time.split("/");
 				String[] times = time.split(":");
 				
-				if(times[1].endsWith("AM")) {
-					
-				}
+				SimpleDateFormat s12 = new SimpleDateFormat("hh:mm a");
+				SimpleDateFormat s24 = new SimpleDateFormat("hh:mm");
 				
-				Timestamp t = new Timestamp(dates[2], dates[1], dates[0], hour, minute, second, nano)
+				
+				times[1] = times[1].substring(0, times[1].length() - 3);
+				
+				Timestamp t = new Timestamp(Integer.parseInt(dates[2]), Integer.parseInt(dates[1]), Integer.parseInt(dates[0]), Integer.parseInt(times[0]), Integer.parseInt(times[1]), 0, 0);
 				
 				String krit = request.getParameter("krit");
 				String[] element = request.getParameterValues("elements");
