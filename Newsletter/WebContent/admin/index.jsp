@@ -25,6 +25,9 @@
     sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member';";
     st = con.prepareStatement(sql);
     ResultSet head = st.executeQuery();
+    
+    sql = "SELECT ";
+    ResultSet data = st.executeQuery();
     %>
 
     <meta charset="utf-8">

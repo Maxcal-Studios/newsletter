@@ -42,8 +42,7 @@ public class AddNewsletter extends HttpServlet {
 			val[0] = request.getParameter("title");
 			val[1] = request.getParameter("author");
 			val[2] = request.getParameter("description");
-			//val[3] = request.getParameter("editor");
-			val[3] = "testtext";
+			val[3] = request.getParameter("text");
 			
 			//Inserts new newsletter into table
 			st = con.prepareStatement(sql);
