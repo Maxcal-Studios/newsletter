@@ -439,14 +439,16 @@
 		            	<!-- Beschreibung -->
 		              	<div class="box-body">
 				       		<dl class="dl-horizontal">
+				       			<dt>ID</dt>
+				                <dd name="id" id="id">$ID</dd>
 				           		<dt>Titel</dt>
-				                <dd>$Titel</dd>
+				                <dd id="tile">$Titel</dd>
 				                <dt>Autor</dt>
-				                <dd>$Autor</dd>
+				                <dd id="author">$Autor</dd>
 				                <dt>Erstellt</dt>
-				                <dd>$13.13.13</dd>
+				                <dd id="date">$13.13.13</dd>
 				                <dt>Beschreibung</dt>
-				                <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+				                <dd id="description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
 				                  sit amet risus.Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
 				                  sit amet risus.
 				                </dd>
@@ -458,21 +460,19 @@
                  		<!-- Kriterium -->
                  		<div class="form-group">
 			                <label>Kriterium</label>
-			               	<select class="form-control select2" data-placeholder="Wähle ein Kriterium aus" style="width: 100%;">
-			                 	<option>Alabama</option>
-					            <option>Alaska</option>
-					            <option>California</option>
-					            <option>Delaware</option>
-					            <option>Tennessee</option>
-					            <option>Texas</option>
-					            <option>Washington</option>
+			               	<select name="krit" class="form-control select2" data-placeholder="Wähle ein Kriterium aus" style="width: 100%;">
+								<%
+								
+								
+								
+								%>					            
 			               	</select>
 			        	</div>
 			        	
-			        	<!-- Element -->
+			        	<!-- Elements -->
 			        	<div class="form-group">
 			                <label>Element</label>
-			                <select class="form-control select2" multiple="multiple" data-placeholder="Wähle ein Element aus" style="width: 100%;">
+			                <select name="elements" class="form-control select2" multiple="multiple" data-placeholder="Wähle ein Element aus" style="width: 100%;">
 			                  	<option>Alabama</option>
 			                  	<option>Alaska</option>
 			                  	<option>California</option>
@@ -492,7 +492,7 @@
 			                  	<div class="input-group-addon">
 			                    	<i class="fa fa-calendar"></i>
 			                  	</div>
-			                  	<input type="text" class="form-control pull-right" id="datepicker">
+			                  	<input name="date" type="text" class="form-control pull-right" id="datepicker">
 			                </div>
 			          	</div>
 			          	
@@ -504,7 +504,7 @@
 			                  		<div class="input-group-addon">
 			                      		<i class="fa fa-clock-o"></i>
 			                    	</div>
-			                    	<input type="text" class="form-control timepicker">
+			                    	<input name="time" type="text" class="form-control timepicker">
 			                  	</div>
 			               	</div>
 			         	</div>
@@ -512,7 +512,7 @@
 		        	
 		        	<div class="modal-footer">
 		           		<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Beenden</button>
-		           		<button type="button submit" value="../PlanNewsletter" class="btn btn-warning">Planen</button>
+		           		<button type="button submit" value="../ScheduleNewsletter" class="btn btn-warning">Planen</button>
 		                <button type="button submit" value="../PublishNewsletter" class="btn btn-primary">Publizieren</button>
 		        	</div>
 		       	</div>
