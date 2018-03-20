@@ -127,7 +127,7 @@
                 <li class="header">NAVIGATION</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active"><a href="index.jsp"><i class="fa fa-dashboard"></i><span> Dashboard</span></a></li>
-                <li><a href="member.jsp"><i class="fa fa-users"></i><span> Aktive Mitglieder</span></a></li>
+                <li><a href="member.jsp"><i class="fa fa-users"></i><span> Mitglieder</span></a></li>
                 <li class="treeview">
                     <a href="#"><i class="fa fa-paper-plane"></i><span> Newsletter</span>
                         <span class="pull-right-container">
@@ -154,11 +154,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Dashboard
-                <small>&Uumlbersicht und Analyse</small>
+                Mitglied verwalten
+                <small>Mitgliedsdaten bearbeiten</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fa fa-members"></i> Mitglieder</a></li>
+                <li class="active">Verwalten</li>
             </ol>
         </section>
 
