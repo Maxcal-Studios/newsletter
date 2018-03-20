@@ -292,29 +292,29 @@
             <div class="pagecontainer" style="width:100%;height:100vh;">
                 <div style="text-align: center; background-color:#3C8DBC;">
                     <div style="color:white; padding:10px" id="container">
-                        <button onclick="execCmd('bold');" title="Fett" name="Web"><i class="material-icons">format_bold</i></button>
-                        <button onclick="execCmd('italic');" title="Kursiv" name="Web"><i class="material-icons">format_italic</i></button>
-                        <button onclick="execCmd('underline');" title="Unterstrichen" name="Web"><i class="material-icons">format_underline</i></button>
-                        <button onclick="execCmd('strikethrough');" title="Durchgestrichen" name="Web"><i class="material-icons">format_strikethrough</i></button>
+                        <button onclick="execCmd('bold');" title="Fett" name="Web"><i class="fa fa-bold fa-2x"></i></button>
+                        <button onclick="execCmd('italic');" title="Kursiv" name="Web"><i class="fa fa-italic fa-2x"></i></button>
+                        <button onclick="execCmd('underline');" title="Unterstrichen" name="Web"><i class="fa fa-underline fa-2x"></i></button>
+                        <button onclick="execCmd('strikethrough');" title="Durchgestrichen" name="Web"><i class="fa fa-strikethrough fa-2x"></i></button>
                         &nbsp;
-                        <button onclick="execCmd('justifyLeft');" title="Linksbündig" name="Web"><i class="material-icons">format_align_left</i></button>
-                        <button onclick="execCmd('justifyCenter');" title="Zentriert" name="Web"><i class="material-icons">format_align_center</i></button>
-                        <button onclick="execCmd('justifyRight');" title="Rechtsbündig" name="Web"><i class="material-icons">format_align_right</i></button>
-                        <button onclick="execCmd('justifyFull');" title="Blocksatz" name="Web"><i class="material-icons">format_align_justify</i></button>
-                        <button onclick="execCmd('indent');" title="Einzug vergrößern" name="Web"><i class="material-icons">format_indent_increase</i></button>
-                        <button onclick="execCmd('outdent');" title="Einzug verringern" name="Web"><i class="material-icons">format_indent_decrease</i></button>
+                        <button onclick="execCmd('justifyLeft');" title="Linksbündig" name="Web"><i class="fa fa-align-left fa-2x"></i></button>
+                        <button onclick="execCmd('justifyCenter');" title="Zentriert" name="Web"><i class="fa fa-align-center fa-2x"></i></button>
+                        <button onclick="execCmd('justifyRight');" title="Rechtsbündig" name="Web"><i class="fa fa-align-right fa-2x"></i></button>
+                        <button onclick="execCmd('justifyFull');" title="Blocksatz" name="Web"><i class="fa fa-align-justify fa-2x"></i></button>
+                        <button onclick="execCmd('indent');" title="Einzug vergrößern" name="Web"><i class="fa fa-indent fa-2x"></i></button>
+                        <button onclick="execCmd('outdent');" title="Einzug verringern" name="Web"><i class="fa fa-outdent fa-2x"></i></button>
                         &nbsp;
-                        <button onclick="execCmd('insertUnorderedList');" title="Aufzählungsliste" name="Web"><i class="material-icons">format_list_bulleted</i></button>
-                        <button onclick="execCmd('insertOrderedList');" title="Nummerierte Liste" name="Web"><i class="material-icons">format_list_numbered</i></button>
+                        <button onclick="execCmd('insertUnorderedList');" title="Aufzählungsliste" name="Web"><i class="fa fa-list-ul fa-2x"></i></button>
+                        <button onclick="execCmd('insertOrderedList');" title="Nummerierte Liste" name="Web"><i class="fa fa-list-ol fa-2x"></i></button>
                         &nbsp;
-                        <button onclick="execCmdWithArg('insertImage',prompt('URL des Bildes eingeben'));" title="Bild einfügen" name="Web"><i class="material-icons">add_a_photo</i></button>
-                        <button onclick="execCmdWithArg('createLink', prompt('URL eingeben', 'http://'));" title="Link erstellen" name="Web"><i class="material-icons">link</i></button>
+                        <button onclick="execCmdWithArg('insertImage',prompt('URL des Bildes eingeben'));" title="Bild einfügen" name="Web"><i class="fa fa-picture-o fa-2x"></i></button>
+                        <button onclick="execCmdWithArg('createLink', prompt('URL eingeben', 'http://'));" title="Link erstellen" name="Web"><i class="fa fa-link fa-2x"></i></button>
                         &nbsp;
-                        <button onclick="execCmd('undo');" title="Rückgängig" name="Web"><i class="material-icons">undo</i></button>
-                        <button onclick="execCmd('redo');" title="Wiederholen" name="Web"><i class="material-icons">redo</i></button>
+                        <button onclick="execCmd('undo');" title="Rückgängig" name="Web"><i class="fa fa-undo fa-2x"></i></button>
+                        <button onclick="execCmd('redo');" title="Wiederholen" name="Web"><i class="fa fa-repeat fa-2x"></i></button>
                         &nbsp;
-                        <button onclick="showHTML();this.style.display='none';document.getElementById('showEditor').style.display='inline'" title="HTML Code anzeigen" id="showHTML" name="Web"><i class="material-icons">code</i></button>
-                        <button onclick="showEditor();this.style.display='none';document.getElementById('showHTML').style.display='inline'" title="Editor anzeigen" id="showEditor" name="Web"><i class="material-icons">web_asset</i></button>
+                        <button onclick="showHTML();this.style.display='none';document.getElementById('showEditor').style.display='inline'" title="HTML Code anzeigen" id="showHTML" name="Web"><i class="fa fa-code fa-2x"></i></button>
+                        <button onclick="showEditor();this.style.display='none';document.getElementById('showHTML').style.display='inline'" title="Editor anzeigen" id="showEditor" name="Web"><i class="fa fa-code fa-2x"></i></button>
                         <div name = "Web">
                             <br name = "Web">
                             <select onclick="changeFloat(this.value);" title="Float">
@@ -366,11 +366,11 @@
                 </div>
 
                 <iframe name="editor" style="height:80%; width: 100%" frameborder="0" id="editor"></iframe>
-                <button onclick="test();" title="Testen"  style="margin:10px"><i class="material-icons">devices</i></button>
+                <button onclick="test();" title="Testen"  style="margin:10px"><i class="fa fa-desktop fa-2x"></i></button>
                 
                 <form action="../AddNewsletter" method="post">
                 
-                <button type="button" onclick="exp()" class="btn btn-default" data-toggle="modal" data-target="#modal-save">Speichern</button>
+                <button type="button" onclick="exp()" class="btn btn-default" data-toggle="modal" data-target="#modal-save"><i class="fa fa-paper-plane fa-2x"></i></button>
                 
                 <div class="modal fade" id="modal-save">
 		          <div class="modal-dialog">

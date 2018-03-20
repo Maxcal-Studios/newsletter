@@ -137,8 +137,8 @@
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">NAVIGATION</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="index.jsp"><i class="fa fa-dashboard"></i><span> Dashboard</span></a></li>
-                <li><a href="member.jsp"><i class="fa fa-users"></i><span> Aktive Mitglieder</span></a></li>
+                <li><a href="index.jsp"><i class="fa fa-dashboard"></i><span> Dashboard</span></a></li>
+                <li class="active"><a href="member.jsp"><i class="fa fa-users"></i><span> Mitglieder</span></a></li>
                 <li class="treeview">
                     <a href="#"><i class="fa fa-paper-plane"></i><span> Newsletter</span>
                         <span class="pull-right-container">
@@ -169,7 +169,7 @@
                 <small>&Uumlbersicht und Analyse</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fa fa-users"></i> Mitglieder</a></li>
             </ol>
         </section>
 
