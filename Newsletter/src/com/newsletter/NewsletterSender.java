@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import com.database.DBConnector;
 import com.email.MailUtils;
@@ -16,7 +17,7 @@ public class NewsletterSender {
     	Connection con = DBConnector.getConnection();
     	PreparedStatement st = null;
     	ResultSet rs = null;
-    	String sql = "SELECT text FROM newsletter WHERE id = ?";
+    	String sql = "SELECT text, subject FROM newsletter WHERE id = ?";
 		
 		try {
 			
@@ -27,9 +28,18 @@ public class NewsletterSender {
 			rs.first();
 			
 			String text = rs.getString(1);
+			String subject = rs.getString(2);
+			
+			//cutting elements
+			String[] element = elements.split(" ");
 			
 			//getting all members
-			sql = "SELECT email FROM member WHERE active = TRUE";
+			sql = "SELECT email FROM member WHERE active = TRUE AND (";
+			for(int i = 0; i < element.length - 1; i++) {
+				sql += " " + krit + " = " + element[i] + " OR";
+			}
+			sql += " " + krit + " = " + element[element.length-1] + ")";
+			
 			st = con.prepareStatement(sql);
 			rs = st.executeQuery();
 			rs.first();
@@ -42,7 +52,7 @@ public class NewsletterSender {
 			while(rs.next());
 			
 			//send email
-			MailUtils.sendMail(recipients, "test", text);
+			MailUtils.sendMail(recipients, subject, text);
 			
 		} catch(Exception e) {e.printStackTrace();}
 		finally {

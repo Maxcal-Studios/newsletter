@@ -33,7 +33,7 @@ public class PublishNewsletter extends HttpServlet {
 			//creating a connection to the DB
 	    	Connection con = DBConnector.getConnection();
 	    	PreparedStatement st = null;
-	    	String sql = "INSERT INTO scedule(newsletterID, creator, sendDate, krit, elements) VALUES(?, ?, ?, ?, ?)";
+	    	String sql = "INSERT INTO schedule(newsletterID, creator, sendDate, krit, elements) VALUES(?, ?, ?, ?, ?)";
 			
 			try {
 				
