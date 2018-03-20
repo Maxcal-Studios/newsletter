@@ -458,7 +458,6 @@
 				                </dd>
 				         	</dl>
                  		</div>
-                 		
                  		<hr>
                  		
                  		<!-- Kriterium -->
