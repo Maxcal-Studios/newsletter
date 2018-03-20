@@ -1,6 +1,31 @@
 <!DOCTYPE html>
+<%@ page import="java.sql.*, com.database.*;" %>
 <html>
 <head>
+
+    <%
+    String username = "admin";
+
+    if(session.getAttribute("user") == null) {
+    	response.sendRedirect("../../login.jsp");
+    } else {
+
+    	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    	response.setHeader("Pragma", "no-cache");
+    	response.setHeader("Expires", "0");
+
+    	username = session.getAttribute("user").toString();
+    }
+
+    Connection con = DBConnector.getConnection();
+    String sql = "SELECT * FROM member;";
+    PreparedStatement st = con.prepareStatement(sql);
+    ResultSet member = st.executeQuery();
+
+    sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member';";
+    st = con.prepareStatement(sql);
+    ResultSet head = st.executeQuery();
+    %>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -87,14 +112,14 @@
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
-                            <img src="../bootstrap/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                            <img src="../bootstrap/dist/img/160x160.png" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs"><% out.print(username); %></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
-                                <img src="../bootstrap/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                <img src="../bootstrap/dist/img/160x160.png" class="img-circle" alt="User Image">
 
                                 <p>
                                     <% out.print(username); %> - Admin
@@ -109,10 +134,6 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- Control Sidebar Toggle Button -->
-                    <li>
-                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                    </li>
                 </ul>
             </div>
         </nav>
@@ -126,7 +147,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="../bootstrap/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="../bootstrap/dist/img/160x160.png" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p><% out.print(username); %></p>
@@ -273,66 +294,6 @@
         <strong>Copyright &copy; 2018 <a href="https://github.com/Maxcal-Studios">Maxcal</a>.</strong> Alle Rechte vorbehalten.
     </footer>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Create the tabs -->
-
-        <!-- Tab panes -->
-        <div class="tab-content">
-            <div class="tab-pane active" id="control-sidebar-settings-tab">
-                <!-- /.control-sidebar-menu -->
-
-                <h3 class="control-sidebar-heading">Tasks Progress</h3>
-                <ul class="control-sidebar-menu">
-                    <!-- Settings Content -->
-                    <li>
-                        <a href="javascript:;">
-                            <h4 class="control-sidebar-subheading">
-                                Custom Template Design
-                                <span class="pull-right-container">
-                        <span class="label label-danger pull-right">70%</span>
-                      </span>
-                            </h4>
-
-                            <div class="progress progress-xxs">
-                                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /.control-sidebar-menu -->
-
-
-            </div>
-            <!-- /.tab-pane -->
-            <!-- Stats tab content -->
-            <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-            <!-- /.tab-pane -->
-            <!-- Settings tab content -->
-            <div class="tab-pane" id="control-sidebar-settings-tab">
-                <form method="post">
-                    <h3 class="control-sidebar-heading">General Settings</h3>
-
-                    <div class="form-group">
-                        <label class="control-sidebar-subheading">
-                            Report panel usage
-                            <input type="checkbox" class="pull-right" checked>
-                        </label>
-
-                        <p>
-                            Some information about this general settings option
-                        </p>
-                    </div>
-                    <!-- /.form-group -->
-                </form>
-            </div>
-            <!-- /.tab-pane -->
-        </div>
-    </aside>
-    <!-- /.control-sidebar -->
-    <!-- Add the sidebar's background. This div must be placed
-    immediately after the control sidebar -->
-    <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
 
