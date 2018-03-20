@@ -234,7 +234,7 @@
 			%>
 
             <div class="info-box-content">
-              <span class="info-box-text">Mitglieder (aktiv)</span>
+              <span class="info-box-text">Mitglieder (aktiv) </span>
               <span class="info-box-number"><% out.print(data.getString(1)); %></span>
             </div>
             <!-- /.info-box-content -->
