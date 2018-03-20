@@ -49,6 +49,7 @@ public class GetDescription extends HttpServlet {
 			
 			//execute Query
 			rs = st.executeQuery();
+			rs.first();
 			
 			out.println("<p id=\"description\">" + rs.getString(1) + "</p>");
 			
