@@ -449,7 +449,7 @@
         <!-- /.content -->
 
 		<!-- Ghost input for sending the test to the servlet -->
-		<input id="out" name="text">
+		<input id="out" name="text" style="width:1px; height:1px; visibility: hidden;">
 
 		</form>
 	
@@ -636,6 +636,7 @@
         }else{
             src = document.getElementById('editor').contentWindow.document.documentElement.outerHTML;
         }
+        document.getElementById("out").value = src;
         var test = window.open("", "", "width=600,height=800,location=0,menubar=0,resizable=1,status=0,toolbar=0,scrollbars=1");
         test.document.open();
         test.document.write(src);
