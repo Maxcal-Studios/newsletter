@@ -28,7 +28,7 @@ public class AddNewsletter extends HttpServlet {
 			response.sendRedirect("../../login.jsp");
 		}
 		
-		int cols = 4;
+		int cols = 5;
 		
 		//creating a connection to the DB
 		Connection con = DBConnector.getConnection();

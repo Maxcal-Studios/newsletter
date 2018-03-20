@@ -382,10 +382,11 @@
                       		<thead>
                             <tr>
 			                  <th class="col-sm-1">Optionen</th>
-			                  <th id="idt" class="col-sm-1">ID</th>
-			                  <th id="titlet" class="col-sm-2">Titel</th>
-			                  <th id="authort" class="col-sm-3">Autor</th>
-			                  <th id="datet" class="col-sm-3">Datum</th>
+			                  <th class="col-sm-1">ID</th>
+			                  <th class="col-sm-2">Titel</th>
+			                  <th class="col-sm-2">Betreff</th>
+			                  <th class="col-sm-3">Autor</th>
+			                  <th class="col-sm-3">Datum</th>
 			                </tr>
 			                <thead>
 			                <tbody>
@@ -397,9 +398,9 @@
 			                
 			                while(rs.next()) {
 			                	out.println("<tr>");
-			                	out.println("<td><a href=\"#\"><i class=\"fa fa-paper-plane\"></i></a> &nbsp; <a href=\"#\"><i class=\"fa fa-edit\"></i></a> &nbsp; <a href=\"../RemoveNewsletter?id=" + rs.getString(1) +"\"><i class=\"fa fa-trash\"></i></a></td>");
-			                	for(int i = 1; i <= 4; i++) {
-			                		out.println("<td>" + rs.getString(i) +"</td>");
+			                	out.println("<td><a id=\"btn" + rs.getString("id") + "\" data-toggle=\"modal\" data-target=\"#modal-publish\"><i class=\"fa fa-paper-plane\"></i></a> &nbsp; <a href=\"#\"><i class=\"fa fa-edit\"></i></a> &nbsp; <a href=\"../RemoveNewsletter?id=" + rs.getString(1) +"\"><i class=\"fa fa-trash\"></i></a></td>");
+			                	for(int i = 1; i <= 5; i++) {
+			                		out.println("<td id=\"" + rs.getString("id") + String.valueOf(i) + "\"" + rs.getString(i) +"</td>");
 			                	}
 			                	out.println("</tr>");
 			                }
@@ -410,6 +411,7 @@
 			                  <th>Optionen</th>
 			                  <th>ID</th>
 			                  <th>Titel</th>
+			                  <th>Betreff</th>
 			                  <th>Autor</th>
 			                  <th>Datum</th>
 			                </tr>
@@ -423,8 +425,6 @@
 			      <!-- /.col -->
 			    </div>
 			  <!-- /.row -->
-
-		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-publish">Publizieren</button>
 
 		<form action="../PublishNewsletter" method="get">
 
