@@ -667,7 +667,7 @@
 
 
       document.getElementById("id").innerText = idf;
-      document.getElementsByName("id").value = idf;
+      document.getElementsByName("id")[0].value = idf;
       document.getElementById("title").innerText = title;
       document.getElementById("subject").innerText = subject;
       document.getElementById("author").innerText = author;
