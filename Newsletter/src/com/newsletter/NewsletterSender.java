@@ -30,7 +30,7 @@ public class NewsletterSender {
 			String text = rs.getString(1);
 			String subject = rs.getString(2);
 			
-			if(krit.equals("") || elements.equals("")) {
+			if(krit == null || elements == null) {
 				sql = "SELECT email FROM member WHERE active = TRUE";
 			} else {
 				//cutting elements

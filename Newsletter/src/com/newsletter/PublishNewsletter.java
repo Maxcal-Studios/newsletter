@@ -42,15 +42,15 @@ public class PublishNewsletter extends HttpServlet {
 			try {
 				
 				//getting the parameters
-				
+				int newsletterID = Integer.parseInt(request.getParameter("id"));
 				String creator = request.getSession().getAttribute("user").toString();
 				String date = request.getParameter("date");
 				String time = request.getParameter("time");
 				
-				String[] dates = time.split("/");
+				String[] dates = date.split("/");
 				
-				SimpleDateFormat s12 = new SimpleDateFormat("hh:mm a");
-				SimpleDateFormat s24 = new SimpleDateFormat("hh:mm");
+				SimpleDateFormat s12 = new SimpleDateFormat("hh:mm aa");
+				SimpleDateFormat s24 = new SimpleDateFormat("HH:mm");
 				
 				String[] times = new String[2];
 				
@@ -58,33 +58,36 @@ public class PublishNewsletter extends HttpServlet {
 				
 				times = time.split(":");
 				
-				System.out.println(" " + dates[1] + " " + dates[0] + " " + times[0] + " " + times[1]);
-				
 				Timestamp t = new Timestamp(Integer.parseInt(dates[2]), Integer.parseInt(dates[1]), Integer.parseInt(dates[0]), Integer.parseInt(times[0]), Integer.parseInt(times[1]), 0, 0);
 				
 				String krit = request.getParameter("krit");
 				String[] element = request.getParameterValues("elements");
 				
 				String elements = "";
-				for(int i = 0; i < element.length; i++) {
-					elements += element[i] + " ";
+				if(krit != null && element != null) {
+					for(int i = 0; i < element.length; i++) {
+						elements += element[i] + " ";
+					}
+					elements = elements.substring(0, elements.length() - 1);
 				}
-				elements = elements.substring(0, elements.length() - 1);
-				
-				int newsletterID = Integer.parseInt(request.getParameter("id"));
 				
 				//prepare statement
 				st = con.prepareStatement(sql);
 				st.setInt(1, newsletterID);
 				st.setString(2, creator);
+				st.setTimestamp(3, t);
 				st.setString(4, krit);
 				st.setString(5, elements);
+				
+				st.executeUpdate();
 				
 			} catch(Exception e) {e.printStackTrace();}
 			finally {
 				try { st.close(); } catch (Exception e) { }
 			    try { con.close(); } catch (Exception e) { }
 			}
+			
+			response.sendRedirect("../admin/publish.jsp");
 			
 		} else {
 			
