@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,14 +28,47 @@ public class PublishNewsletter extends HttpServlet {
 		if(!DBConnector.isLoggedIn(request.getSession())) {
 			response.sendRedirect("../../login.jsp");
 		}
+
+		if(request.getParameter("method") == "schedule") {
+			//creating a connection to the DB
+	    	Connection con = DBConnector.getConnection();
+	    	PreparedStatement st = null;
+	    	String sql = "INSERT INTO scedule(newsletterID, creator, sendDate, krit, elements) VALUES(?, ?, ?, ?, ?)";
+			
+			try {
+				
+				//getting the parameters
+				int newsletterID = Integer.parseInt(request.getParameter("id"));
+				String creator = request.getSession().getAttribute("user").toString();
+				String date = request.getParameter("date");
+				String time = request.getParameter("time");
+				String krit = request.getParameter("krit");
+				String elements = request.getParameter("elements");
+				
+				//prepare statement
+				st = con.prepareStatement(sql);
+				st.setInt(1, newsletterID);
+				st.setString(2, creator);
+				st.setString(4, krit);
+				st.setString(5, elements);
+				
+			} catch(Exception e) {e.printStackTrace();}
+			finally {
+				try { st.close(); } catch (Exception e) { }
+			    try { con.close(); } catch (Exception e) { }
+			}
+			
+		} else {
+			
+			//getting the parameters
+			int id = Integer.parseInt(request.getParameter("id"));
+			String krit = request.getParameter("krit");
+			String elements = request.getParameter("elements");
+			
+			NewsletterSender.sendNewsletter(id, krit, elements);
+			
+			response.sendRedirect("../admin/publish.jsp");
 		
-		//getting the formdata
-		int id = Integer.parseInt(request.getParameter("id"));
-		String krit = request.getParameter("krit");
-		String elements = request.getParameter("elements");
-		
-		NewsletterSender.sendNewsletter(id);
-		
-		response.sendRedirect("../admin/publish.jsp");
+		}
 	}
 }

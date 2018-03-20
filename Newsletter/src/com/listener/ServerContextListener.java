@@ -48,7 +48,7 @@ public class ServerContextListener implements ServletContextListener {
 				while(rs.next()) {
 					Date publishDate = rs.getTimestamp("publishDate");
 					if(publishDate.after(new Date())) {
-						NewsletterSender.sendNewsletter(rs.getInt("id"));
+						NewsletterSender.sendNewsletter(rs.getInt("id"), rs.getString("krit"), rs.getString("elements"));
 						sql = "DELETE FROM shedule WHERE id = ?";
 						st = con.prepareStatement(sql);
 						st.setInt(1, rs.getInt("id"));

@@ -426,6 +426,8 @@
 
 		<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-publish">Publizieren</button>
 
+		<form action="../PublishNewsletter" method="get">
+
 		<div class="modal fade" id="modal-publish">
 		 	<div class="modal-dialog">
 		  	    <div class="modal-content">
@@ -512,8 +514,8 @@
 		        	
 		        	<div class="modal-footer">
 		           		<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Beenden</button>
-		           		<button type="button submit" value="../ScheduleNewsletter" class="btn btn-warning">Planen</button>
-		                <button type="button submit" value="../PublishNewsletter" class="btn btn-primary">Publizieren</button>
+		           		<button type="button submit" value="schedule" name="method" class="btn btn-warning">Planen</button>
+		                <button type="button submit" value="publish" name="method" class="btn btn-primary">Publizieren</button>
 		        	</div>
 		       	</div>
 		       	<!-- /.modal-content -->
@@ -521,6 +523,8 @@
 		    <!-- /.modal-dialog -->
 		</div>
 		<!-- /.modal -->
+
+		</form>
 
         </section>
         <!-- /.content -->
