@@ -442,7 +442,7 @@
 		              	<div class="box-body">
 				       		<dl class="dl-horizontal">
 				       			<dt>ID</dt>
-				                <dd name="id" id="id">$ID</dd>
+				                <dd id="id">$ID</dd>
 				           		<dt>Titel</dt>
 				                <dd id="title">$Titel</dd>
                                 <dt>Betreff</dt>
