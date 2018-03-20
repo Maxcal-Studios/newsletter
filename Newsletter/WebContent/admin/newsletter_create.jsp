@@ -370,7 +370,7 @@
                 
                 <form action="../AddNewsletter" method="post">
                 
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-save">Speichern</button>
+                <button type="button" onclick="exp()" class="btn btn-default" data-toggle="modal" data-target="#modal-save">Speichern</button>
                 
                 <div class="modal fade" id="modal-save">
 		          <div class="modal-dialog">
@@ -636,11 +636,18 @@
         }else{
             src = document.getElementById('editor').contentWindow.document.documentElement.outerHTML;
         }
-        document.getElementById("out").value = src;
         var test = window.open("", "", "width=600,height=800,location=0,menubar=0,resizable=1,status=0,toolbar=0,scrollbars=1");
         test.document.open();
         test.document.write(src);
         test.document.close();
+    }
+    function exp(){
+        if(document.getElementById('showHTML').style.display === 'none'){
+            src = document.getElementById('editor').contentWindow.document.body.innerText;
+        }else{
+            src = document.getElementById('editor').contentWindow.document.documentElement.outerHTML;
+        }
+        document.getElementById("out").value = src;
     }
 
     var popup = document.getElementById('send');
@@ -654,6 +661,8 @@
     span.onclick = function() {
         popup.style.display = "none";
     };
+
+
 
 </script>
 <script src='https://code.jquery.com/jquery-1.10.1.js' type='text/javascript'></script>
