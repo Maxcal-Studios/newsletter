@@ -40,11 +40,10 @@ public class PublishNewsletter extends HttpServlet {
 			try {
 				
 				//getting the parameters
+				int newsletterID = Integer.parseInt(request.getParameter("id"));
 				String creator = request.getSession().getAttribute("user").toString();
 				String date = request.getParameter("date");
 				String time = request.getParameter("time");
-				
-				int newsletterID = Integer.parseInt(request.getParameter("id"));
 				
 				String krit = request.getParameter("krit");
 				String[] element = request.getParameterValues("elements");
