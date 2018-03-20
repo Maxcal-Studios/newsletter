@@ -93,7 +93,7 @@
                             <span class="label label-warning">$cnt_not</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">You have $cnt_not notifications</li>
+                            <li class="header">Benachrichtigungen</li>
                             <li>
                                 <!-- Inner Menu: contains the notifications -->
                                 <ul class="menu">
@@ -124,8 +124,7 @@
                                 <img src="../bootstrap/dist/img/160x160.png" class="img-circle" alt="User Image">
 
                                 <p>
-                                    <% out.print(username); %> - Admin
-                                    <small>Mitglied seit $timestamp</small>
+                                    <% out.print(username); %> - Administrator
                                 </p>
                             </li>
                             <!-- Deleted Menu Body -->
@@ -220,7 +219,7 @@
             <span class="info-box-icon bg-red"><i class="ion ion-ios-calendar-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Nächster Versand</span>
+              <span class="info-box-text">N&aumlchster Versand</span>
               <span class="info-box-number">$dateNextSend</span>
             </div>
             <!-- /.info-box-content -->
