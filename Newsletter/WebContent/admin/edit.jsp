@@ -16,17 +16,6 @@
 
     	username = session.getAttribute("user").toString();
     }
-
-    Connection con = DBConnector.getConnection();
-    String sql = "SELECT * FROM member;";
-    PreparedStatement st = con.prepareStatement(sql);
-    ResultSet member = st.executeQuery();
-
-    sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member';";
-    st = con.prepareStatement(sql);
-    ResultSet head = st.executeQuery();
-
-    ResultSet data;
     %>
 
     <meta charset="utf-8">
@@ -313,9 +302,6 @@
 </body>
 
 <%
-	head.close();
-	member.close();
-	data.close();
 	st.close();
 	con.close();
  %>

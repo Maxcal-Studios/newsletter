@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
@@ -40,11 +41,19 @@ public class PublishNewsletter extends HttpServlet {
 			try {
 				
 				//getting the parameters
+				int newsletterID = Integer.parseInt(request.getParameter("id"));
 				String creator = request.getSession().getAttribute("user").toString();
 				String date = request.getParameter("date");
 				String time = request.getParameter("time");
 				
-				int newsletterID = Integer.parseInt(request.getParameter("id"));
+				String[] dates = time.split("/");
+				String[] times = time.split(":");
+				
+				if(times[1].endsWith("AM")) {
+					
+				}
+				
+				Timestamp t = new Timestamp(dates[2], dates[1], dates[0], hour, minute, second, nano)
 				
 				String krit = request.getParameter("krit");
 				String[] element = request.getParameterValues("elements");
