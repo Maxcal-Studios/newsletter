@@ -445,7 +445,7 @@
 				       			<dt>ID</dt>
 				                <dd name="id" id="id">$ID</dd>
 				           		<dt>Titel</dt>
-				                <dd id="tile">$Titel</dd>
+				                <dd id="title">$Titel</dd>
                                 <dt>Betreff</dt>
                                 <dd name="subject" id="subject">$Betreff</dd>
 				                <dt>Autor</dt>
