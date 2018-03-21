@@ -143,8 +143,8 @@
                 <li class="header">NAVIGATION</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li><a href="index.jsp"><i class="fa fa-dashboard"></i><span> Dashboard</span></a></li>
-                <li class="active"><a href="member.jsp"><i class="fa fa-users"></i><span> Mitglieder</span></a></li>
-                <li class="treeview">
+                <li><a href="member.jsp"><i class="fa fa-users"></i><span> Mitglieder</span></a></li>
+                <li class="treeview active">
                     <a href="#"><i class="fa fa-paper-plane"></i><span> Newsletter</span>
                         <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
@@ -183,10 +183,6 @@
 
         <!-- Main content -->
         <section class="content container-fluid">
-
-            <!--------------------------
-              | Your Page Content Here |
-              -------------------------->
 
             <div class="pagecontainer" style="width:100%;height:100vh;">
                 <div style="text-align: center; background-color:#3C8DBC;">
