@@ -4,18 +4,29 @@
 <head>
 
     <%
-    String username = "admin";
-    
-    if(!DBConnector.isLoggedIn(session)) {
-    	response.sendRedirect("../../login.jsp");
-    } else {
+        String username = "admin";
 
-    	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    	response.setHeader("Pragma", "no-cache");
-    	response.setHeader("Expires", "0");
-    
-    	username = session.getAttribute("user").toString();
-    }
+        if(!DBConnector.isLoggedIn(session)) {
+            response.sendRedirect("../../login.jsp");
+        } else {
+
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            response.setHeader("Pragma", "no-cache");
+            response.setHeader("Expires", "0");
+
+            username = session.getAttribute("user").toString();
+        }
+
+        Connection con = DBConnector.getConnection();
+        String sql = "SELECT * FROM member;";
+        PreparedStatement st = con.prepareStatement(sql);
+        ResultSet member = st.executeQuery();
+
+        sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member';";
+        st = con.prepareStatement(sql);
+        ResultSet head = st.executeQuery();
+
+        ResultSet data;
     %>
 
     <meta charset="utf-8">
@@ -36,11 +47,6 @@
     <link rel="stylesheet" href="../bootstrap/dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="../bootstrap/dist/css/skins/skin-blue.min.css">
 
-    <link rel="stylesheet" href="popup.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Archivo+Black|Dancing+Script|Inconsolata|Indie+Flower|Lobster|Montserrat|Open+Sans|Open+Sans+Condensed:300|Oswald|Playfair+Display|Poiret+One|Roboto|Rubik+Mono+One|Ubuntu" rel="stylesheet">
-
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -55,18 +61,7 @@
         #container i , select{color:black;}
         button{margin-bottom:5px}
         select{margin-bottom:5px}
-        .popup {display: none;position: fixed;z-index: 1;left: 0;top: 0;width: 100%;height: 100%;overflow: auto;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.3);}
-        .popup-content {background-color: #fefefe;margin: 15% auto;padding: 20px;border: 1px solid #888;width: 80%;}
-        .close {color: #4A4E51;float: right;font-size: 28px;font-weight: bold;}
-        .close:hover,
-        .close:focus {color: white;text-decoration: none;cursor: pointer;}
-        .popup-header {padding: 2px 16px;background-color: #3C8DBC;color: white;}
-        .popup-content {background-color: #FFFFFF;padding: 0;border: 1px solid #888;width: 65%;text-align:center;}
-        .popup-content input {font-size: 22;color: #4A4E51;background: #ECF0F5;width: 50%;border: 0;margin: 15px 0 15px;padding: 15px;box-sizing: border-box;}
-        .popup-content button {color:white;background: #3C8DBC;width: 50%;border: 0;margin: 15px 0 15px;padding: 15px;font-size: 22;cursor: pointer;}
-        .popup-content button:hover,.popup-content button:active,.popup-content button:focus {background: #367FA9;}
     </style>
-
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini"  onload="enableEditor();" style="margin: 0;">
@@ -78,11 +73,11 @@
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="index.jsp" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>C</b>AL</span>
+            <span class="logo-mini">News</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Max</b>CAL</span>
+            <span class="logo-lg"><b>News</b>letter</span>
         </a>
 
         <!-- Header Navbar -->
@@ -94,132 +89,32 @@
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-                    <!-- Messages: style can be found in dropdown.less-->
-                    <li class="dropdown messages-menu">
-                        <!-- Menu toggle button -->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-envelope-o"></i>
-                            <span class="label label-success">$cnt_msg</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have $cnt_msg messages</li>
-                            <li>
-                                <!-- inner menu: contains the messages -->
-                                <ul class="menu">
-                                    <li><!-- start message -->
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <!-- User Image -->
-                                                <img src="../bootstrap/dist/img/user2-160x160.png" class="img-circle" alt="User Image">
-                                            </div>
-                                            <!-- Message title and timestamp -->
-                                            <h4>
-                                                Support Team
-                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                            </h4>
-                                            <!-- The message -->
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <!-- end message -->
-                                </ul>
-                                <!-- /.menu -->
-                            </li>
-                            <li class="footer"><a href="#">See All Messages</a></li>
-                        </ul>
-                    </li>
-                    <!-- /.messages-menu -->
 
-                    <!-- Notifications Menu -->
-                    <li class="dropdown notifications-menu">
-                        <!-- Menu toggle button -->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">$cnt_not</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have $cnt_not notifications</li>
-                            <li>
-                                <!-- Inner Menu: contains the notifications -->
-                                <ul class="menu">
-                                    <li><!-- start notification -->
-                                        <a href="#">
-                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                        </a>
-                                    </li>
-                                    <!-- end notification -->
-                                </ul>
-                            </li>
-                            <li class="footer"><a href="#">View all</a></li>
-                        </ul>
-                    </li>
-                    <!-- Tasks Menu -->
-                    <li class="dropdown tasks-menu">
-                        <!-- Menu Toggle Button -->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-flag-o"></i>
-                            <span class="label label-danger">$cnt_tsk</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">$cnt_tsk</li>
-                            <li>
-                                <!-- Inner menu: contains the tasks -->
-                                <ul class="menu">
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <!-- Task title and progress text -->
-                                            <h3>
-                                                Design some buttons
-                                                <small class="pull-right">20%</small>
-                                            </h3>
-                                            <!-- The progress bar -->
-                                            <div class="progress xs">
-                                                <!-- Change the css width attribute to simulate progress -->
-                                                <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
-                                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">20% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <!-- end task item -->
-                                </ul>
-                            </li>
-                            <li class="footer">
-                                <a href="#">View all tasks</a>
-                            </li>
-                        </ul>
-                    </li>
                     <!-- User Account Menu -->
                     <li class="dropdown user user-menu">
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
-                            <img src="../bootstrap/dist/img/user2-160x160.png" class="user-image" alt="User Image">
+                            <img src="../bootstrap/dist/img/160x160.png" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">$username</span>
+                            <span class="hidden-xs"><% out.print(username); %></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
-                                <img src="../bootstrap/dist/img/user2-160x160.png" class="img-circle" alt="User Image">
+                                <img src="../bootstrap/dist/img/160x160.png" class="img-circle" alt="User Image">
 
                                 <p>
-                                    $username - Admin
-                                    <small>Mitglied seit $timestamp</small>
+                                    <% out.print(username); %> - Administrator
                                 </p>
                             </li>
                             <!-- Deleted Menu Body -->
 
                             <!-- Edited Menu Footer-->
                             <li class="user-footer">
-                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="../Logout" class="btn btn-default btn-flat">Abmelden</a>
                             </li>
                         </ul>
-                    </li>
-                    <!-- Control Sidebar Toggle Button -->
-                    <li>
-                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                     </li>
                 </ul>
             </div>
@@ -234,10 +129,10 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="../bootstrap/dist/img/user2-160x160.png" class="img-circle" alt="User Image">
+                    <img src="../bootstrap/dist/img/160x160.png" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>$username</p>
+                    <p><% out.print(username); %></p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
@@ -245,23 +140,25 @@
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu" data-widget="tree">
-                <li class="header">$INSERT CURRENT SITE</li>
+                <li class="header">NAVIGATION</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li><a href="index.jsp"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-                <li><a href="members.jsp"><i class="fa fa-users"></i> <span>Mitglieder</span></a></li>
-                <li class="treeview active">
-                    <a href="#"><i class="fa fa-paper-plane"></i> <span>Newsletter</span>
+                <li class="active"><a href="index.jsp"><i class="fa fa-dashboard"></i><span> Dashboard</span></a></li>
+                <li><a href="member.jsp"><i class="fa fa-users"></i><span> Mitglieder</span></a></li>
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-paper-plane"></i><span> Newsletter</span>
                         <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                   </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li  class="active"><a href="newsletter_create.jsp"><i class="fa fa-circle-o"></i>Erstellen</a></li>
-                        <li><a href="newsletter_publish.jsp"><i class="fa fa-circle-o"></i>Publizieren</a></li>
-                        <li><a href="newsletter_history.jsp"><i class="fa fa-circle-o"></i>History</a></li>
+                        <li><a href="newsletter_create.jsp"><i class="fa fa-circle-o"></i>Erstellen</a></li>
+                        <li><a href="publish.jsp"><i class="fa fa-circle-o"></i>Publizieren</a></li>
+                        <li><a href="history.jsp"><i class="fa fa-circle-o"></i>History</a></li>
                     </ul>
                 </li>
-                <li><a href="documentation.jsp"><i class="fa fa-book"></i><span>Dokumentation</span></a></li>
+                <li><a href="layout.jsp"><i class="glyphicon glyphicon-th-large"></i><span> Layout</span></a></li>
+                <li><a href="settings.jsp"><i class="fa fa-gears"></i><span> Einstellungen</span></a></li>
+                <li><a href="doc.jsp"><i class="fa fa-book"></i><span> Dokumentation</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>
@@ -269,6 +166,7 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
+
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -367,48 +265,48 @@
 
                 <iframe name="editor" style="height:80%; width: 100%" frameborder="0" id="editor"></iframe>
                 <button onclick="test();" title="Testen"  style="margin:10px"><i class="fa fa-desktop fa-2x"></i></button>
-                
+
                 <form action="../AddNewsletter" method="post">
-                
-                <button type="button" onclick="exp()" class="btn btn-default" data-toggle="modal" data-target="#modal-save"><i class="fa fa-paper-plane fa-2x"></i></button>
-                
-                <div class="modal fade" id="modal-save">
-		          <div class="modal-dialog">
-		            <div class="modal-content">
-		              <div class="modal-header">
-		                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		                  <span aria-hidden="true">&times;</span></button>
-		                <h4 class="modal-title">Newsletter speichern</h4>
-		              </div>
-		              <div class="modal-body">
-		              	<div class="form-group">
-		                	<label for="title" class="control-label">Titel</label>
-                  			<input name="title" type="text" class="form-control" id="title" placeholder="Titel">
-                  		</div>
-                  		<div class="form-group">
-		                	<label for="subject" class="control-label">Betreff</label>
-                  			<input name="subject" type="text" class="form-control" id="subject" placeholder="Betreff">
-                  		</div>
-                  		<div class="form-group">
-		                	<label for="author" class="control-label">Autor</label>
-                  			<input name="author" type="text" class="form-control" id="author" value="<% out.print(username); %>" readonly>
-                  		</div>
-                  		<div class="form-group">
-                 			<label>Beschreibung</label>
-                  			<textarea class="form-control" name="description" rows="3" placeholder="Beschreiben ..."></textarea>
-                		</div>
-		              </div>
-		              <div class="modal-footer">
-		                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Beenden</button>
-		                <button type="button submit" value="../AddNewsletter" class="btn btn-primary">Speichern</button>
-		              </div>
-		            </div>
-		            <!-- /.modal-content -->
-		          </div>
-		          <!-- /.modal-dialog -->
-		        </div>
-		        <!-- /.modal -->
-                
+
+                    <button type="button" onclick="exp()" class="btn btn-default" data-toggle="modal" data-target="#modal-save"><i class="fa fa-paper-plane fa-2x"></i></button>
+
+                    <div class="modal fade" id="modal-save">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">Newsletter speichern</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="title" class="control-label">Titel</label>
+                                        <input name="title" type="text" class="form-control" id="title" placeholder="Titel">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="subject" class="control-label">Betreff</label>
+                                        <input name="subject" type="text" class="form-control" id="subject" placeholder="Betreff">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="author" class="control-label">Autor</label>
+                                        <input name="author" type="text" class="form-control" id="author" value="<% out.print(username); %>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Beschreibung</label>
+                                        <textarea class="form-control" name="description" rows="3" placeholder="Beschreiben ..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Beenden</button>
+                                    <button type="button submit" value="../AddNewsletter" class="btn btn-primary">Speichern</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
+
             </div>
             <noscript>
                 <style type="text/css">
@@ -452,15 +350,13 @@
         </section>
         <!-- /.content -->
 
-		<!-- Ghost input for sending the test to the servlet -->
-		<input id="out" name="text" style="width:1px; height:1px; visibility: hidden;">
+        <!-- Ghost input for sending the test to the servlet -->
+        <input id="out" name="text" style="width:1px; height:1px; visibility: hidden;">
 
-		</form>
-	
+        </form>
+
     </div>
     <!-- /.content-wrapper -->
-
-	
 
     <!-- Main Footer -->
     <footer class="main-footer" style="height: 50px">
@@ -472,66 +368,6 @@
         <strong>Copyright &copy; 2018 <a href="https://github.com/Maxcal-Studios">Maxcal</a>.</strong> Alle Rechte vorbehalten.
     </footer>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Create the tabs -->
-
-        <!-- Tab panes -->
-        <div class="tab-content">
-            <div class="tab-pane active" id="control-sidebar-settings-tab">
-                <!-- /.control-sidebar-menu -->
-
-                <h3 class="control-sidebar-heading">Tasks Progress</h3>
-                <ul class="control-sidebar-menu">
-                    <!-- Settings Content -->
-                    <li>
-                        <a href="javascript:;">
-                            <h4 class="control-sidebar-subheading">
-                                Custom Template Design
-                                <span class="pull-right-container">
-                        <span class="label label-danger pull-right">70%</span>
-                      </span>
-                            </h4>
-
-                            <div class="progress progress-xxs">
-                                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /.control-sidebar-menu -->
-
-
-            </div>
-            <!-- /.tab-pane -->
-            <!-- Stats tab content -->
-            <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-            <!-- /.tab-pane -->
-            <!-- Settings tab content -->
-            <div class="tab-pane" id="control-sidebar-settings-tab">
-                <form method="post">
-                    <h3 class="control-sidebar-heading">General Settings</h3>
-
-                    <div class="form-group">
-                        <label class="control-sidebar-subheading">
-                            Report panel usage
-                            <input type="checkbox" class="pull-right" checked>
-                        </label>
-
-                        <p>
-                            Some information about this general settings option
-                        </p>
-                    </div>
-                    <!-- /.form-group -->
-                </form>
-            </div>
-            <!-- /.tab-pane -->
-        </div>
-    </aside>
-    <!-- /.control-sidebar -->
-    <!-- Add the sidebar's background. This div must be placed
-    immediately after the control sidebar -->
-    <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
 
@@ -543,15 +379,9 @@
 <script src="../bootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../bootstrap/dist/js/adminlte.min.js"></script>
-<!-- DataTables -->
-<script src="../bootstrap/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../bootstrap/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- ChartJS -->
+<script src="../bootstrap/bower_components/chart.js/Chart.js"></script>
 
-
-
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
 </body>
 
 <script>
@@ -692,5 +522,13 @@
         $(img).css('float', arg);
     }
 </script>
+
+<%
+    head.close();
+    member.close();
+    data.close();
+    st.close();
+    con.close();
+%>
 
 </html>
