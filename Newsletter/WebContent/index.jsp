@@ -96,8 +96,8 @@
 							}
 
 							for(int i = 0; i < results.length; i++) {
-								out.println("<div class='form-group'>");
-								out.println("<label placeholder='"+results[i].getString("text")+"'>" + "</label>");
+								out.println("<div class=\"form-group\">");
+								out.println("<label placeholder=\""+results[i].getString("text")+"\">" + "</label>");
 								out.println("<input spellcheck=\"false\" type=\""+results[i].getString("type")+"\" name=\""+results[i].getString("db_name")+"\" class=\"span\">");
 								out.println("</div>");
 							}
