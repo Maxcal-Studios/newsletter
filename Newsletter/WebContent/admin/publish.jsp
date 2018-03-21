@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="java.util.Date"%>
 <%@ page import="java.sql.*, com.database.*;" %>
 <html>
 <head>
@@ -308,42 +309,33 @@
             <div class="box-body">
               <table class="table table-bordered">
                 <tr>
-                  <th style="width: 10px">#</th>
-                  <th style="width: 25%;">Titel</th>
-                  <th>Progress</th>
-                  <th style="width: 40px">Label</th>
+                  <th style="width: 10px;">ID</th>
+                  <th style="width: 15%;">Newsletter ID</th>
+                  <th style="width: 15%;" >Datum</th>
+                  <th>Fortschritt</th>
+                  <th style="width: 20px;">Edit</th>
                 </tr>
-                <tr>
-                  <td>1.</td>
-                  <td>Update software</td>
-                  <td>
-                    <div class="progress progress-xs progress-striped active">
-                      <div class="progress-bar progress-bar-yellow" style="width: 90%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-red">x</span></td>
-                </tr>
-                <tr>
-                  <td>2.</td>
-                  <td>Clean database</td>
-                  <td>
-                    <div class="progress progress-xs progress-striped active">
-                      <div class="progress-bar progress-bar-yellow" style="width: 60%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-red">x</span></td>
-                </tr>
-                <tr>
-                  <td>3.</td>
-                  <td>Cron job running</td>
-                  <td>
-                    <div class="progress progress-xs progress-striped active">
-                      <div class="progress-bar progress-bar-yellow" style="width: 40%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-red">x</span></td>
-                </tr>
-                <tr>
+                <%
+                
+                sql = "SELECT * FROM schedule";
+                st = con.prepareStatement(sql);
+                rs = st.executeQuery();
+                
+                while(rs.next()) {
+                	out.println("<tr>");
+                	out.println("<td>" + rs.getString("id") + "</td>");
+                	out.println("<td>" + rs.getString("newsletterID") + "</td>");
+                	out.println("<td>" + rs.getString("sendDate") + "</td>");
+                	out.println("<td>");
+                	out.println("<div class=\"progress progress-xs progress-striped active\">");
+                	out.println("<div class=\"progress-bar progress-bar-yellow\" style=\"width: " + (new Date().getTime() - rs.getTimestamp("addDate").getTime()) / (rs.getTimestamp("sendDate").getTime() - rs.getTimestamp("addDate").getTime()) + "\"></div>");
+                	out.println("</div>");
+                	out.println("</td>");
+                	out.println("<td><span class=\"badge bg-red\">x</span></td>");
+                	out.println("</tr>");
+                }
+                	
+                %>
                   <td>4.</td>
                   <td>Fix and squish bugs</td>
                   <td>
@@ -445,8 +437,6 @@
 				                <dd id="date">$13.13.13</dd>
 				                <dt>Beschreibung</dt>
 				                <dd id="description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-				                  sit amet risus.Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-				                  sit amet risus.
 				                </dd>
 				         	</dl>
                  		</div>
