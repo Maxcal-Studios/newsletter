@@ -45,7 +45,7 @@
 	<!-- bootstrap wysihtml5 - text editor -->
 	<link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 	<!-- Select2 -->
-	<link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
+	<link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -103,21 +103,7 @@
 							}
 						%>
 
-
-						<div class="form-group">
-							<label>Filter</label>
-							<select class="form-control select2" style="width: 100%;">
-								<option selected="selected">Alabama</option>
-								<option>Alaska</option>
-								<option>California</option>
-								<option>Delaware</option>
-								<option>Tennessee</option>
-								<option>Texas</option>
-								<option>Washington</option>
-							</select>
-						</div>
 						<!-- /.form-group -->
-
 					</div>
 					<!-- /.box-body -->
 
@@ -143,8 +129,7 @@
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
-<!-- Select2 -->
-<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
+
 <%
 	rs.close();
 	st.close();
