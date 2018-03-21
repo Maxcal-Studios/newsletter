@@ -30,7 +30,10 @@ public class NewsletterSender {
 			String text = rs.getString(1);
 			String subject = rs.getString(2);
 			
-			if(krit == null || elements == null) {
+			System.out.println(":" + krit + ":" + elements + ":");
+			
+			if(krit == null || elements == null || krit.equals("") || elements.equals("")) {
+				System.out.println("worked");
 				sql = "SELECT email FROM member WHERE active = TRUE";
 			} else {
 				//cutting elements
@@ -46,14 +49,13 @@ public class NewsletterSender {
 			
 			st = con.prepareStatement(sql);
 			rs = st.executeQuery();
-			rs.first();
 			
 			//populating the recipients Array
 			ArrayList<String> recipients = new ArrayList<String>();
-			do {
+			while(rs.next()) {
 				recipients.add(rs.getString(1));
 			}
-			while(rs.next());
+			
 			
 			//send email
 			MailUtils.sendMail(recipients, subject, text);

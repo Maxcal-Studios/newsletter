@@ -85,7 +85,7 @@
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form">
+				<form action="../AddMember" role="form" method="post">
 					<div class="box-body">
 
 
@@ -108,7 +108,7 @@
 					<!-- /.box-body -->
 
 					<div class="box-footer">
-						<button type="submit" class="btn btn-primary" value="AddMember">Anmelden</button>
+						<button type="submit" class="btn btn-primary" value="../AddMember">Anmelden</button>
 					</div>
 				</form>
 			</div>

@@ -18,19 +18,20 @@ import com.newsletter.NewsletterSender;
 @WebListener
 public class ServerContextListener implements ServletContextListener {
 
+	Timer timer;
+	
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		System.out.println("test");
-		
 		TimerTask sheduleTimer = new SheduleTimerTask();
 		
-		Timer timer = new Timer();
-		timer.schedule(sheduleTimer, 1000, 15 * 1000);
+		timer = new Timer();
+		timer.schedule(sheduleTimer, 1000, 5 *(60*1000));
 	}
 	
 	@Override
 	public void contextDestroyed(ServletContextEvent sce) {
-		
+		timer.cancel();
+		timer.purge();
 	}
 	
 	class SheduleTimerTask extends TimerTask {
@@ -48,9 +49,9 @@ public class ServerContextListener implements ServletContextListener {
 				rs = st.executeQuery();
 				
 				while(rs.next()) {
-					Date publishDate = rs.getTimestamp("publishDate");
-					if(publishDate.after(new Date())) {
-						NewsletterSender.sendNewsletter(rs.getInt("id"), rs.getString("krit"), rs.getString("elements"));
+					Date publishDate = rs.getTimestamp("sendDate");
+					if(publishDate.before(new Date())) {
+						NewsletterSender.sendNewsletter(rs.getInt("newsletterID"), rs.getString("krit"), rs.getString("elements"));
 						sql = "DELETE FROM schedule WHERE id = ?";
 						st = con.prepareStatement(sql);
 						st.setInt(1, rs.getInt("id"));

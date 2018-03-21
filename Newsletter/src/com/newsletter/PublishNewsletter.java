@@ -58,15 +58,13 @@ public class PublishNewsletter extends HttpServlet {
 				
 				times = time.split(":");
 				
-				System.out.println(dates[2]);
-				
 				Timestamp t = new Timestamp(Integer.parseInt(dates[2]) - 1901, Integer.parseInt(dates[1]), Integer.parseInt(dates[0]), Integer.parseInt(times[0]), Integer.parseInt(times[1]), 0, 0);
 				
 				String krit = request.getParameter("krit");
 				String[] element = request.getParameterValues("elements");
 				
 				String elements = "";
-				if(krit != null && element != null) {
+				if((krit != null && element != null) || (krit != "")) {
 					for(int i = 0; i < element.length; i++) {
 						elements += element[i] + " ";
 					}

@@ -464,6 +464,7 @@
                  		<div class="form-group">
 			                <label>Kriterium</label>
 			               	<select name="krit" class="form-control select2" data-placeholder="W&Auml;hle ein Kriterium aus" style="width: 100%;">
+			               		<option></option>
 								<%
 								//get all krit's
 								sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member'";
