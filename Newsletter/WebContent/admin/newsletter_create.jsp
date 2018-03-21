@@ -526,7 +526,6 @@
 <%
     head.close();
     member.close();
-    data.close();
     st.close();
     con.close();
 %>

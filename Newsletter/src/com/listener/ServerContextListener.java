@@ -20,10 +20,12 @@ public class ServerContextListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
+		System.out.println("test");
+		
 		TimerTask sheduleTimer = new SheduleTimerTask();
 		
 		Timer timer = new Timer();
-		//timer.schedule(sheduleTimer, 1000, 15*(60 * 1000));
+		timer.schedule(sheduleTimer, 1000, 15 * 1000);
 	}
 	
 	@Override
@@ -39,7 +41,7 @@ public class ServerContextListener implements ServletContextListener {
 		@Override
 		public void run() {
 			
-			String sql = "SELECT * FROM shedule";
+			String sql = "SELECT * FROM schedule";
 			
 			try {
 				st = con.prepareStatement(sql);
@@ -49,7 +51,7 @@ public class ServerContextListener implements ServletContextListener {
 					Date publishDate = rs.getTimestamp("publishDate");
 					if(publishDate.after(new Date())) {
 						NewsletterSender.sendNewsletter(rs.getInt("id"), rs.getString("krit"), rs.getString("elements"));
-						sql = "DELETE FROM shedule WHERE id = ?";
+						sql = "DELETE FROM schedule WHERE id = ?";
 						st = con.prepareStatement(sql);
 						st.setInt(1, rs.getInt("id"));
 						st.executeUpdate();
