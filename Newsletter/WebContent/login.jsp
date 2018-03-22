@@ -47,7 +47,7 @@
       </div>
       <div class="row">
         <div class="col-xs-8">
-        	<a style="vertical-align: middle;" href="#">Passwort vergessen</a><br>
+        	<a style="vertical-align: middle;" href="#"></a><br>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
