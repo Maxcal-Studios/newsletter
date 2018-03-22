@@ -17,25 +17,11 @@
        	username = session.getAttribute("user").toString();
        }
 
-<<<<<<< HEAD
     Connection con = DBConnector.getConnection();
     PreparedStatement st = null;
     ResultSet rs = null;
     String sql = "";
     %>
-=======
-       Connection con = DBConnector.getConnection();
-       String sql = "SELECT * FROM member;";
-       PreparedStatement st = con.prepareStatement(sql);
-       ResultSet member = st.executeQuery();
-
-       sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member';";
-       st = con.prepareStatement(sql);
-       ResultSet head = st.executeQuery();
-
-       ResultSet data;
-       %>
->>>>>>> refs/remotes/origin/master
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -242,9 +228,7 @@
 </body>
 
 <%
-	head.close();
-	member.close();
-	data.close();
+	rs.close();
 	st.close();
 	con.close();
  %>
