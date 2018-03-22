@@ -38,15 +38,7 @@
 	<link rel="stylesheet" href="bootstrap/bower_components/morris.js/morris.css">
 	<!-- jvectormap -->
 	<link rel="stylesheet" href="bootstrap/bower_components/jvectormap/jquery-jvectormap.css">
-	<!-- Date Picker -->
-	<link rel="stylesheet" href="bootstrap/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-	<!-- Daterange picker -->
-	<link rel="stylesheet" href="bootstrap/bower_components/bootstrap-daterangepicker/daterangepicker.css">
-	<!-- bootstrap wysihtml5 - text editor -->
-	<link rel="stylesheet" href="bootstrap/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-	<!-- Select2 -->
-	<link rel="stylesheet" href="bootstrap/bower_components/select2/dist/css/select2.min.css">
-
+	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -73,52 +65,53 @@
 
 <body style="background:#D0D5DD">
 <div class="container-fluid" style="padding-top:10%;">
-	<section class="content" style="width:35%">
+	<section class="content">
 		<div class="row">
 			<div class="login-logo">
 				<b>News</b>letter
 			</div>
 
-			<div class="box box-primary">
-				<div class="box-header with-border">
-					<h3 class="box-title">Anmeldung zum Newsletter</h3>
+			<div class="col"></div>
+
+			<div class="col-md-3 col-sm-12">
+				<div class="box box-default">
+					<div class="box-header">
+						<h2 class="box-title">Anmeldung zum Newsletter</h2>
+					</div>
+					<!-- /.box-header -->
+					<!-- form start -->
+					<form action="../AddMember" role="form" method="post">
+						<div class="box-body">
+	
+	
+							<%
+	
+								for(ResultSet r : results) {
+									r.next();
+								}
+	
+								for(int i = 0; i < results.length; i++) {
+									out.println("<div class=\"form-group\">");
+									out.println("<input placeholder=\"" + results[i].getString("text") + "\"spellcheck=\"false\" type=\""+results[i].getString("type")+"\" name=\""+results[i].getString("db_name")+"\" class=\"form-control\">");
+									out.println("</div>");
+								}
+							%>
+	
+							<!-- /.form-group -->
+						</div>
+						<!-- /.box-body -->
+	
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary" value="../AddMember">Anmelden</button>
+						</div>
+					</form>
 				</div>
-				<!-- /.box-header -->
-				<!-- form start -->
-				<form action="../AddMember" role="form" method="post">
-					<div class="box-body">
-
-
-						<%
-
-							for(ResultSet r : results) {
-								r.next();
-							}
-
-							for(int i = 0; i < results.length; i++) {
-								out.println("<div class=\"form-group\">");
-								out.println("<label placeholder=\""+results[i].getString("text")+"\">" + "</label>");
-								out.println("<input spellcheck=\"false\" type=\""+results[i].getString("type")+"\" name=\""+results[i].getString("db_name")+"\" class=\"span\">");
-								out.println("</div>");
-							}
-						%>
-
-						<!-- /.form-group -->
-					</div>
-					<!-- /.box-body -->
-
-					<div class="box-footer">
-						<button type="submit" class="btn btn-primary" value="../AddMember">Anmelden</button>
-					</div>
-				</form>
 			</div>
-
+			<div class="col"></div>
 		</div>
 	</section>
 	<a href="login.jsp" style="color:black"> <button class="btn btn-flat btn-hover">Zum Adminpanel</button></a>
-
 </div>
-
 </body>
 <!-- jQuery 3 -->
 <script src="bootstrap/bower_components/jquery/dist/jquery.min.js"></script>

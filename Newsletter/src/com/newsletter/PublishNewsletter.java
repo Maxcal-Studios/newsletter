@@ -31,8 +31,6 @@ public class PublishNewsletter extends HttpServlet {
 			response.sendRedirect("../../login.jsp");
 		}
 
-		System.out.println(request.getParameter("id"));
-		
 		if(request.getParameter("method").equals("schedule")) {
 			//creating a connection to the DB
 	    	Connection con = DBConnector.getConnection();
@@ -48,8 +46,6 @@ public class PublishNewsletter extends HttpServlet {
 				String time = request.getParameter("time");
 				
 				String[] dates = date.split("/");
-				
-				for(String d :  dates) System.out.println(d);
 				
 				SimpleDateFormat s12 = new SimpleDateFormat("hh:mm aa");
 				SimpleDateFormat s24 = new SimpleDateFormat("HH:mm");

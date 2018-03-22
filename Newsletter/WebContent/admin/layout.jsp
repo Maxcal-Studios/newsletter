@@ -18,15 +18,10 @@
     }
 
     Connection con = DBConnector.getConnection();
-    String sql = "SELECT * FROM member;";
-    PreparedStatement st = con.prepareStatement(sql);
-    ResultSet member = st.executeQuery();
+    PreparedStatement st = null;
+    ResultSet rs = null;
+     String sql = "";
 
-    sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member';";
-    st = con.prepareStatement(sql);
-    ResultSet head = st.executeQuery();
-
-    ResultSet data;
     %>
 
     <meta charset="utf-8">
@@ -177,7 +172,7 @@
         <!-- Main content -->
         <section class="content container-fluid">
 
-        <!-- HIER PASCAL! :) -->
+        
 
         </section>
         <!-- /.content -->
@@ -209,9 +204,7 @@
 </body>
 
 <%
-	head.close();
-	member.close();
-	data.close();
+	rs.close();
 	st.close();
 	con.close();
  %>
