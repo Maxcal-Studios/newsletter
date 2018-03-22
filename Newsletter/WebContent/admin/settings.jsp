@@ -3,7 +3,7 @@
 <html>
 <head>
 
-    <%
+ <%
     String username = "admin";
 
     if(!DBConnector.isLoggedIn(session)) {

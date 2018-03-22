@@ -3,25 +3,39 @@
 <html>
 <head>
 
-    <%
-    String username = "admin";
+       <%
+       String username = "admin";
 
-    if(!DBConnector.isLoggedIn(session)) {
-    	response.sendRedirect("../../login.jsp");
-    } else {
+       if(!DBConnector.isLoggedIn(session)) {
+       	response.sendRedirect("../../login.jsp");
+       } else {
 
-    	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    	response.setHeader("Pragma", "no-cache");
-    	response.setHeader("Expires", "0");
+       	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+       	response.setHeader("Pragma", "no-cache");
+       	response.setHeader("Expires", "0");
 
-    	username = session.getAttribute("user").toString();
-    }
+       	username = session.getAttribute("user").toString();
+       }
 
+<<<<<<< HEAD
     Connection con = DBConnector.getConnection();
     PreparedStatement st = null;
     ResultSet rs = null;
     String sql = "";
     %>
+=======
+       Connection con = DBConnector.getConnection();
+       String sql = "SELECT * FROM member;";
+       PreparedStatement st = con.prepareStatement(sql);
+       ResultSet member = st.executeQuery();
+
+       sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member';";
+       st = con.prepareStatement(sql);
+       ResultSet head = st.executeQuery();
+
+       ResultSet data;
+       %>
+>>>>>>> refs/remotes/origin/master
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -228,9 +242,12 @@
 </body>
 
 <%
-	rs.close();
+	head.close();
+	member.close();
+	data.close();
 	st.close();
 	con.close();
  %>
+
 
 </html>

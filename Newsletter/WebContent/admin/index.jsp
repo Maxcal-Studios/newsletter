@@ -261,9 +261,9 @@
           <!-- /.box -->
 
           <div class="callout callout-info">
-            <h4>Sie benötigen Hilfe?</h4>
-            <p>In der Dokumentation finden sie eine Anleitung zur Bedienung des Newslettersystems.
-            Klicken sie dazu auf den Punkt 'Dokumentation' in der Navigationsleiste auf der linken Seite. Sie haben noch Fragen? Schicken sie uns eine E-Mail unter Maxcal.Studios@gmail.com.
+            <h4>Sie ben&oumltigen Hilfe?</h4>
+            <p>Die Dokumentation beinhaltet eine Anleitung zur Bedienung des Newslettersystems.
+            Diese befindet sich unter dem Punkt 'Dokumentation' in der Navigationsleiste auf der linken Seite. Sie haben noch Fragen? Schicken sie uns eine E-Mail unter Maxcal.Studios@gmail.com.
 
             </p>
           </div>
@@ -341,7 +341,6 @@
           responsive           : true,
           // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
           maintainAspectRatio  : true,
-
         }
         //Create pie or douhnut chart
         // You can switch between pie and douhnut using the method below.

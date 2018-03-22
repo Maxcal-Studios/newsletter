@@ -167,59 +167,6 @@
         <!-- Main content -->
         <section class="content container-fluid">
 
-		<!-- row -->
-		<div class="row">
-			<div class="col-md-2 col-sm-0"></div>
-			<div class="col-md-8 col-sm-12">
-
-				<!-- Horizontal Form -->
-				  <div class="box box-info">
-				    <div class="box-header with-border">
-				      <h3 class="box-title">Horizontal Form</h3>
-				    </div>
-				    <!-- /.box-header -->
-				    <!-- form start -->
-				    <form class="form-horizontal">
-				      <div class="box-body">
-					<div class="form-group">
-					  <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-
-					  <div class="col-sm-10">
-					    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-					  </div>
-					</div>
-					<div class="form-group">
-					  <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-
-					  <div class="col-sm-10">
-					    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-					  </div>
-					</div>
-					<div class="form-group">
-					  <div class="col-sm-offset-2 col-sm-10">
-					    <div class="checkbox">
-					      <label>
-						<input type="checkbox"> Remember me
-					      </label>
-					    </div>
-					  </div>
-					</div>
-				      </div>
-				      <!-- /.box-body -->
-				      <div class="box-footer">
-					<button type="submit" class="btn btn-default">Cancel</button>
-					<button type="submit" class="btn btn-info pull-right">Sign in</button>
-				      </div>
-				      <!-- /.box-footer -->
-				    </form>
-				  </div>
-				  <!-- /.box -->
-
-
-			</div>
-			<div class="col-md-2 col-sm-0"></div>
-		</div>
-
 		<%
 
 		//retrieves the ID of the demanded member
@@ -240,36 +187,60 @@
 		ResultSet rsLabel = st.executeQuery();
 
 		%>
-		<div class="container">
-			<form action="../EditMember" method="post">
-				<table width=100% >
 
-		<%
-		//generate HTML
-		int length = 0;
-		while(rsLabel.next()) {
-			length++;
-		}
-		rsLabel.first();
 
-		rsVal.first();
+		<!-- row -->
+		<div class="row">
+			<div class="col-md-2 col-sm-0"></div>
+			<div class="col-md-8 col-sm-12">
 
-		for(int i = 1; i <= rsVal.getMetaData().getColumnCount(); i++) {
-			out.println("<tr>");
-			out.println("<td>" + rsLabel.getString(1) + "</td>");
-			out.println("<td><input spellcheck=\"false\" id=\"input\" name=\""+ rsLabel.getString(1) +"\" value=\"" + rsVal.getString(i) + "\"></td>");
-			out.println("</tr>");
-			rsLabel.next();
-		}
-		%>
-				</table>
+				<!-- Horizontal Form -->
+				  <div class="box box-info">
+				    <div class="box-header with-border">
+				      <h3 class="box-title">Mitglied verwalten</h3>
+				    </div>
+				    <!-- /.box-header -->
 
-				<button style="width=100%" value="../EditMember" type="submit" class="button1">Save</button>
-				<a href="member.jsp"></a>
-			</form>
+				    <!-- form start -->
+				    <form class="form-horizontal" action="../EditMember" method="post">
+				      <div class="box-body">
+
+                    <%
+                    //generate HTML
+                    int length = 0;
+                    while(rsLabel.next()) {
+                        length++;
+                    }
+                    rsLabel.first();
+
+                    rsVal.first();
+
+                    for(int i = 1; i <= rsVal.getMetaData().getColumnCount(); i++) {
+                        out.println("<div class=\"form-group\">");
+                        out.println("<label class=\"col-sm-2 control-label\">" + rsLabel.getString(1) + "</label>");
+                        out.println("<div class=\"col-sm-10\">";
+                        out.println("<input class=\"form-control\" spellcheck=\"false\" id=\"input\" name=\""+ rsLabel.getString(1) +"\" value=\"" + rsVal.getString(i) + "\">");
+                        out.println("</div>");
+                        out.println("</div>");
+                        rsLabel.next();
+                    }
+                    %>
+
+				      </div>
+				      <!-- /.box-body -->
+				      <div class="box-footer">
+					<button type="submit" class="btn btn-default">Abbrechen</button>
+					<button type="submit" value="../EditMember" class="btn btn-info pull-right" ><a href="member.jsp">&Aumlnderungen &uumlbernehmen</a></button>
+
+				      </div>
+				      <!-- /.box-footer -->
+				    </form>
+				  </div>
+				  <!-- /.box -->
+
+			</div>
+			<div class="col-md-2 col-sm-0"></div>
 		</div>
-
-
 
         </section>
         <!-- /.content -->
