@@ -20,8 +20,7 @@
     Connection con = DBConnector.getConnection();
     PreparedStatement st = null;
     ResultSet rs = null;
-     String sql = "";
-
+    String sql = "";
     %>
 
     <meta charset="utf-8">
@@ -54,7 +53,7 @@
 
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini"  onload="enableEditor();" style="margin: 0;">
+<body class="hold-transition skin-blue sidebar-mini" style="margin: 0;">
 
 <div class="wrapper">
 
@@ -171,7 +170,13 @@
 
         <!-- Main content -->
         <section class="content container-fluid">
-
+		<%
+		
+		sql = "SELECT * FROM layout";
+		st = con.prepareStatement(sql);
+		rs = st.executeQuery();
+		
+		%>
         
 
         </section>

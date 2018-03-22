@@ -53,17 +53,17 @@
 		.btn-hover {
 			margin-left: 32.5%;
 			background: white;
-		}
+		
 
 		.btn-hover:hover {
 			background: #d3d3d3;
 		}
 	</style>
-	<title>Newsletter | Anmelden</title>
+	<title>Newsletter | Registrieren</title>
 
 </head>
 
-<body style="background:#D0D5DD">
+<body style="background-image: url('img/back.jpg');">
 <div class="login-box">
   <div class="login-logo">
     <a href="index.jsp"><b>News</b>letter</a>
@@ -87,14 +87,10 @@
 		%>
       <button type="submit" class="btn btn-primary btn-block btn-flat">Registrieren</button>
     </form>
-
   </div>
   <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
-
-	
-						
 	<a href="login.jsp" style="color:black"> <button class="btn btn-flat btn-hover">Zum Adminpanel</button></a>
 </body>
 <!-- jQuery 3 -->
