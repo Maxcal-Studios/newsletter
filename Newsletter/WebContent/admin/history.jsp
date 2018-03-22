@@ -162,7 +162,7 @@
         <section class="content-header">
             <h1>
                 History
-                <small>Verlauf auller versendeten Newsletter</small>
+                <small>Verlauf aller versendeten Newsletter</small>
             </h1>
              <ol class="breadcrumb">
                 <li><a href="index.jsp"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -178,7 +178,7 @@
                 <div class="col-xs-12">
                   <div class="box">
                     <div class="box-header">
-                      <h3 class="box-title">Historie</h3>
+                      <h3 class="box-title">Verlauf</h3>
                     </div>
                     <!-- /.box-header -->
                       <div class="box-body">
