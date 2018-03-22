@@ -64,54 +64,38 @@
 </head>
 
 <body style="background:#D0D5DD">
-<div class="container-fluid" style="padding-top:10%;">
-	<section class="content">
-		<div class="row">
-			<div class="login-logo">
-				<b>News</b>letter
-			</div>
+<div class="login-box">
+  <div class="login-logo">
+    <a href="index.jsp"><b>News</b>letter</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Registrieren</p>
 
-			<div class="col"></div>
+    <form action="AddMember" method="post">
+      	<%
+	
+		for(ResultSet r : results) {
+			r.next();
+		}
+	
+		for(int i = 0; i < results.length; i++) {
+			out.println("<div class=\"form-group \">");
+			out.println("<input placeholder=\"" + results[i].getString("text") + "\"spellcheck=\"false\" type=\""+results[i].getString("type")+"\" name=\""+results[i].getString("db_name")+"\" class=\"form-control\">");
+			out.println("</div>");
+		}
+		%>
+      <button type="submit" class="btn btn-primary btn-block btn-flat">Registrieren</button>
+    </form>
 
-			<div class="col-md-3 col-sm-12">
-				<div class="box box-default">
-					<div class="box-header">
-						<h2 class="box-title">Anmeldung zum Newsletter</h2>
-					</div>
-					<!-- /.box-header -->
-					<!-- form start -->
-					<form action="../AddMember" role="form" method="post">
-						<div class="box-body">
-	
-	
-							<%
-	
-								for(ResultSet r : results) {
-									r.next();
-								}
-	
-								for(int i = 0; i < results.length; i++) {
-									out.println("<div class=\"form-group\">");
-									out.println("<input placeholder=\"" + results[i].getString("text") + "\"spellcheck=\"false\" type=\""+results[i].getString("type")+"\" name=\""+results[i].getString("db_name")+"\" class=\"form-control\">");
-									out.println("</div>");
-								}
-							%>
-	
-							<!-- /.form-group -->
-						</div>
-						<!-- /.box-body -->
-	
-						<div class="box-footer">
-							<button type="submit" class="btn btn-primary" value="../AddMember">Anmelden</button>
-						</div>
-					</form>
-				</div>
-			</div>
-			<div class="col"></div>
-		</div>
-	</section>
-	<a href="login.jsp" style="color:black"> <button class="btn btn-flat btn-hover">Zum Adminpanel</button></a>
+  </div>
+  <!-- /.login-box-body -->
 </div>
+<!-- /.login-box -->
+
+	
+						
+	<a href="login.jsp" style="color:black"> <button class="btn btn-flat btn-hover">Zum Adminpanel</button></a>
 </body>
 <!-- jQuery 3 -->
 <script src="bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
