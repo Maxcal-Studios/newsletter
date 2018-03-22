@@ -182,7 +182,7 @@
                     </div>
                     <!-- /.box-header -->
                       <div class="box-body">
-                      <table id="table-member" class="table table-bordered table-striped">
+                      <table id="table-history" class="table table-bordered table-striped">
                             <thead>
                             <tr>
                               <th>ID</th>
@@ -253,6 +253,13 @@
 <!-- DataTables -->
 <script src="../bootstrap/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../bootstrap/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+<!-- Table jQuery -->
+<script>
+  $(function () {
+    $('#table-history').DataTable()
+  })
+</script>
 
 </body>
 
