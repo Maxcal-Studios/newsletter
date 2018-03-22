@@ -17,12 +17,20 @@
        	username = session.getAttribute("user").toString();
        }
 
-    Connection con = DBConnector.getConnection();
-    PreparedStatement st = null;
-    ResultSet rs = null;
-    String sql = "";
-    %>
-
+    	Connection con = DBConnector.getConnection();
+		String sql = "SELECT * FROM layout";
+		PreparedStatement st = con.prepareStatement(sql);
+		ResultSet rs = st.executeQuery();
+		rs.last();
+		ResultSet[] results = new ResultSet[rs.getRow()];
+		
+		for(int i = 0; i < results.length; i++) {
+			sql = "SELECT * FROM layout WHERE pos=" + i;
+			st = con.prepareStatement(sql);
+			results[i] = st.executeQuery();
+		}
+		%>
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Newsletter | Admin</title>
@@ -50,6 +58,17 @@
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    
+    <style>
+    .backgroundImage {
+    	background: 
+		radial-gradient(
+		rgba(255,255,255,0.0) 35%,
+		rgba(236,239,245,1) 70%
+		),  	
+    	url('../img/back.jpg');
+	}
+    </style>
 
 </head>
 
@@ -155,7 +174,7 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="content-wrapper backgroundImage">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
@@ -173,13 +192,11 @@
         
 		<div class="login-box">
 		  <div class="login-logo">
-		    <a href="index.jsp"><b>News</b>letter</a>
+		    <a href="#"><b>News</b>letter</a>
 		  </div>
 		  <!-- /.login-logo -->
 		  <div class="login-box-body">
-		    <p class="login-box-msg">Registrieren</p>
-		
-		    <form action="AddMember" method="post">
+		    <a type="submit"><p class="login-box-msg">Speichern</p></a>
 		      	<%
 			
 				for(ResultSet r : results) {
@@ -188,15 +205,37 @@
 			
 				for(int i = 0; i < results.length; i++) {
 					out.println("<div class=\"form-group \">");
-					out.println("<input placeholder=\"" + results[i].getString("text") + "\"spellcheck=\"false\" type=\""+results[i].getString("type")+"\" name=\""+results[i].getString("db_name")+"\" class=\"form-control\">");
+					out.println("<input data-toggle=\"modal\" data-target=\"#modal-default\" placeholder=\"Klick mich\" class=\"form-control\" readonly>");
 					out.println("</div>");
 				}
 				%>
-		      <button type="submit" class="btn btn-primary btn-block btn-flat">Registrieren</button>
-		    </form>
+		      <button class="btn btn-primary btn-block btn-flat">+</button>
 		  </div>
 		  <!-- /.login-box-body -->
 		</div>
+        
+        <div class="modal fade" id="modal-default">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Default Modal</h4>
+              </div>
+              <div class="modal-body">
+                <p>One fine body&hellip;</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+        
         
         </section>
         <!-- /.content -->

@@ -53,17 +53,25 @@
 		.btn-hover {
 			margin-left: 32.5%;
 			background: white;
-		
+		}
 
 		.btn-hover:hover {
 			background: #d3d3d3;
+		}
+		.backgroundImage {
+			background-image: url('img/back.jpg');
+			height: 100%;
+			width: 100%;
+			background-position: center;
+    		background-repeat: no-repeat;
+    		background-size: cover;		
 		}
 	</style>
 	<title>Newsletter | Registrieren</title>
 
 </head>
 
-<body style="background-image: url('img/back.jpg');">
+<body class="backgroundImage">
 <div class="login-box">
   <div class="login-logo">
     <a href="index.jsp"><b>News</b>letter</a>
@@ -92,6 +100,7 @@
 </div>
 <!-- /.login-box -->
 	<a href="login.jsp" style="color:black"> <button class="btn btn-flat btn-hover">Zum Adminpanel</button></a>
+</div>
 </body>
 <!-- jQuery 3 -->
 <script src="bootstrap/bower_components/jquery/dist/jquery.min.js"></script>

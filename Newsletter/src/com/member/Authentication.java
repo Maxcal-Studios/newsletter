@@ -17,11 +17,6 @@ public class Authentication extends HttpServlet {
 	
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-    	//login check
-    	if(!DBConnector.isLoggedIn(request.getSession())) {
-    		response.sendRedirect("../../login.jsp");
-    	}
-    	
     	String hash = request.getParameter("hash");
          
     	Connection con = DBConnector.getConnection();

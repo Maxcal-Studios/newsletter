@@ -23,11 +23,6 @@ public class AddMember extends HttpServlet {
 	
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-    	//login check
-    	if(!DBConnector.isLoggedIn(request.getSession())) {
-    		response.sendRedirect("../../login.jsp");
-    	}
-    	
     	//creating a connection to the DB
     	Connection con = DBConnector.getConnection();
     	PreparedStatement st = null;
@@ -97,9 +92,6 @@ public class AddMember extends HttpServlet {
             
             val[val.length - 1] = hash;
             
-            //set response Bufferize
-            response.setBufferSize(4 * val.length * 1024);
-            
             //send email
             MailUtils.sendMail(val[emailIndex], "Newsletter", ("maxcal.hopto.org/Authentication?hash=" + hash));
             
@@ -127,11 +119,11 @@ public class AddMember extends HttpServlet {
 		    try { st.close(); } catch (Exception e) { }
 		    try { con.close(); } catch (Exception e) { }
 		}
+      //add cookie
+      //response.addCookie(cookie);
         
-        //adding the cookie with a timestamp
-        response.addCookie(cookie);
-        
-        //redirect to auth.html
-        response.sendRedirect("../auth.html");
+      //redirect to auth.html
+      response.sendRedirect("../auth.jsp");
+      return;
     }
 }

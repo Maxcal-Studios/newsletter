@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="java.util.Date"%>
 <%@ page import="java.sql.*, com.database.*;" %>
 <html>
 <head>
@@ -220,9 +221,22 @@
           <div class="info-box">
             <span class="info-box-icon bg-green"><i class="ion ion-ios-personadd-outline"></i></span>
 
+			<%
+			
+			sql = "SELECT time FROM member";
+    		st = con.prepareStatement(sql);
+    		data = st.executeQuery();
+			
+			int count = 0;
+			while(data.next()) {
+				if(data.getTimestamp(1).getTime() - new Date().getTime() < 1000 * 60 * 60 * 24) count++;
+			}
+			
+			%>
+
             <div class="info-box-content">
               <span class="info-box-text">Neue Mitglieder</span>
-              <span class="info-box-number">$newMembers</span>
+              <span class="info-box-number"><% out.println(count); %></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -382,8 +396,6 @@
       responsive           : true,
       // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
       maintainAspectRatio  : true,
-      //String - A legend template
-      legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
     }
     //Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.
