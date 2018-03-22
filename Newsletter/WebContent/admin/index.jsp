@@ -307,13 +307,13 @@
             value    : 500,
             color    : '#00a65a',
             highlight: '#00a65a',
-            label    : 'IE'
+            label    : 'Aktivierte Benutzer'
           },
           {
             value    : 400,
             color    : '#f39c12',
             highlight: '#f39c12',
-            label    : 'FireFox'
+            label    : 'Nicht aktivierte Benutzer'
           }
         ]
         var pieOptions     = {
