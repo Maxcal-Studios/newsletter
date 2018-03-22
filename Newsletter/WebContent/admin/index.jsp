@@ -268,37 +268,35 @@
       </div>
       <!-- /.row -->
 
-     <div class="col-md-6">
-          <!-- DONUT CHART -->
-          <div class="box box-danger">
-            <div class="box-header with-border">
-              <h3 class="box-title">Donut Chart</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        <div class="row">
+         <div class="col-md-6">
+              <!-- DONUT CHART -->
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Mitglider Status</h3>
+                </div>
+                <div class="box-body">
+                  <canvas id="pieChart" style="height:250px"></canvas>
+                </div>
+                <!-- /.box-body -->
               </div>
+              <!-- /.box -->
             </div>
-            <div class="box-body">
-              <canvas id="pieChart" style="height:250px"></canvas>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
+            <!-- /.col (LEFT) -->
+
+            <div class="col-md-3">
+              <div class="callout callout-info">
+                <h4>Sie ben&oumltigen Hilfe?</h4>
+                <p>Die Dokumentation beinhaltet eine Anleitung zur Bedienung des Newslettersystems.
+                Diese befindet sich unter dem Punkt 'Dokumentation' in der Navigationsleiste auf der linken Seite. Sie haben noch Fragen? Schicken sie uns eine E-Mail unter Maxcal.Studios@gmail.com.
+
+                </p>
+              </div>
+              </div>
+             <!-- /.col (RIGHT) -->
+
         </div>
-        <!-- /.col (LEFT) -->
-
-
-
-          <div class="callout callout-info">
-            <h4>Sie ben&oumltigen Hilfe?</h4>
-            <p>Die Dokumentation beinhaltet eine Anleitung zur Bedienung des Newslettersystems.
-            Diese befindet sich unter dem Punkt 'Dokumentation' in der Navigationsleiste auf der linken Seite. Sie haben noch Fragen? Schicken sie uns eine E-Mail unter Maxcal.Studios@gmail.com.
-
-            </p>
-          </div>
-
+        <!-- /.row -->
 
         </section>
         <!-- /.content -->
@@ -339,40 +337,16 @@
     var pieChart       = new Chart(pieChartCanvas)
     var PieData        = [
       {
-        value    : 700,
-        color    : '#f56954',
-        highlight: '#f56954',
-        label    : 'Chrome'
-      },
-      {
-        value    : 500,
+        value    : 600,
         color    : '#00a65a',
         highlight: '#00a65a',
-        label    : 'IE'
-      },
-      {
-        value    : 400,
-        color    : '#f39c12',
-        highlight: '#f39c12',
-        label    : 'FireFox'
-      },
-      {
-        value    : 600,
-        color    : '#00c0ef',
-        highlight: '#00c0ef',
-        label    : 'Safari'
+        label    : 'Aktivierte Mitglieder'
       },
       {
         value    : 300,
-        color    : '#3c8dbc',
-        highlight: '#3c8dbc',
-        label    : 'Opera'
-      },
-      {
-        value    : 100,
-        color    : '#d2d6de',
-        highlight: '#d2d6de',
-        label    : 'Navigator'
+        color    : '#f39c12',
+        highlight: '#f39c12',
+        label    : 'Nicht aktivierte Mitglieder'
       }
     ]
     var pieOptions     = {
