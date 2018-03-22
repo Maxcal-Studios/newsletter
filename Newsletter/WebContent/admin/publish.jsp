@@ -322,13 +322,22 @@
                 rs = st.executeQuery();
                 
                 while(rs.next()) {
+                	float now = new Date().getTime() / 1000;
+                	float add = rs.getTimestamp("addDate").getTime() / 1000;
+                	float send = rs.getTimestamp("sendDate").getTime() / 1000;
+                	float perc = (now - add) / (send - add) * 100;
+                	System.out.println(now);
+                	System.out.println(add);
+                	System.out.println(send);
+                	System.out.println(perc);
+                
                 	out.println("<tr>");
                 	out.println("<td>" + rs.getString("id") + "</td>");
                 	out.println("<td>" + rs.getString("newsletterID") + "</td>");
                 	out.println("<td>" + rs.getString("sendDate") + "</td>");
                 	out.println("<td>");
                 	out.println("<div class=\"progress progress-xs progress-striped active\">");
-                	out.println("<div class=\"progress-bar progress-bar-yellow\" style=\"width: " + (new Date().getTime() - rs.getTimestamp("addDate").getTime()) / (rs.getTimestamp("sendDate").getTime() - rs.getTimestamp("addDate").getTime()) + "\"></div>");
+                	out.println("<div class=\"progress-bar progress-bar-yellow\" style=\"width: " + perc + "%\"></div>");
                 	out.println("</div>");
                 	out.println("</td>");
                 	out.println("<td><span class=\"badge bg-red\">x</span></td>");
@@ -336,15 +345,6 @@
                 }
                 	
                 %>
-                  <td>4.</td>
-                  <td>Fix and squish bugs</td>
-                  <td>
-                    <div class="progress progress-xs progress-striped active">
-                      <div class="progress-bar progress-bar-yellow" style="width: 10%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-red">x</span></td>
-                </tr>
               </table>
             </div>
             <!-- /.box-body -->
