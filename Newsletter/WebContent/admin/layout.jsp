@@ -170,15 +170,34 @@
 
         <!-- Main content -->
         <section class="content container-fluid">
-		<%
-		
-		sql = "SELECT * FROM layout";
-		st = con.prepareStatement(sql);
-		rs = st.executeQuery();
-		
-		%>
         
-
+		<div class="login-box">
+		  <div class="login-logo">
+		    <a href="index.jsp"><b>News</b>letter</a>
+		  </div>
+		  <!-- /.login-logo -->
+		  <div class="login-box-body">
+		    <p class="login-box-msg">Registrieren</p>
+		
+		    <form action="AddMember" method="post">
+		      	<%
+			
+				for(ResultSet r : results) {
+					r.next();
+				}
+			
+				for(int i = 0; i < results.length; i++) {
+					out.println("<div class=\"form-group \">");
+					out.println("<input placeholder=\"" + results[i].getString("text") + "\"spellcheck=\"false\" type=\""+results[i].getString("type")+"\" name=\""+results[i].getString("db_name")+"\" class=\"form-control\">");
+					out.println("</div>");
+				}
+				%>
+		      <button type="submit" class="btn btn-primary btn-block btn-flat">Registrieren</button>
+		    </form>
+		  </div>
+		  <!-- /.login-box-body -->
+		</div>
+        
         </section>
         <!-- /.content -->
     </div>
