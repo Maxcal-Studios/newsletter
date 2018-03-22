@@ -203,10 +203,22 @@
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-red"><i class="ion ion-ios-calendar-outline"></i></span>
-
+			
+			<%
+			
+			sql = "SELECT time FROM schedule ORDER BY time";
+    		st = con.prepareStatement(sql);
+    		data = st.executeQuery();
+			data.first();
+			
+			long time = data.getTimestamp(1).getTime() - new Date().getTime(); 
+			float next = (float) (time) / 1000 / 60 / 60;
+			
+			%>
+			
             <div class="info-box-content">
               <span class="info-box-text">N&aumlchster Versand</span>
-              <span class="info-box-number">$dateNextSend</span>
+              <span class="info-box-number"><% out.print(String.valueOf(next)); %></span>
             </div>
             <!-- /.info-box-content -->
           </div>
