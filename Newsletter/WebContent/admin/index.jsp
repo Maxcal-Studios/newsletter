@@ -206,19 +206,21 @@
 			
 			<%
 			
-			sql = "SELECT time FROM schedule ORDER BY time";
+			/*sql = "SELECT time FROM schedule ORDER BY \"time\"";
     		st = con.prepareStatement(sql);
     		data = st.executeQuery();
-			data.first();
-			
-			long time = data.getTimestamp(1).getTime() - new Date().getTime(); 
-			float next = (float) (time) / 1000 / 60 / 60;
-			
+    		
+    		float next = 0;
+			if(data.first()) {
+				long time = data.getTimestamp(1).getTime() - new Date().getTime(); 
+				next = (float) (time) / 1000 / 60 / 60;
+			}*/
+				
 			%>
 			
             <div class="info-box-content">
               <span class="info-box-text">N&aumlchster Versand</span>
-              <span class="info-box-number"><% out.print(String.valueOf(next)); %></span>
+              <span class="info-box-number"><%/* out.print(String.valueOf(next)); */%></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -349,13 +351,25 @@
     var pieChart       = new Chart(pieChartCanvas)
     var PieData        = [
       {
-        value    : 600,
+      	<% 
+      		sql = "SELECT COUNT(ID) FROM member WHERE active = TRUE";
+    		st = con.prepareStatement(sql);
+    		data = st.executeQuery();
+    		data.first();
+      	%>
+        value    : <% out.print(data.getString(1)); %>,
         color    : '#00a65a',
         highlight: '#00a65a',
         label    : 'Aktivierte Mitglieder'
       },
       {
-        value    : 300,
+		<% 
+      		sql = "SELECT COUNT(ID) FROM member WHERE active = FALSE";
+    		st = con.prepareStatement(sql);
+    		data = st.executeQuery();
+    		data.first();
+      	%>      
+        value    : <% out.print(data.getString(1)); %>,
         color    : '#f39c12',
         highlight: '#f39c12',
         label    : 'Nicht aktivierte Mitglieder'
