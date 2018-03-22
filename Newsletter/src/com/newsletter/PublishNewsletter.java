@@ -49,6 +49,8 @@ public class PublishNewsletter extends HttpServlet {
 				
 				String[] dates = date.split("/");
 				
+				for(String d :  dates) System.out.println(d);
+				
 				SimpleDateFormat s12 = new SimpleDateFormat("hh:mm aa");
 				SimpleDateFormat s24 = new SimpleDateFormat("HH:mm");
 				
@@ -58,7 +60,7 @@ public class PublishNewsletter extends HttpServlet {
 				
 				times = time.split(":");
 				
-				Timestamp t = new Timestamp(Integer.parseInt(dates[2]) - 1901, Integer.parseInt(dates[1]), Integer.parseInt(dates[0]), Integer.parseInt(times[0]), Integer.parseInt(times[1]), 0, 0);
+				Timestamp t = new Timestamp(Integer.parseInt(dates[2]) - 1900, Integer.parseInt(dates[0]) - 1, Integer.parseInt(dates[1]), Integer.parseInt(times[0]), Integer.parseInt(times[1]), 0, 0);
 				
 				String krit = request.getParameter("krit");
 				String[] element = request.getParameterValues("elements");
