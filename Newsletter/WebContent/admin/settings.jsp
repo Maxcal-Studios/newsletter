@@ -151,8 +151,8 @@
                         <li><a href="history.jsp"><i class="fa fa-circle-o"></i>History</a></li>
                     </ul>
                 </li>
-                <li class="active"><a href="layout.jsp"><i class="glyphicon glyphicon-th-large"></i><span> Layout</span></a></li>
-                <li><a href="settings.jsp"><i class="fa fa-gears"></i><span> Einstellungen</span></a></li>
+                <li><a href="layout.jsp"><i class="glyphicon glyphicon-th-large"></i><span> Layout</span></a></li>
+                <li class="active"><a href="settings.jsp"><i class="fa fa-gears"></i><span> Einstellungen</span></a></li>
                 <li><a href="doc.jsp"><i class="fa fa-book"></i><span> Dokumentation</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->
@@ -165,12 +165,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Layout
-                <small>Eigenes Layout erstellen</small>
+                Einstellungen
+                <small>Einstellungen ändern</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="index.jsp"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-                <li class="active">Layout</li>
+                <li class="active">Einstellungen</li>
             </ol>
         </section>
 

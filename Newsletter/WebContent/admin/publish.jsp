@@ -311,7 +311,7 @@
                 <tr>
                   <th style="width: 10px;">ID</th>
                   <th style="width: 15%;">Newsletter ID</th>
-                  <th style="width: 15%;" >Datum</th>
+                  <th style="width: 15%;" >Versanddatum</th>
                   <th>Fortschritt</th>
                   <th style="width: 20px;">Edit</th>
                 </tr>
