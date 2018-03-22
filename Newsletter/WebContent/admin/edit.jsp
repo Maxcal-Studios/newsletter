@@ -218,7 +218,7 @@
                     for(int i = 1; i <= rsVal.getMetaData().getColumnCount(); i++) {
                         out.println("<div class=\"form-group\">");
                         out.println("<label class=\"col-sm-2 control-label\">" + rsLabel.getString(1) + "</label>");
-                        out.println("<div class=\"col-sm-10\">";
+                        out.println("<div class=\"col-sm-10\">");
                         out.println("<input class=\"form-control\" spellcheck=\"false\" id=\"input\" name=\""+ rsLabel.getString(1) +"\" value=\"" + rsVal.getString(i) + "\">");
                         out.println("</div>");
                         out.println("</div>");

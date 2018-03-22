@@ -181,9 +181,18 @@
           <div class="info-box">
             <span class="info-box-icon bg-aqua"><i class="ion ion-paper-airplane"></i></span>
 
+			<%
+			
+			sql = "SELECT COUNT(ID) FROM history";
+    		st = con.prepareStatement(sql);
+    		data = st.executeQuery();
+    		data.first();
+			
+			%>
+
             <div class="info-box-content">
               <span class="info-box-text">Newsletter versendet</span>
-              <span class="info-box-number">$lettersend</span>
+              <span class="info-box-number"><% out.print(data.getString(1)); %></span>
             </div>
             <!-- /.info-box-content -->
           </div>

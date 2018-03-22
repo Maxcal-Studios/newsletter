@@ -3,7 +3,9 @@ package com.newsletter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 
 import com.database.DBConnector;
@@ -17,7 +19,7 @@ public class NewsletterSender {
     	Connection con = DBConnector.getConnection();
     	PreparedStatement st = null;
     	ResultSet rs = null;
-    	String sql = "SELECT text, subject FROM newsletter WHERE id = ?";
+    	String sql = "SELECT text, subject, title FROM newsletter WHERE id = ?";
 		
 		try {
 			
@@ -27,13 +29,16 @@ public class NewsletterSender {
 			rs = st.executeQuery();
 			rs.first();
 			
-			String text = rs.getString(1);
-			String subject = rs.getString(2);
+			String text = rs.getString("text");
+			String subject = rs.getString("subject");
 			
-			System.out.println(":" + krit + ":" + elements + ":");
-			
+			sql = "INSERT INTO history (newsletterTitle, sendDate) VALUES(?, ?)";
+			st = con.prepareStatement(sql);
+			st.setString(1, rs.getString("title"));
+			st.setTimestamp(2, new Timestamp(new Date().getTime()));
+			st.executeUpdate();
+
 			if(krit == null || elements == null || krit.equals("") || elements.equals("")) {
-				System.out.println("worked");
 				sql = "SELECT email FROM member WHERE active = TRUE";
 			} else {
 				//cutting elements
@@ -59,6 +64,8 @@ public class NewsletterSender {
 			
 			//send email
 			MailUtils.sendMail(recipients, subject, text);
+			
+			
 			
 		} catch(Exception e) {e.printStackTrace();}
 		finally {

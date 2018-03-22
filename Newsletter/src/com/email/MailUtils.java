@@ -32,7 +32,7 @@ public class MailUtils {
             message.setFrom((Address)new InternetAddress("maxcal.studios@gmail.com"));
             message.addRecipients(Message.RecipientType.BCC, (Address[])InternetAddress.parse(recipient));
             message.setSubject(subject);
-            message.setText(content);
+            message.setContent(content, "text/html; charset=utf-8");
             Transport.send((Message)message);
         }
         catch (Exception e) {
