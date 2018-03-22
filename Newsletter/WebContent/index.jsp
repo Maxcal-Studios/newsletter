@@ -97,9 +97,12 @@
     </form>
   </div>
   <!-- /.login-box-body -->
+  <div class="box-footer">
+  	<a href="login.jsp"><p class="login-box-msg">Adminlogin</p></a>
+  </div>
 </div>
 <!-- /.login-box -->
-	<a href="login.jsp" style="color:black"> <button class="btn btn-flat btn-hover">Zum Adminpanel</button></a>
+	
 </div>
 </body>
 <!-- jQuery 3 -->
