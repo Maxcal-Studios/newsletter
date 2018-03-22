@@ -19,15 +19,10 @@
     }
 
     Connection con = DBConnector.getConnection();
-    String sql = "SELECT * FROM member;";
+    String sql = "SELECT * FROM history";
     PreparedStatement st = con.prepareStatement(sql);
-    ResultSet member = st.executeQuery();
+    ResultSet rs = st.executeQuery();
 
-    sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member';";
-    st = con.prepareStatement(sql);
-    ResultSet head = st.executeQuery();
-
-    ResultSet data;
     %>
 
     <meta charset="utf-8">
@@ -166,8 +161,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Dashboard
-                <small>&Uumlbersicht und Analyse</small>
+                History
+                <small>Verlauf auller versendeten Newsletter</small>
             </h1>
              <ol class="breadcrumb">
                 <li><a href="index.jsp"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -179,6 +174,55 @@
         <!-- Main content -->
         <section class="content container-fluid">
 
+			<div class="row">
+                <div class="col-xs-12">
+                  <div class="box">
+                    <div class="box-header">
+                      <h3 class="box-title">Historie</h3>
+                    </div>
+                    <!-- /.box-header -->
+                      <div class="box-body">
+                      <table id="table-member" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                              <th>ID</th>
+                              <th>Titel</th>
+                              <th>Status</th>
+                              <th>Datum</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                                <!-- Inhalte -->
+                              <%
+
+                                while(rs.next()) {
+                                    out.println("<tr>");
+                                    out.println("<td>" + rs.getString("id") + "</td>");
+                                    out.println("<td>" + rs.getString("newsletterTitle") + "</td>");
+                                    out.println("<td><span class=\"label label-success\">Versendet</span></td>");
+                                    out.println("<td>" + rs.getString("sendDate") + "</td>");
+                                    out.println("</tr>");
+                                }
+                               %>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                              <th>ID</th>
+                              <th>Titel</th>
+                              <th>Status</th>
+                              <th>Datum</th>
+                            </tr>
+                            </tfoot>
+                          </table>
+			            </div>
+			            <!-- /.box-body -->
+			          </div>
+			          <!-- /.box -->
+			        </div>
+			      <!-- /.col -->
+			    </div>
+			  <!-- /.row -->
 
         </section>
         <!-- /.content -->
@@ -213,9 +257,7 @@
 </body>
 
 <%
-	head.close();
-	member.close();
-	data.close();
+	rs.close();
 	st.close();
 	con.close();
  %>
