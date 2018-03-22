@@ -161,7 +161,7 @@
                 <!-- Optionally, you can add icons to the links -->
                 <li><a href="index.jsp"><i class="fa fa-dashboard"></i><span> Dashboard</span></a></li>
                 <li><a href="member.jsp"><i class="fa fa-users"></i><span> Mitglieder</span></a></li>
-                <li class="treeview active>
+                <li class="treeview active">
                     <a href="#"><i class="fa fa-paper-plane"></i><span> Newsletter</span>
                         <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
