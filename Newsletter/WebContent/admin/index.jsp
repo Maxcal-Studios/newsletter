@@ -304,13 +304,13 @@
         var pieChart       = new Chart(pieChartCanvas)
         var PieData        = [
           {
-            value    : 500,
+            value    : 600,
             color    : '#00a65a',
             highlight: '#00a65a',
             label    : 'Aktivierte Benutzer'
           },
           {
-            value    : 400,
+            value    : 300,
             color    : '#f39c12',
             highlight: '#f39c12',
             label    : 'Nicht aktivierte Benutzer'
