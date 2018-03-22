@@ -188,7 +188,7 @@
                               <th>ID</th>
                               <th>Titel</th>
                               <th>Status</th>
-                              <th>Datum</th>
+                              <th>Versanddatum</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -211,7 +211,7 @@
                               <th>ID</th>
                               <th>Titel</th>
                               <th>Status</th>
-                              <th>Datum</th>
+                              <th>Versanddatum</th>
                             </tr>
                             </tfoot>
                           </table>
