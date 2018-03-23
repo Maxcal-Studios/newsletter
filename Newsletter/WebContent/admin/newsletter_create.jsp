@@ -467,7 +467,6 @@
         }else{
             src = document.getElementById('editor').contentWindow.document.documentElement.outerHTML;
         }
-        
         src = src.replace("<html>", "");
         src = src.replace("</html>", "");
         src = src.replace("<head>", "");
