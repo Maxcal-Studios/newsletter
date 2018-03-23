@@ -39,13 +39,13 @@ public class NewsletterSender {
 			st.executeUpdate();
 
 			if(krit == null || elements == null || krit.equals("") || elements.equals("")) {
-				sql = "SELECT email FROM member WHERE active = TRUE";
+				sql = "SELECT email, hash FROM member WHERE active = TRUE";
 			} else {
 				//cutting elements
 				String[] element = elements.split(" ");
 				
 				//getting all members
-				sql = "SELECT email FROM member WHERE active = TRUE AND (";
+				sql = "SELECT email, hash FROM member WHERE active = TRUE AND (";
 				for(int i = 0; i < element.length - 1; i++) {
 					sql += " " + krit + " = " + element[i] + " OR";
 				}
@@ -56,9 +56,9 @@ public class NewsletterSender {
 			rs = st.executeQuery();
 			
 			//populating the recipients Array
-			ArrayList<String> recipients = new ArrayList<String>();
+			ArrayList<Member> recipients = new ArrayList<Member>();
 			while(rs.next()) {
-				recipients.add(rs.getString(1));
+				recipients.add(new Member(rs.getString("email"), rs.getString("hash")));
 			}
 			
 			

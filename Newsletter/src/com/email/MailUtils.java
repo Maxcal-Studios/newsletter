@@ -2,6 +2,7 @@ package com.email;
 
 import com.database.DBConnector;
 import com.email.MailUtils;
+import com.newsletter.Member;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -63,10 +64,22 @@ public class MailUtils {
         
     }
     
-    public static void sendMail(ArrayList<String> recipients, String subject, String content) {
-        String username = "maxcal.studios@gmail.com";
-        String password = "M9a8x7c6a5l";
-        Properties props = new Properties();
+    public static void sendMail(ArrayList<Member> recipients, String subject, String content) {
+    	
+    	//creating a connection to the DB
+    	Connection con = DBConnector.getConnection();
+    	String sql = "SELECT * FROM email";
+    	PreparedStatement st = null;
+    	ResultSet rs = null;
+    	
+    	try {
+    	st = con.prepareStatement(sql);
+		rs = st.executeQuery();
+		rs.first();
+	
+        String username = rs.getString("email");
+        String password = rs.getString("password");
+    	Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -74,21 +87,27 @@ public class MailUtils {
         Session session = Session.getInstance((Properties)props, 
         		new javax.mail.Authenticator() {
         			protected PasswordAuthentication getPasswordAuthentication() {
-        				return new PasswordAuthentication("maxcal.studios@gmail.com", "M9a8x7c6a5l");
+        				return new PasswordAuthentication(username, password);
         			}});
-        try {
             MimeMessage message = new MimeMessage(session);
-            message.setFrom((Address)new InternetAddress("maxcal.studios@gmail.com"));
-            for(int i = 0; i < recipients.size(); i++) {
-            	message.addRecipients(Message.RecipientType.BCC, (Address[])InternetAddress.parse(recipients.get(i)));
-            }
+            message.setFrom((Address)new InternetAddress(username));
             message.setSubject(subject);
-            message.setText(content);
-            Transport.send((Message)message);
+            for(int i = 0; i < recipients.size(); i++) {
+            	message.setRecipients(Message.RecipientType.BCC, recipients.get(i).getAddress());
+            	String custom = content.replace("$deactivate", recipients.get(i).getHash());
+            	Transport.send((Message)message);
+            }
+            
         }
         catch (Exception e) {
             e.printStackTrace();
         }
+    	
+    	 try {
+ 			rs.close();
+ 			st.close();
+ 	        con.close();
+ 		} catch (SQLException e) {}
     }
     
 }
