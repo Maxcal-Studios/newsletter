@@ -36,26 +36,26 @@
 		.btn-hover {
 			margin-left: 32.5%;
 			background: white;
-		}
+
 
 		.btn-hover:hover {
 			background: #d3d3d3;
 		}
 	</style>
-	<title>Newsletter | Email Registrieren!</title>
+	<title>Newsletter | Email Registrierung erfolgreich!</title>
 </head>
 
 <body style="background-image: url('img/back.jpg');">
 <div class="login-box">
-  <div class="login-logo">
-    <a href="index.jsp"><b>News</b>letter</a>
-  </div>
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg">Ihnen wurde eine aktivierungs Email zugesendet. Bitte bestätigen Sie diese über den enthaltenen Link.</p>
-      <button type="submit" class="btn btn-primary btn-block btn-flat"><a href="maxcal.hopto.org">Zur&uumlck</a></button>
-  </div>
-  <!-- /.login-box-body -->
+	<div class="login-logo">
+		<a href="index.jsp"><b>News</b>letter</a>
+	</div>
+	<!-- /.login-logo -->
+	<div class="login-box-body">
+		<p class="login-box-msg">Ihre Email wure bestätigt! Sie können nun Newsletter erhalten.</p>
+		<button type="submit" class="btn btn-primary btn-block btn-flat"><a href="maxcal.hopto.org">Zur&uumlck</a></button>
+	</div>
+	<!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
 </body>
