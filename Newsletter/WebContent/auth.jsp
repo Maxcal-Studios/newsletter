@@ -53,7 +53,7 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Ihnen wurde eine aktivierungs Email zugesendet. Bitte bestätigen Sie diese über den enthaltenen Link.</p>
-      <button type="submit" class="btn btn-primary btn-block btn-flat"><a href="maxcal.hopto.org">Zur&uumlck</a></button>
+      <a class="btn btn-primary btn-block btn-flat" href="/">Zur&uumlck</a>
   </div>
   <!-- /.login-box-body -->
 </div>
