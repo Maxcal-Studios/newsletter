@@ -53,7 +53,7 @@
 	<!-- /.login-logo -->
 	<div class="login-box-body">
 		<p class="login-box-msg">Ihre Email wure deaktiviert! Sie erhalten keine weiteren Newsletter.</p>
-		<button type="submit" class="btn btn-primary btn-block btn-flat"><a href="maxcal.hopto.org">Zur&uumlck</a></button>
+        <a class="btn btn-primary btn-block btn-flat" href="/">Zur&uumlck</a>
 	</div>
 	<!-- /.login-box-body -->
 </div>
