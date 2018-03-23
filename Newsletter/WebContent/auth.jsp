@@ -36,7 +36,7 @@
 		.btn-hover {
 			margin-left: 32.5%;
 			background: white;
-
+		}
 
 		.btn-hover:hover {
 			background: #d3d3d3;
