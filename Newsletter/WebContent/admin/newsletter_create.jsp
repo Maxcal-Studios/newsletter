@@ -172,7 +172,7 @@
         <section class="content-header">
             <h1>
                 Erstellen
-                <small>Optional description</small>
+                <small>Einen neuen Newsletter erstellen</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="index.jsp"><i class="fa fa-dashboard"></i> Dashboard</a></li>
