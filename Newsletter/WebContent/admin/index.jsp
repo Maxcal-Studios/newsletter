@@ -285,9 +285,9 @@
         <div class="row">
          <div class="col-md-6">
               <!-- DONUT CHART -->
-              <div class="box box-danger">
+              <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Mitglider Status</h3>
+                  <h3 class="box-title">Mitglieder Status</h3>
                 </div>
                 <div class="box-body">
                   <canvas id="pieChart" style="height:250px"></canvas>
@@ -303,11 +303,20 @@
                 <h4>Sie ben&oumltigen Hilfe?</h4>
                 <p>Die Dokumentation beinhaltet eine Anleitung zur Bedienung des Newslettersystems.
                 Diese befindet sich unter dem Punkt 'Dokumentation' in der Navigationsleiste auf der linken Seite. Sie haben noch Fragen? Schicken sie uns eine E-Mail unter Maxcal.Studios@gmail.com.
-
                 </p>
               </div>
-              </div>
+             </div>
              <!-- /.col (RIGHT) -->
+
+             <div class="col-md-3">
+                           <div class="callout callout-success">
+                             <h4>Neue Funktionen</h4>
+                             <p>
+
+                             </p>
+                           </div>
+                          </div>
+                          <!-- /.col (RIGHT) -->
 
         </div>
         <!-- /.row -->
