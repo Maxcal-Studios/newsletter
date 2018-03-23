@@ -33,6 +33,6 @@ public class Authentication extends HttpServlet {
 		    try { con.close(); } catch (Exception e) { }
 		}
         
-        response.sendRedirect("../activated.html");
+        response.sendRedirect("../activated.jsp");
     }
 }
