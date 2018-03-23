@@ -209,25 +209,31 @@
 					out.println("</div>");
 				}
 				%>
-		      <button class="btn btn-primary btn-block btn-flat">+</button>
+		      <button class="addInput btn btn-primary btn-block btn-flat">+</button>
 		  </div>
 		  <!-- /.login-box-body -->
 		</div>
         
-        <div class="modal fade" id="modal-default">
+        <div class="modal fade" id="modal-$id">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Default Modal</h4>
+                <h4 class="modal-title">$id</h4>
               </div>
               <div class="modal-body">
-                <p>One fine body&hellip;</p>
+                <div class="form-group">
+                  <label for="$id-name">Name</label>
+                  <input type="text" class="form-control" id="$id-name" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="$id-text">Text</label>
+                  <input type="text" class="form-control" id="$id-text" placeholder="">
+                </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
               </div>
             </div>
             <!-- /.modal-content -->
