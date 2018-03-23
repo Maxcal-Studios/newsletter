@@ -34,9 +34,9 @@
 
 	<style>
 		.btn-hover {
-            margin-left: 32.5%;
-            background: white;
-        }
+			margin-left: 32.5%;
+			background: white;
+
 
 		.btn-hover:hover {
 			background: #d3d3d3;
@@ -52,8 +52,8 @@
 	</div>
 	<!-- /.login-logo -->
 	<div class="login-box-body">
-		<p class="login-box-msg">Ihre Email wurde deaktiviert! Sie erhalten keine weiteren Newsletter.</p>
-		<button type="submit" class="btn btn-primary btn-block btn-flat"><a href="maxcal.hopto.org">Zur&uumlck</a></button>
+		<p class="login-box-msg">Ihre Email wure deaktiviert! Sie erhalten keine weiteren Newsletter.</p>
+        <a class="btn btn-primary btn-block btn-flat" href="/">Zur&uumlck</a>
 	</div>
 	<!-- /.login-box-body -->
 </div>
