@@ -166,7 +166,7 @@
         <section class="content-header">
             <h1>
                 Einstellungen
-                <small>Einstellungen ändern</small>
+                <small>&Aumlnderungen vornehmen</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="index.jsp"><i class="fa fa-dashboard"></i> Dashboard</a></li>
