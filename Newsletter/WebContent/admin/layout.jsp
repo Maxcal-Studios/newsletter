@@ -3,34 +3,34 @@
 <html>
 <head>
 
-       <%
-       String username = "admin";
+    <%
+        String username = "admin";
 
-       if(!DBConnector.isLoggedIn(session)) {
-       	response.sendRedirect("../../login.jsp");
-       } else {
+        if(!DBConnector.isLoggedIn(session)) {
+            response.sendRedirect("../../login.jsp");
+        } else {
 
-       	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-       	response.setHeader("Pragma", "no-cache");
-       	response.setHeader("Expires", "0");
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            response.setHeader("Pragma", "no-cache");
+            response.setHeader("Expires", "0");
 
-       	username = session.getAttribute("user").toString();
-       }
+            username = session.getAttribute("user").toString();
+        }
 
-    	Connection con = DBConnector.getConnection();
-		String sql = "SELECT * FROM layout";
-		PreparedStatement st = con.prepareStatement(sql);
-		ResultSet rs = st.executeQuery();
-		rs.last();
-		ResultSet[] results = new ResultSet[rs.getRow()];
-		
-		for(int i = 0; i < results.length; i++) {
-			sql = "SELECT * FROM layout WHERE pos=" + i;
-			st = con.prepareStatement(sql);
-			results[i] = st.executeQuery();
-		}
-		%>
-    
+        Connection con = DBConnector.getConnection();
+        String sql = "SELECT * FROM layout";
+        PreparedStatement st = con.prepareStatement(sql);
+        ResultSet rs = st.executeQuery();
+        rs.last();
+        ResultSet[] results = new ResultSet[rs.getRow()];
+
+        for(int i = 0; i < results.length; i++) {
+            sql = "SELECT * FROM layout WHERE pos=" + i;
+            st = con.prepareStatement(sql);
+            results[i] = st.executeQuery();
+        }
+    %>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Newsletter | Admin</title>
@@ -58,16 +58,16 @@
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    
+
     <style>
-    .backgroundImage {
-    	background: 
-		radial-gradient(
-		rgba(255,255,255,0.0) 35%,
-		rgba(236,239,245,1) 70%
-		),  	
-    	url('../img/back.jpg');
-	}
+        .backgroundImage {
+            background:
+                    radial-gradient(
+                            rgba(255,255,255,0.0) 35%,
+                            rgba(236,239,245,1) 70%
+                    ),
+                    url('../img/back.jpg');
+        }
     </style>
 
 </head>
@@ -189,54 +189,63 @@
 
         <!-- Main content -->
         <section class="content container-fluid">
-        
-		<div class="login-box">
-		  <div class="login-logo">
-		    <a href="#"><b>News</b>letter</a>
-		  </div>
-		  <!-- /.login-logo -->
-		  <div class="login-box-body">
-		    <a type="submit"><p class="login-box-msg">Speichern</p></a>
-		      	<%
-			
-				for(ResultSet r : results) {
-					r.next();
-				}
-			
-				for(int i = 0; i < results.length; i++) {
-					out.println("<div class=\"form-group \">");
-					out.println("<input data-toggle=\"modal\" data-target=\"#modal-default\" placeholder=\"Klick mich\" class=\"form-control\" readonly>");
-					out.println("</div>");
-				}
-				%>
-		      <button class="btn btn-primary btn-block btn-flat">+</button>
-		  </div>
-		  <!-- /.login-box-body -->
-		</div>
-        
-        <div class="modal fade" id="modal-default">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Default Modal</h4>
-              </div>
-              <div class="modal-body">
-                <p>One fine body&hellip;</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
+
+            <div class="login-box">
+                <div class="login-logo">
+                    <a href="#"><b>News</b>letter</a>
+                </div>
+                <!-- /.login-logo -->
+                <div class="login-box-body">
+                    <a type="submit"><p class="login-box-msg">Speichern</p></a>
+                    <div id="fg">
+                        <%
+
+                            for(ResultSet r : results) {
+                                r.next();
+                            }
+
+                            for(int i = 0; i < results.length; i++) {
+                                out.println("<div class=\"form-group \">");
+                                out.println("<input data-toggle=\"modal\" data-target=\"#modal-default\" placeholder=\"Klick mich\" class=\"form-control\" readonly>");
+                                out.println("</div>");
+                            }
+                        %>
+                    </div>
+                    <button class="addInput btn btn-primary btn-block btn-flat" onclick="plus()">+</button>
+                </div>
+                <!-- /.login-box-body -->
             </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
-        
-        
+            <div id="modals">
+                <div class="modal fade" id="modal-$id">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">$id</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="$id-name">Name</label>
+                                    <input type="text" class="form-control" id="$id-name" name="$id-name" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="$id-text">Text</label>
+                                    <input type="text" class="form-control" id="$id-text" name="$id-text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+            </div>
+            <input id="counter" name="text" style="width:1px; height:1px; visibility: hidden;" value="0">
+
         </section>
         <!-- /.content -->
     </div>
@@ -265,12 +274,22 @@
 <script src="../bootstrap/dist/js/adminlte.min.js"></script>
 
 </body>
+<script>
+    function plus(){
+        document.getElementById("counter").value = parseInt(document.getElementById("counter").value) + 1;
+        var id = document.getElementById("counter").value;
+        document.getElementById("fg").innerHTML = document.getElementById("fg").innerHTML + "<div class=\"form-group \"><input data-toggle=\"modal\" data-target=\"#modal-"+id+"\" placeholder=\"Klick mich\" class=\"form-control\" readonly></div>";
+        console.log(document.getElementById("modals").innerHTML);
+        document.getElementById("modals").innerHTML = document.getElementById("modals").innerHTML + "<div id=\"modals\"> <div class=\"modal fade\" id=\"modal-"+id+"\"> <div class=\"modal-dialog\"> <div class=\"modal-content\"> <div class=\"modal-header\"> <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"> <span aria-hidden=\"true\">&times;</span></button> <h4 class=\"modal-title\">"+id+"</h4> </div> <div class=\"modal-body\"> <div class=\"form-group\"> <label for=\""+id+"-name\">Name</label> <input type=\"text\" class=\"form-control\" id=\""+id+"-name\" name=\""+id+"-name\" placeholder=\"\"> </div> <div class=\"form-group\"> <label for=\""+id+"-text\">Text</label> <input type=\"text\" class=\"form-control\" id=\""+id+"-text\" name=\""+id+"-text\" placeholder=\"\"> </div> </div> <div class=\"modal-footer\"> <button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">Ok</button> </div> </div> <!-- /.modal-content --> </div> <!-- /.modal-dialog --> </div> <!-- /.modal --> </div>"
+    }
+
+</script>
 
 <%
-	rs.close();
-	st.close();
-	con.close();
- %>
+    rs.close();
+    st.close();
+    con.close();
+%>
 
 
 </html>

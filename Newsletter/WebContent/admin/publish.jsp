@@ -425,7 +425,7 @@
 
     </div>
     <!-- /.content-wrapper -->
-    <iframe src="" id="frame" style="width: 0%; height: 0%; visibility: hidden;"></iframe>
+    <iframe src="" id="frame" style="width: 1px%; height: 1px; visibility: hidden;"></iframe>
 
     <!-- Main Footer -->
     <footer class="main-footer" style="height: 50px">
