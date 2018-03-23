@@ -261,12 +261,13 @@
                 </div>
 
                 <iframe name="editor" style="height:80%; width: 100%" frameborder="0" id="editor"></iframe>
-                <button onclick="test();" title="Testen"  style="margin:10px"><i class="fa fa-desktop fa-2x"></i></button>
+                <form>
+                     <button onclick="test();" title="Testen"  style="margin:10px" type="button"><i class="fa fa-desktop fa-2x"></i></button>
 
-                <form action="../AddNewsletter" method="post">
+                     <form action="../AddNewsletter" method="post">
 
                     <button type="button" onclick="exp()" class="btn btn-default" data-toggle="modal" data-target="#modal-save"><i class="fa fa-paper-plane fa-2x"></i></button>
-
+                </form>
                     <div class="modal fade" id="modal-save">
                         <div class="modal-dialog">
                             <div class="modal-content">
