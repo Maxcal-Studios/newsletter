@@ -225,11 +225,11 @@
               <div class="modal-body">
                 <div class="form-group">
                   <label for="$id-name">Name</label>
-                  <input type="text" class="form-control" id="$id-name" placeholder="">
+                  <input type="text" class="form-control" id="$id-name" name="$id-name" placeholder="">
                 </div>
                 <div class="form-group">
                   <label for="$id-text">Text</label>
-                  <input type="text" class="form-control" id="$id-text" placeholder="">
+                  <input type="text" class="form-control" id="$id-text" name="$id-text" placeholder="">
                 </div>
               </div>
               <div class="modal-footer">
