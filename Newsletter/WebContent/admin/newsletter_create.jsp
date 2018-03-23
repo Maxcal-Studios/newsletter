@@ -467,6 +467,14 @@
         }else{
             src = document.getElementById('editor').contentWindow.document.documentElement.outerHTML;
         }
+        src = src.replace("<html>", "");
+        src = src.replace("</html>", "");
+        src = src.replace("<head>", "");
+        src = src.replace("</head>", "");
+        src = src.replace("<body>", "");
+        src = src.replace("</body>", "");
+        src = src + "<br><hr><footer>Vom Newsletter abmelden: $deaktivated</footer>";
+
         var test = window.open("", "", "width=600,height=800,location=0,menubar=0,resizable=1,status=0,toolbar=0,scrollbars=1");
         test.document.open();
         test.document.write(src);
@@ -484,6 +492,7 @@
         src = src.replace("</head>", "");
         src = src.replace("<body>", "");
         src = src.replace("</body>", "");
+        src = src + "<br><hr><footer>Vom Newsletter abmelden: $deaktivated</footer>";
         document.getElementById("out").value = src;
     }
 
