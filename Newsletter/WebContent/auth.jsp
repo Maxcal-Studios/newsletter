@@ -42,7 +42,7 @@
 			background: #d3d3d3;
 		}
 	</style>
-	<title>Newsletter | Angemeldet!</title>
+	<title>Newsletter | Email Registrieren!</title>
 </head>
 
 <body style="background-image: url('img/back.jpg');">
@@ -52,8 +52,8 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Registrierung erfolgreich!</p>
-      <button type="submit" class="btn btn-primary btn-block btn-flat">Zur&uumlck</button>
+    <p class="login-box-msg">Ihnen wurde eine aktivierungs Email zugesendet. Bitte bestätigen Sie diese über den enthaltenen Link.</p>
+      <button type="submit" class="btn btn-primary btn-block btn-flat"><a href="maxcal.hopto.org">Zur&uumlck</a></button>
   </div>
   <!-- /.login-box-body -->
 </div>
