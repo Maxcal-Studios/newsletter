@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page import="java.sql.*, com.database.*;" %>
 <html>
+
 <head>
 
     <%
@@ -50,21 +51,31 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
     <style>
-        #container i , select{color:black;}
-        button{margin-bottom:5px}
-        select{margin-bottom:5px}
+        #container i,
+        select {
+            color: black;
+        }
+
+        button {
+            margin-bottom: 5px
+        }
+
+        select {
+            margin-bottom: 5px
+        }
+
     </style>
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini"  onload="enableEditor();" style="margin: 0;">
+<body class="hold-transition skin-blue sidebar-mini" onload="enableEditor();" style="margin: 0;">
 
 <div class="wrapper">
 
@@ -105,7 +116,8 @@
                                 <img src="../bootstrap/dist/img/160x160.png" class="img-circle" alt="User Image">
 
                                 <p>
-                                    <% out.print(username); %> - Administrator
+                                    <% out.print(username); %>
+                                    - Administrator
                                 </p>
                             </li>
                             <!-- Deleted Menu Body -->
@@ -132,7 +144,9 @@
                     <img src="../bootstrap/dist/img/160x160.png" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p><% out.print(username); %></p>
+                    <p>
+                        <% out.print(username); %>
+                    </p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
@@ -147,8 +161,8 @@
                 <li class="treeview active">
                     <a href="#"><i class="fa fa-paper-plane"></i><span> Newsletter</span>
                         <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                  </span>
+        <i class="fa fa-angle-left pull-right"></i>
+        </span>
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="newsletter_create.jsp"><i class="fa fa-circle-o"></i>Erstellen</a></li>
@@ -187,37 +201,37 @@
             <div class="pagecontainer" style="width:100%;height:100vh;">
                 <div style="text-align: center; background-color:#3C8DBC;">
                     <div style="color:white; padding:10px" id="container">
+                        <!-- Beim Klick auf den jewailigen Button die execCommand Funktion mit oder ohne arg ausgeführt um die Email zu formatieren -->
                         <button onclick="execCmd('bold');" title="Fett" name="Web"><i class="fa fa-bold fa-2x"></i></button>
                         <button onclick="execCmd('italic');" title="Kursiv" name="Web"><i class="fa fa-italic fa-2x"></i></button>
                         <button onclick="execCmd('underline');" title="Unterstrichen" name="Web"><i class="fa fa-underline fa-2x"></i></button>
-                        <button onclick="execCmd('strikethrough');" title="Durchgestrichen" name="Web"><i class="fa fa-strikethrough fa-2x"></i></button>
-                        &nbsp;
+                        <button onclick="execCmd('strikethrough');" title="Durchgestrichen" name="Web"><i class="fa fa-strikethrough fa-2x"></i></button> &nbsp;
                         <button onclick="execCmd('justifyLeft');" title="Linksbündig" name="Web"><i class="fa fa-align-left fa-2x"></i></button>
                         <button onclick="execCmd('justifyCenter');" title="Zentriert" name="Web"><i class="fa fa-align-center fa-2x"></i></button>
                         <button onclick="execCmd('justifyRight');" title="Rechtsbündig" name="Web"><i class="fa fa-align-right fa-2x"></i></button>
                         <button onclick="execCmd('justifyFull');" title="Blocksatz" name="Web"><i class="fa fa-align-justify fa-2x"></i></button>
                         <button onclick="execCmd('indent');" title="Einzug vergrößern" name="Web"><i class="fa fa-indent fa-2x"></i></button>
-                        <button onclick="execCmd('outdent');" title="Einzug verringern" name="Web"><i class="fa fa-outdent fa-2x"></i></button>
-                        &nbsp;
+                        <button onclick="execCmd('outdent');" title="Einzug verringern" name="Web"><i class="fa fa-outdent fa-2x"></i></button> &nbsp;
                         <button onclick="execCmd('insertUnorderedList');" title="Aufzählungsliste" name="Web"><i class="fa fa-list-ul fa-2x"></i></button>
-                        <button onclick="execCmd('insertOrderedList');" title="Nummerierte Liste" name="Web"><i class="fa fa-list-ol fa-2x"></i></button>
-                        &nbsp;
+                        <button onclick="execCmd('insertOrderedList');" title="Nummerierte Liste" name="Web"><i class="fa fa-list-ol fa-2x"></i></button> &nbsp;
                         <button onclick="execCmdWithArg('insertImage',prompt('URL des Bildes eingeben'));" title="Bild einfügen" name="Web"><i class="fa fa-picture-o fa-2x"></i></button>
-                        <button onclick="execCmdWithArg('createLink', prompt('URL eingeben', 'http://'));" title="Link erstellen" name="Web"><i class="fa fa-link fa-2x"></i></button>
-                        &nbsp;
+                        <button onclick="execCmdWithArg('createLink', prompt('URL eingeben', 'http://'));" title="Link erstellen" name="Web"><i class="fa fa-link fa-2x"></i></button> &nbsp;
                         <button onclick="execCmd('undo');" title="Rückgängig" name="Web"><i class="fa fa-undo fa-2x"></i></button>
-                        <button onclick="execCmd('redo');" title="Wiederholen" name="Web"><i class="fa fa-repeat fa-2x"></i></button>
-                        &nbsp;
+                        <button onclick="execCmd('redo');" title="Wiederholen" name="Web"><i class="fa fa-repeat fa-2x"></i></button> &nbsp;
+                        <!-- Die Funktion showHTML() wird ausgeführt, Dieser Button wird mit display=none ausgeblendet und der showEditor Button mit display=inline eingeblendet -->
                         <button onclick="showHTML();this.style.display='none';document.getElementById('showEditor').style.display='inline'" title="HTML Code anzeigen" id="showHTML" name="Web"><i class="fa fa-code fa-2x"></i></button>
+                        <!-- Die Funktion showEditor() wird ausgeführt, Dieser Button wird mit display=none ausgeblendet und der showHTML Button mit display=inline eingeblendet -->
                         <button onclick="showEditor();this.style.display='none';document.getElementById('showHTML').style.display='inline'" title="Editor anzeigen" id="showEditor" name="Web"><i class="fa fa-code fa-2x"></i></button>
-                        <div name = "Web">
-                            <br name = "Web">
+                        <div name="Web">
+                            <br name="Web">
+                            <!-- Die Funktion changeFloat wird aufgerufen um den Float Wert des ausgewählten Bilds zu ändern -->
                             <select onclick="changeFloat(this.value);" title="Float">
                                 <option value="none">keiner</option>
                                 <option value="left">links</option>
                                 <option value="right">rechts</option>
                             </select>
 
+                            <!-- Die execCommand Funktion wird mit fontName als command und dem Wert des Selects als arg aufgerufen um die Schriftart zu ändern  -->
                             <select onchange="execCmdWithArg('fontName', this.value);" title="font">
                                 <option value="Roboto" style="font-family: 'Roboto'!important;">Roboto</option>
                                 <option value="Open Sans" style="font-family: 'Open Sans'!important;">Open Sans</option>
@@ -236,6 +250,7 @@
                                 <option value="Archivo Black" style="font-family: 'Archivo Black'!important;">Archivo Black</option>
                                 <option value="Poiret One" style="font-family: 'Poiret One'!important;">Poiret One</option>
                             </select>
+                            <!-- Die execCommand Funktion wird mit formatBlock als command und dem Wert des Selects als arg aufgerufen um die Überschrift zu ändern  -->
                             <select onclick="execCmdWithArg('formatBlock', '<'+this.value+'>');" title="Überschrift">
                                 <option value="H1">&Uuml;berschrift 1</option>
                                 <option value="H2">&Uuml;berschrift 2</option>
@@ -244,6 +259,7 @@
                                 <option value="H5">&Uuml;berschrift 5</option>newsletter_create.jsp
                                 <option value="H6">&Uuml;berschrift 6</option>
                             </select>
+                            <!-- Die execCommand Funktion wird mit fontSize als command und dem Wert des Selects als arg aufgerufen um die Textgröße zu ändern  -->
                             <select onchange="execCmdWithArg('fontSize', this.value);" title="Textgröße">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -253,21 +269,25 @@
                                 <option value="6">6</option>
                                 <option value="7">7</option>
                             </select>
-                            <p style="display:inline-block">Textfarbe: <input type="color" onchange="execCmdWithArg('foreColor', this.value);"/></p>
-                            <p style="display:inline-block">Text Hintergrund: <input type="color" onchange="execCmdWithArg('hiliteColor', this.value);"/></p>
-                            <p style="display:inline-block"> Hintergrund: <input type="color" onchange="backgroundColor(this.value);"/></p>
+                            <!-- Die Funktionen um die Farben zu ändern werden aufgerufen, wenn sich der input ändert -->
+                            <p style="display:inline-block">Textfarbe: <input type="color" onchange="execCmdWithArg('foreColor',this.value);" /></p>
+                            <p style="display:inline-block">Text Hintergrund: <input type="color" onchange="execCmdWithArg('hiliteColor',this.value);" /></p>
+                            <p style="display:inline-block"> Hintergrund: <input type="color" onchange="backgroundColor(this.value);" /></p>
                         </div>
                     </div>
                 </div>
 
+                <!-- Das iframe ist der Editor, in dem die Email erstellt wird -->
                 <iframe name="editor" style="height:80%; width: 100%" frameborder="0" id="editor"></iframe>
                 <form>
-                     <button onclick="test();" title="Testen"  style="margin:10px" type="button"><i class="fa fa-desktop fa-2x"></i></button>
-
-                     <form action="../AddNewsletter" method="post">
-
-                    <button type="button" onclick="exp()" class="btn btn-default" data-toggle="modal" data-target="#modal-save"><i class="fa fa-paper-plane fa-2x"></i></button>
+                    <!-- Der Button ruft die test() funktion auf, die die erstellte Email in einem neuen Fenster anzeigt -->
+                    <button onclick="test();" title="Testen" style="margin:10px" type="button"><i class="fa fa-desktop fa-2x"></i></button>
+                    <!-- Die Form öffnet das Modal zum Speichern auf und speichert die Email -->
+                    <form action="../AddNewsletter" method="post">
+                        <button type="button" onclick="exp()" data-toggle="modal" data-target="#modal-save"><i class="fa fa-paper-plane fa-2x"></i></button>
+                    </form>
                 </form>
+                    <!-- Das Modal mit dem man die erstellte Email speichern kann-->
                     <div class="modal fade" id="modal-save">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -306,6 +326,7 @@
                     <!-- /.modal -->
 
             </div>
+            <!-- Wenn Javascript deaktiviert ist wird angezeigt, dass man Javascript benötigt, dammit die Seite funktioniert-->
             <noscript>
                 <style type="text/css">
                     .pagecontainer {
@@ -383,36 +404,53 @@
 </body>
 
 <script>
+    //Die Funktion enableEditor() wird ausgeführt, wenn die Website geladen wird
+    //Der Button mit der Id showEditor wird ausgescchaltet indem die CSS Eigenschaft display auf none gesetzt wird
+    //Die Hintergrundfarbe des Editors wird auf weiß gesetzt
+    //Die Variable src wird initialisiert
+    //Der designMode des editors wird eingeschaltet, das heißt, dass er bearbeitet werden kann
+    //Ein CSS Link zu den nutzbaren Schriftarten wird in den head des Editors geschrieben
+    //Die margin des body des editors wird auf 0 gesetzt
 
-    document.getElementById('showEditor').style.display='none';
-    editor.document.body.style.background = 'white';
+    function enableEditor() {
 
-    var src;
-    function enableEditor(){
+        document.getElementById('showEditor').style.display = 'none';
+        editor.document.body.style.background = 'white';
+
+        var src;
         editor.document.designMode = 'On';
 
         var fontLink = document.createElement("link");
-        fontLink.href = "https://fonts.googleapis.com/css?family=Abril+Fatface|Archivo+Black|Dancing+Script|Inconsolata|Indie+Flower|Lobster|Montserrat|Open+Sans|Open+Sans+Condensed:300|Oswald|Playfair+Display|Poiret+One|Roboto|Rubik+Mono+One|Ubuntu";
+        fontLink.href =
+            "https://fonts.googleapis.com/css?family=Abril+Fatface|Archivo+Black|Dancing+Script|Inconsolata|Indie+Flower|Lobster|Montserrat|Open+Sans|Open+Sans+Condensed:300|Oswald|Playfair+Display|Poiret+One|Roboto|Rubik+Mono+One|Ubuntu";
         fontLink.rel = "stylesheet";
         frames['editor'].document.head.appendChild(fontLink);
         editor.document.body.style.margin = 0;
 
     }
 
-    function backgroundColor(arg){
+    //Die Hintergrundfarbe des editors wird auf arg gesetzt
+    function backgroundColor(arg) {
         editor.document.body.style.background = arg;
-
     }
 
-    function execCmd(command){
+    //Die Javascript Funktion execCommand wird mit der Eigenschaft command ausgeführt
+    //Die Funktion verändert die Formatierung der Website
+    function execCmd(command) {
         editor.document.execCommand(command, false, null);
     }
 
-    function execCmdWithArg(command, arg){
+    //Die Javascript Funktion execCommand wird mit den Eigenschaften command und arg ausgeführt
+    //Die Funktion verändert die Formatierung der Website
+    function execCmdWithArg(command, arg) {
         editor.document.execCommand(command, false, arg);
     }
 
-    function showHTML(){
+    //Die Funktion format() wird aufgerufen
+    //Der Text des editors wird auf den Inhalt der Variable src gesetzt
+    //Die Hintergrundfarbe des editors wird auf weiß gesetzt und die Schriftfarbe auf schwarz
+    //Alle Elemente mit dem Namen web werden ausgeschaltet, indem die CSS Eigenschaft display auf none gesetzt wird
+    function showHTML() {
         format();
         document.getElementById('editor').contentWindow.document.body.innerText = src;
         document.getElementById('editor').contentWindow.document.body.style.backgroundColor = 'white';
@@ -423,49 +461,60 @@
         }
     }
 
-    function showEditor(){
+    //Der Text aus dem editor wird in die Variable src geschrieben
+    //Danach werden alle Zeilenumbrüche aus src entfernt
+    //src wird als HTML Code des editors eingesetzt
+    //Der designMode des editors wird eingeschaltet, das heißt, dass er bearbeitet werden kann
+    //Alle Elemente mit dem Namen Web werden eingeschaltet, indem die CSS Eigenschaft display auf inline gesetzt wird
+    function showEditor() {
         src = document.getElementById('editor').contentWindow.document.body.innerText;
-        src = src.replace(/(\r\n|\n|\r)/gm,"");
+        src = src.replace(/(\r\n|\n|\r)/gm, "");
         document.getElementById('editor').contentWindow.document.documentElement.innerHTML = src;
         editor.document.designMode = 'On';
-        changeifb();
         var w = document.getElementsByName("Web");
         for (i = 0; i < w.length; i++) {
             w[i].style.display = 'inline';
         }
     }
 
-    function format(){
+    //Der HTML Code im editor wird in die Variable src geschrieben
+    //Danach wird der Code zunächst nach dem Zeichen '<' durchsucht.
+    //Wenn < gefunden wurde, wird hinter dem Zeichen ein Zeilenumbruch eingefügt und es wird nach '>' gesucht
+    //Wenn dieses gefunden wurde, wird wieder ein Zeilenumbruch eingefügt und es wird wieder nach '<' gesucht
+    function format() {
         src = document.getElementById('editor').contentWindow.document.documentElement.outerHTML;
         var i = 0;
         var z = 0;
-        while(i < src.length){
+        while (i < src.length) {
 
             if (z == 0) {
                 var n = src.indexOf('<', i);
                 src = src.substr(0, n) + '\n' + src.substr(n);
-                if (n == -1){
+                if (n == -1) {
                     break;
                 }
-                i = n+2;
+                i = n + 2;
                 z = 1;
             }
             if (z == 1) {
                 var n = src.indexOf('>', i);
-                if (n == -1){
+                if (n == -1) {
                     break;
                 }
-                src = src.substr(0, n+1) + '\n' + src.substr(n+1);
-                i = n+2;
+                src = src.substr(0, n + 1) + '\n' + src.substr(n + 1);
+                i = n + 2;
                 z = 0;
             }
         }
-
     }
-    function test(){
-        if(document.getElementById('showHTML').style.display === 'none'){
+
+    //Wenn der HTML Editor aktiviert ist, wird der Text aus diesem in die Variable src geschrieben, wenn der normale Editor aktiviert ist, wird dessen HTML Code in die Variable src geschrieben
+    //Dann werden alle html head und body tags entfernt und der footer hinzugefügt
+    //Der entstandene Code wird als HTML Code in ein neu geöffnetes Fenster geschrieben
+    function test() {
+        if (document.getElementById('showHTML').style.display === 'none') {
             src = document.getElementById('editor').contentWindow.document.body.innerText;
-        }else{
+        } else {
             src = document.getElementById('editor').contentWindow.document.documentElement.outerHTML;
         }
         src = src.replace("<html>", "");
@@ -481,10 +530,14 @@
         test.document.write(src);
         test.document.close();
     }
-    function exp(){
-        if(document.getElementById('showHTML').style.display === 'none'){
+
+    //Wenn der HTML Editor aktiviert ist, wird der Text aus diesem in die Variable src geschrieben, wenn der normale Editor aktiviert ist, wird dessen HTML Code in die Variable src geschrieben
+    //Dann werden alle html head und body tags entfernt und der footer hinzugefügt
+    //Der entstandene HTML Code wird in das Inputfeld mit der Id out geschrieben
+    function exp() {
+        if (document.getElementById('showHTML').style.display === 'none') {
             src = document.getElementById('editor').contentWindow.document.body.innerText;
-        }else{
+        } else {
             src = document.getElementById('editor').contentWindow.document.documentElement.outerHTML;
         }
         src = src.replace("<html>", "");
@@ -497,43 +550,31 @@
         document.getElementById("out").value = src;
     }
 
-    var popup = document.getElementById('send');
-    var btn = document.getElementById("openSend");
-    var span = document.getElementsByClassName("close")[0];
-
-    btn.onclick = function() {
-        popup.style.display = "block";
-    };
-
-    span.onclick = function() {
-        popup.style.display = "none";
-    };
-
-
-
 </script>
 <script src='https://code.jquery.com/jquery-1.10.1.js' type='text/javascript'></script>
 <script>
+    //Die img und iframeBody variablen werden initialisiert und iframeBody wird gleich dem body des Iframes editor gesetzt
+    //Danach wird die Funktion click() ausgeführt
     var img;
     var iframeBody;
     iframeBody = $('body', $('#editor')[0].contentWindow.document);
     click();
 
-    function changeifb(){
-        iframeBody = $('body', $('#editor')[0].contentWindow.document);
-        $(iframeBody).off('click');
-        click();
-    }
 
-    function click(){
+
+    //Wenn ein Bild angeklickt wird der jeweilige image tag in die img Variable geschrieben
+    function click() {
         $(iframeBody).on('click', 'img', function() {
             img = $(this);
+            console.log(this);
         });
     }
 
-    function changeFloat(arg){
+    //In der Funktion changeFloat(arg) wird der Float Wert des ausgewählten Bilds img geändert. Der Neue Float Wert ist entweder right left oder none und wird über arg übermittelt
+    function changeFloat(arg) {
         $(img).css('float', arg);
     }
+
 </script>
 
 <%
