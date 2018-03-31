@@ -212,7 +212,7 @@
                               <%
                                 while(rs.next()) {
                                     out.println("<tr>");
-                                    out.println("<td class=\"col-sm-1\"><a href=\"../RemoveMember?id=" + rs.getString("id") +"\"><i class=\"fa fa-trash\"></i></a></td>");
+                                    out.println("<td class=\"col-sm-1\"><a href=\"../RemoveLayout?id=" + rs.getString("id") +"\"><i class=\"fa fa-trash\"></i></a>  <a href=\"../MoveLayout?id=" + rs.getString("id") +"&pos=" + rs.getString("pos") + "&direction=up\"><i class=\"fa fa-toggle-up\"></i></a>  <a href=\"../MoveLayout?id=" + rs.getString("id") +"&pos=" + rs.getString("pos") + "&direction=down\"><i class=\"fa fa-toggle-down\"></i></a></td>");
                                     out.println("<td>" +  rs.getString("id") + "</td>");
                                     out.println("<td>" +  rs.getString("name")+"</td>");
                                     out.println("<td>" +  rs.getString("text") + "</td>");

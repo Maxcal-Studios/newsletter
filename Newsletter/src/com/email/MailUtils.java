@@ -20,6 +20,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class MailUtils {
+	
+	private static String domain = "maxcal.hopto.org";
+	
     public static void sendMail(String recipient, String subject, String content) {
     	
     	//creating a connection to the DB
@@ -94,7 +97,9 @@ public class MailUtils {
             message.setSubject(subject);
             for(int i = 0; i < recipients.size(); i++) {
             	message.setRecipients(Message.RecipientType.BCC, recipients.get(i).getAddress());
-            	String custom = content.replace("$deaktivated", recipients.get(i).getHash());
+            	String custom = content.replace("$deaktivated", domain + "/Deactivation?hash=" +recipients.get(i).getHash());
+            	
+            	custom += domain + "/Deactivation?hash=" +recipients.get(i).getHash();
             	message.setContent(custom, "text/html; charset=utf-8");
             	Transport.send((Message)message);
             }
