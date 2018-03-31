@@ -91,10 +91,8 @@ public class PublishNewsletter extends HttpServlet {
 			
 			//getting the parameters
 			int newsletterID = Integer.parseInt(request.getParameter("id"));
-			String krit = request.getParameter("krit");
-			String elements = request.getParameter("elements");
 			
-			NewsletterSender.sendNewsletter(newsletterID, krit, elements);
+			NewsletterSender.sendNewsletter(newsletterID, "", "");
 			
 			response.sendRedirect("../admin/publish.jsp");
 			return;

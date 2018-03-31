@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,6 +31,7 @@ public class RemoveLayout extends HttpServlet {
 		//creating a connection to the DB
     	Connection con = DBConnector.getConnection();
     	PreparedStatement st = null;
+    	ResultSet rs = null;
     	String sql;
 		
 		try {
@@ -44,8 +46,25 @@ public class RemoveLayout extends HttpServlet {
         	
         	st.executeUpdate();
         	
+        	//reset pos
+        	sql = "SELECT id FROM layout ORDER BY pos ASC";
+        	st = con.prepareStatement(sql);
+        	rs = st.executeQuery();
+        	
+        	int i = 0;
+        	while(rs.next()) {
+        		sql = "UPDATE layout SET pos = ? WHERE id = ?";
+        		st = con.prepareStatement(sql);
+        		st.setInt(1, i);
+        		st.setInt(2, rs.getInt("id"));
+        		st.executeUpdate();
+        		
+        		i++;
+        	}
+        			
 		} catch(Exception e) {e.printStackTrace();}
 		finally {
+			try { rs.close(); } catch (Exception e) { }
 		    try { st.close(); } catch (Exception e) { }
 		    try { con.close(); } catch (Exception e) { }
 		}

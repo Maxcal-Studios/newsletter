@@ -338,47 +338,7 @@
 				                </dd>
 				         	</dl>
                  		</div>
-                 		<hr>
                  		
-                 		<!-- Kriterium -->
-                 		<div class="form-group">
-			                <label>Filter</label>
-			               	<select name="krit" class="form-control select2" data-placeholder="Filter ausw&Auml;hlen" style="width: 100%;">
-			               		<option></option>
-								<%
-								//get all krit's
-								sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'member'";
-								st = con.prepareStatement(sql);
-								rs = st.executeQuery();
-								
-								while(rs.next()) {
-									if(!rs.getString(1).toLowerCase().equals("id") && 
-										!rs.getString(1).toLowerCase().equals("email") && 
-										!rs.getString(1).toLowerCase().equals("active") &&
-										!rs.getString(1).toLowerCase().equals("hash")) 
-									{
-										out.print("<option>" + rs.getString(1) +"</option>");										
-									}
-								}			
-								
-								%>					            
-			               	</select>
-			        	</div>
-			        	
-			        	<!-- Elements -->
-			        	<div class="form-group">
-			                <label>Element</label>
-			                <select name="elements" class="form-control select2" multiple="multiple" data-placeholder="W�hle ein Element aus" style="width: 100%;">
-			                  	<option>Alabama</option>
-			                  	<option>Alaska</option>
-			                  	<option>California</option>
-			                  	<option>Delaware</option>
-			                  	<option>Tennessee</option>
-			                  	<option>Texas</option>
-			                  	<option>Washington</option>
-			                </select>
-			          	</div>
-			          	
 			          	<hr>
 			          	
 			          	<!-- Datum -->
@@ -522,7 +482,7 @@
 <script>
   $(function () {
   	//Table
-    $('#table-member').DataTable()
+    $('#table-publish').DataTable()
     
     //Timepicker
     $('.timepicker').timepicker({

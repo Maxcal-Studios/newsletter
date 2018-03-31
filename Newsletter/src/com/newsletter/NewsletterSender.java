@@ -38,19 +38,7 @@ public class NewsletterSender {
 			st.setTimestamp(2, new Timestamp(new Date().getTime()));
 			st.executeUpdate();
 
-			if(krit == null || elements == null || krit.equals("") || elements.equals("")) {
-				sql = "SELECT email, hash FROM member WHERE active = TRUE";
-			} else {
-				//cutting elements
-				String[] element = elements.split(" ");
-				
-				//getting all members
-				sql = "SELECT email, hash FROM member WHERE active = TRUE AND (";
-				for(int i = 0; i < element.length - 1; i++) {
-					sql += " " + krit + " = " + element[i] + " OR";
-				}
-				sql += " " + krit + " = " + element[element.length-1] + ")";
-			}
+			sql = "SELECT email, hash FROM member WHERE active = TRUE";
 			
 			st = con.prepareStatement(sql);
 			rs = st.executeQuery();

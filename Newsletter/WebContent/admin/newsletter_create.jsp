@@ -286,19 +286,6 @@
                         <button type="button" onclick="exp()" data-toggle="modal" data-target="#modal-save"><i class="fa fa-paper-plane fa-2x"></i></button>
                 </form>
                 	<form action="../AddNewsletter" method="post">
-                    <!-- Das Modal mit dem man die erstellte Email speichern kann-->
-                    <div class="modal fade" id="modal-save">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Newsletter speichern</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="title" class="control-label">Titel</label>
-                                        <input name="title" type="text" class="form-control" id="title" placeholder="Titel">
                         <!-- Das Modal mit dem man die erstellte Email speichern kann-->
                         <div class="modal fade" id="modal-save">
                             <div class="modal-dialog">
@@ -336,6 +323,10 @@
                             <!-- /.modal-dialog -->
                         </div>
                         <!-- /.modal -->
+                        
+                        <!-- Ghost input for sending the test to the servlet -->
+        				<input id="out" name="text" style="width:1px; height:1px; visibility: hidden;">
+                        
                     </form>
                  </div>
                 <!-- Wenn Javascript deaktiviert ist wird angezeigt, dass man Javascript benötigt, dammit die Seite funktioniert-->
@@ -345,42 +336,38 @@
                             display:none;
                         }
 
-            </div>
-            <!-- Wenn Javascript deaktiviert ist wird angezeigt, dass man Javascript benötigt, dammit die Seite funktioniert-->
-            <noscript>
-                <style type="text/css">
-                    .pagecontainer {
-                        display:none;
-                    }
+                        body {
+                            background: #D2D6DE;
+                        }
 
-                    body {
-                        background: #D2D6DE;
-                    }
+                        .container {
+                            width: 500px;
+                            padding: 8% 0 0;
+                            margin: auto;
+                        }
+                        .form {
+                            border-radius: 10px;
+                            position: relative;
+                            background: #FFFFFF;
+                            max-width: 500px;
+                            margin: 0 auto 100px;
+                            padding: 45px;
+                            text-align: center;
+                        }
+                        .form .message a {
+                            color: #9AA0A6;
+                            text-decoration: none;
+                        }
+                    </style>
+                    <div class="container">
+                        <div class="form">
+                            Bitte aktivieren Sie Javascript, damit diese Seite korrekt funktioniert.
 
-                    .container {
-                        width: 500px;
-                        padding: 8% 0 0;
-                        margin: auto;
-                    }
-                    .form {
-                        border-radius: 10px;
-                        position: relative;
-                        background: #FFFFFF;
-                        max-width: 500px;
-                        margin: 0 auto 100px;
-                        padding: 45px;
-                        text-align: center;
-                    }
-                    .form .message a {
-                        color: #9AA0A6;
-                        text-decoration: none;
-                    }
-                </style>
-                <div class="container">
-                    <div class="form">
-                        Bitte aktivieren Sie Javascript, damit diese Seite korrekt funktioniert.
-
+                        </div>
                     </div>
+                    <!-- /.modal -->
+                    
+                    </form>
                 </noscript>
 
                 <!--Send Dialog-->
@@ -388,10 +375,17 @@
             </section>
             <!-- /.content -->
 
-
             <!-- Ghost input for sending the test to the servlet -->
             <input id="out" name="text" style="width:1px; height:1px; visibility: hidden;">
 
+                    </div>
+                </div>
+            </noscript>
+
+            <!--Send Dialog-->
+
+        </section>
+        <!-- /.content -->
 
     </div>
     <!-- /.content-wrapper -->
