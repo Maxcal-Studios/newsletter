@@ -544,7 +544,8 @@
       var subject = document.getElementById("3" + id).innerText;
       var author = document.getElementById("4" + id).innerText;
       var date = document.getElementById("5" + id).innerText;
-      document.getElementById('frame').src = "http://maxcal.hopto.org/GetDescription?id=" + id;
+      var hostname = window.location.hostname;
+      document.getElementById('frame').src = "http://"+hostname+"/GetDescription?id=" + id;
 
 
       document.getElementById("id").innerText = idf;
