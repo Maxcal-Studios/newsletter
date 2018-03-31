@@ -279,8 +279,8 @@
 
                 <!-- Das iframe ist der Editor, in dem die Email erstellt wird -->
                 <iframe name="editor" style="height:80%; width: 100%" frameborder="0" id="editor"></iframe>
-                <form>
                     <!-- Der Button ruft die test() funktion auf, die die erstellte Email in einem neuen Fenster anzeigt -->
+                <form action="../AddNewsletter" method="post">
                     <button onclick="test();" title="Testen" style="margin:10px" type="button"><i class="fa fa-desktop fa-2x"></i></button>
                     <!-- Die Form öffnet das Modal zum Speichern auf und speichert die Email -->
                         <button type="button" onclick="exp()" data-toggle="modal" data-target="#modal-save"><i class="fa fa-paper-plane fa-2x"></i></button>
@@ -299,35 +299,51 @@
                                     <div class="form-group">
                                         <label for="title" class="control-label">Titel</label>
                                         <input name="title" type="text" class="form-control" id="title" placeholder="Titel">
+                        <!-- Das Modal mit dem man die erstellte Email speichern kann-->
+                        <div class="modal fade" id="modal-save">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">Newsletter speichern</h4>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="subject" class="control-label">Betreff</label>
-                                        <input name="subject" type="text" class="form-control" id="subject" placeholder="Betreff">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="title" class="control-label">Titel</label>
+                                            <input name="title" type="text" class="form-control" id="title" placeholder="Titel">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="subject" class="control-label">Betreff</label>
+                                            <input name="subject" type="text" class="form-control" id="subject" placeholder="Betreff">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="author" class="control-label">Autor</label>
+                                            <input name="author" type="text" class="form-control" id="author" value="<% out.print(username); %>" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Beschreibung</label>
+                                            <textarea class="form-control" name="description" rows="3" placeholder="Beschreiben ..."></textarea>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="author" class="control-label">Autor</label>
-                                        <input name="author" type="text" class="form-control" id="author" value="<% out.print(username); %>" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Beschreibung</label>
-                                        <textarea class="form-control" name="description" rows="3" placeholder="Beschreiben ..."></textarea>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Beenden</button>
+                                        <button type="button submit" value="../AddNewsletter" class="btn btn-primary">Speichern</button>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Beenden</button>
-                                    <button type="button submit" value="../AddNewsletter" class="btn btn-primary">Speichern</button>
-                                </div>
+                                <!-- /.modal-content -->
                             </div>
-                            <!-- /.modal-content -->
+                            <!-- /.modal-dialog -->
                         </div>
-                        <!-- /.modal-dialog -->
-                    </div>
-                    <!-- /.modal -->
-                    
-                     <!-- Ghost input for sending the test to the servlet -->
-        			<input id="out" name="text" style="width:1px; height:1px; visibility: hidden;">
-                    
+                        <!-- /.modal -->
                     </form>
+                 </div>
+                <!-- Wenn Javascript deaktiviert ist wird angezeigt, dass man Javascript benötigt, dammit die Seite funktioniert-->
+                <noscript>
+                    <style type="text/css">
+                        .pagecontainer {
+                            display:none;
+                        }
 
             </div>
             <!-- Wenn Javascript deaktiviert ist wird angezeigt, dass man Javascript benötigt, dammit die Seite funktioniert-->
@@ -365,13 +381,17 @@
                         Bitte aktivieren Sie Javascript, damit diese Seite korrekt funktioniert.
 
                     </div>
-                </div>
-            </noscript>
+                </noscript>
 
-            <!--Send Dialog-->
+                <!--Send Dialog-->
 
-        </section>
-        <!-- /.content -->
+            </section>
+            <!-- /.content -->
+
+
+            <!-- Ghost input for sending the test to the servlet -->
+            <input id="out" name="text" style="width:1px; height:1px; visibility: hidden;">
+
 
     </div>
     <!-- /.content-wrapper -->
