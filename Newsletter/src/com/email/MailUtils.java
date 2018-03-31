@@ -94,7 +94,8 @@ public class MailUtils {
             message.setSubject(subject);
             for(int i = 0; i < recipients.size(); i++) {
             	message.setRecipients(Message.RecipientType.BCC, recipients.get(i).getAddress());
-            	String custom = content.replace("$deactivate", recipients.get(i).getHash());
+            	String custom = content.replace("$deaktivated", recipients.get(i).getHash());
+            	message.setContent(custom, "text/html; charset=utf-8");
             	Transport.send((Message)message);
             }
             

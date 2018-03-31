@@ -37,6 +37,7 @@ public class Deactivation extends HttpServlet {
 		}
 		
         response.sendRedirect("../deactivated.jsp");
+        return;
 	}
 
 }

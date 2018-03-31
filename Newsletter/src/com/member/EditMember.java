@@ -79,6 +79,7 @@ public class EditMember extends HttpServlet {
 		    try { st.close(); } catch (Exception e) { }
 		    try { con.close(); } catch (Exception e) { }
 		}
+		return;
 		
 	}
 

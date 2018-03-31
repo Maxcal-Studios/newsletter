@@ -21,14 +21,8 @@
         String sql = "SELECT * FROM layout";
         PreparedStatement st = con.prepareStatement(sql);
         ResultSet rs = st.executeQuery();
-        rs.last();
-        ResultSet[] results = new ResultSet[rs.getRow()];
+        
 
-        for(int i = 0; i < results.length; i++) {
-            sql = "SELECT * FROM layout WHERE pos=" + i;
-            st = con.prepareStatement(sql);
-            results[i] = st.executeQuery();
-        }
     %>
 
     <meta charset="utf-8">
@@ -190,62 +184,65 @@
         <!-- Main content -->
         <section class="content container-fluid">
 
-            <div class="login-box">
-                <div class="login-logo">
-                    <a href="#"><b>News</b>letter</a>
-                </div>
-                <!-- /.login-logo -->
-                <div class="login-box-body">
-                    <a type="submit"><p class="login-box-msg">Speichern</p></a>
-                    <div id="fg">
-                        <%
-
-                            for(ResultSet r : results) {
-                                r.next();
-                            }
-
-                            for(int i = 0; i < results.length; i++) {
-                                out.println("<div class=\"form-group \">");
-                                out.println("<input data-toggle=\"modal\" data-target=\"#modal-default\" placeholder=\"Klick mich\" class=\"form-control\" readonly>");
-                                out.println("</div>");
-                            }
-                        %>
+            <!-- Main content -->
+        <!-- Main content -->
+        <section class="content container-fluid">
+			  <div class="row">
+                <div class="col-xs-12">
+                  <div class="box">
+                    <div class="box-header">
+                      <h3 class="box-title">Mitgliederliste</h3>
                     </div>
-                    <button class="addInput btn btn-primary btn-block btn-flat" onclick="plus()">+</button>
-                </div>
-                <!-- /.login-box-body -->
-            </div>
-            <div id="modals">
-                <div class="modal fade" id="modal-$id">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title">$id</h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label for="$id-name">Name</label>
-                                    <input type="text" class="form-control" id="$id-name" name="$id-name" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="$id-text">Text</label>
-                                    <input type="text" class="form-control" id="$id-text" name="$id-text" placeholder="">
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-                <!-- /.modal -->
-            </div>
-            <input id="counter" name="text" style="width:1px; height:1px; visibility: hidden;" value="0">
+                    <!-- /.box-header -->
+                      <div class="box-body">
+                      <table id="table-member" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                              	<th>Edit</th>
+                              	<th>ID</th>
+                              	<th>Name</th>
+                              	<th>Text</th>
+                              	<th>Position</th>
+                            </tr>
+                            </thead>
+                            <tbody>
 
+                                <!-- Inhalte -->
+                              <%
+                                while(rs.next()) {
+                                    out.println("<tr>");
+                                    out.println("<td class=\"col-sm-1\"><a href=\"../RemoveMember?id=" + rs.getString("id") +"\"><i class=\"fa fa-trash\"></i></a></td>");
+                                    out.println("<td>" +  rs.getString("id") + "</td>");
+                                    out.println("<td>" +  rs.getString("name")+"</td>");
+                                    out.println("<td>" +  rs.getString("text") + "</td>");
+                                    out.println("<td>" +  rs.getString("pos")+"</td>");
+                                    out.println("</tr>");
+                                }
+                               %>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <!-- Ueberschriften Unten -->
+                              	<th>Edit</th>
+                              	<th>ID</th>
+                              	<th>Name</th>
+                              	<th>Text</th>
+                              	<th>Position</th>
+                            </tr>
+                            </tfoot>
+                          </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+      <!-- /.col -->
+    </div>
+  <!-- /.row -->
+
+
+        </section>
+        <!-- /.content -->
         </section>
         <!-- /.content -->
     </div>

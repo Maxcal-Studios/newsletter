@@ -283,10 +283,9 @@
                     <!-- Der Button ruft die test() funktion auf, die die erstellte Email in einem neuen Fenster anzeigt -->
                     <button onclick="test();" title="Testen" style="margin:10px" type="button"><i class="fa fa-desktop fa-2x"></i></button>
                     <!-- Die Form öffnet das Modal zum Speichern auf und speichert die Email -->
-                    <form action="../AddNewsletter" method="post">
                         <button type="button" onclick="exp()" data-toggle="modal" data-target="#modal-save"><i class="fa fa-paper-plane fa-2x"></i></button>
-                    </form>
                 </form>
+                	<form action="../AddNewsletter" method="post">
                     <!-- Das Modal mit dem man die erstellte Email speichern kann-->
                     <div class="modal fade" id="modal-save">
                         <div class="modal-dialog">
@@ -324,6 +323,11 @@
                         <!-- /.modal-dialog -->
                     </div>
                     <!-- /.modal -->
+                    
+                     <!-- Ghost input for sending the test to the servlet -->
+        			<input id="out" name="text" style="width:1px; height:1px; visibility: hidden;">
+                    
+                    </form>
 
             </div>
             <!-- Wenn Javascript deaktiviert ist wird angezeigt, dass man Javascript benötigt, dammit die Seite funktioniert-->
@@ -368,11 +372,6 @@
 
         </section>
         <!-- /.content -->
-
-        <!-- Ghost input for sending the test to the servlet -->
-        <input id="out" name="text" style="width:1px; height:1px; visibility: hidden;">
-
-        </form>
 
     </div>
     <!-- /.content-wrapper -->

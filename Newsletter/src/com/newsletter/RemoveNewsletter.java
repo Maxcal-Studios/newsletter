@@ -51,7 +51,7 @@ public class RemoveNewsletter extends HttpServlet {
     	}
     	
     	response.sendRedirect("../admin/publish.jsp");
-    	
+    	return;
 	}
 
 }

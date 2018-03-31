@@ -97,6 +97,7 @@ public class PublishNewsletter extends HttpServlet {
 			NewsletterSender.sendNewsletter(newsletterID, krit, elements);
 			
 			response.sendRedirect("../admin/publish.jsp");
+			return;
 		
 		}
 	}

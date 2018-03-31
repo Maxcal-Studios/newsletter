@@ -51,6 +51,6 @@ public class RemoveScheduledNewsletter extends HttpServlet {
     	}
     	
     	response.sendRedirect("../admin/publish.jsp");
-		
+		return;
 	}
 }

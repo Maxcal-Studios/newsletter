@@ -34,5 +34,6 @@ public class Authentication extends HttpServlet {
 		}
         
         response.sendRedirect("../activated.jsp");
+        return;
     }
 }

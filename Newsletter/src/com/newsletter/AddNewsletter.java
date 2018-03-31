@@ -60,6 +60,7 @@ public class AddNewsletter extends HttpServlet {
 		
 		//redirect user
 		response.sendRedirect("../admin/publish.jsp");
+		return;
 	}
 
 }

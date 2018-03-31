@@ -1,4 +1,4 @@
-package com.member;
+package com.layout;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,8 +16,8 @@ import com.database.DBConnector;
 /**
  * Servlet implementation class RemoveMember
  */
-@WebServlet("/RemoveMember")
-public class RemoveMember extends HttpServlet {
+@WebServlet("/RemoveLayout")
+public class RemoveLayout extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -34,11 +34,11 @@ public class RemoveMember extends HttpServlet {
 		
 		try {
         	
-        	//get Data
+        	//getting the data
         	int id = Integer.parseInt(request.getParameter("id"));
         	
         	//Remove entry in member table
-        	sql = "DELETE FROM member WHERE id = ?";
+        	sql = "DELETE FROM layout WHERE id = ?";
         	st = con.prepareStatement(sql);
         	st.setInt(1, id);
         	
@@ -51,7 +51,7 @@ public class RemoveMember extends HttpServlet {
 		}
 		
 		//redirect the user
-		response.sendRedirect("../admin/member.jsp");
+		response.sendRedirect("../admin/layout.jsp");
 		return;
 	}
 
