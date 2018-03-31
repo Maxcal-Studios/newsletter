@@ -280,10 +280,9 @@
                 <!-- Das iframe ist der Editor, in dem die Email erstellt wird -->
                 <iframe name="editor" style="height:80%; width: 100%" frameborder="0" id="editor"></iframe>
                     <!-- Der Button ruft die test() funktion auf, die die erstellte Email in einem neuen Fenster anzeigt -->
-                <form>
+                <form action="../AddNewsletter" method="post">
                     <button onclick="test();" title="Testen" style="margin:10px" type="button"><i class="fa fa-desktop fa-2x"></i></button>
                     <!-- Die Form öffnet das Modal zum Speichern auf und speichert die Email -->
-                    <form action="../AddNewsletter" method="post">
                         <button type="button" onclick="exp()" data-toggle="modal" data-target="#modal-save"><i class="fa fa-paper-plane fa-2x"></i></button>
                         <!-- Das Modal mit dem man die erstellte Email speichern kann-->
                         <div class="modal fade" id="modal-save">
@@ -323,7 +322,6 @@
                         </div>
                         <!-- /.modal -->
                     </form>
-                </form>
                  </div>
                 <!-- Wenn Javascript deaktiviert ist wird angezeigt, dass man Javascript benötigt, dammit die Seite funktioniert-->
                 <noscript>
