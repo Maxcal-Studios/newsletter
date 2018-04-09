@@ -52,7 +52,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Ihnen wurde eine aktivierungs Email zugesendet. Bitte bestätigen Sie diese über den enthaltenen Link.</p>
+    <p class="login-box-msg">Ihnen wurde eine aktivierungs Email zugesendet. Bitte best&aumltigen Sie diese &uumlber den enthaltenen Link.</p>
       <a class="btn btn-primary btn-block btn-flat" href="/">Zur&uumlck</a>
   </div>
   <!-- /.login-box-body -->

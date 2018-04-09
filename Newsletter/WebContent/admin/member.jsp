@@ -152,8 +152,8 @@
                         </ul>
                     </li>
                     <li><a href="layout.jsp"><i class="glyphicon glyphicon-th-large"></i><span> Layout</span></a></li>
-                    <li><a href="settings.jsp"><i class="fa fa-gears"></i><span> Einstellungen</span></a></li>
-                    <li><a href="doc.jsp"><i class="fa fa-book"></i><span> Dokumentation</span></a></li>
+                    
+                    <li><a href="https://docs.google.com/document/d/1seCkIL7SKh_SAxDSIQMt2DWRzL-nFGUZPwthGmAfbCc/edit?usp=sharing"><i class="fa fa-book"></i><span> Dokumentation</span></a></li>
                 </ul>
                 <!-- /.sidebar-menu -->
             </section>
@@ -268,7 +268,7 @@
 <!-- Table jQuery -->
 <script>
   $(function () {
-    $('#table-member').DataTable()
+    $('#table-member').DataTable({"scrollX": true})
   })
 </script>
 

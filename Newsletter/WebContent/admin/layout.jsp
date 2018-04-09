@@ -18,32 +18,37 @@
         }
 
         Connection con = DBConnector.getConnection();
-        String sql = "SELECT * FROM layout ORDER BY pos ASC";
+        String sql = "SELECT * FROM layout";
         PreparedStatement st = con.prepareStatement(sql);
         ResultSet rs = st.executeQuery();
-        
+        rs.last();
+        ResultSet[] results = new ResultSet[rs.getRow()];
 
+        for(int i = 0; i < results.length; i++) {
+            sql = "SELECT * FROM layout WHERE pos=" + i;
+            st = con.prepareStatement(sql);
+            results[i] = st.executeQuery();
+        }
     %>
 
-      <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Newsletter | Admin</title>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <!-- Bootstrap 3.3.7 -->
-        <link rel="stylesheet" href="../bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css">
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="../bootstrap/bower_components/font-awesome/css/font-awesome.min.css">
-        <!-- Ionicons -->
-        <link rel="stylesheet" href="../bootstrap/bower_components/Ionicons/css/ionicons.min.css">
-        <!-- jvectormap -->
-        <link rel="stylesheet" href="../bootstrap/bower_components/jvectormap/jquery-jvectormap.css">
-        <!-- DataTables -->
-        <link rel="stylesheet" href="../bootstrap/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-        <!-- Theme style -->
-        <link rel="stylesheet" href="../bootstrap/dist/css/AdminLTE.min.css">
-        <link rel="stylesheet" href="../bootstrap/dist/css/skins/skin-blue.min.css">
-        
-        
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Newsletter | Admin</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="../bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../bootstrap/bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../bootstrap/bower_components/Ionicons/css/ionicons.min.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="../bootstrap/bower_components/jvectormap/jquery-jvectormap.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../bootstrap/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../bootstrap/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../bootstrap/dist/css/skins/skin-blue.min.css">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -160,8 +165,7 @@
                     </ul>
                 </li>
                 <li class="active"><a href="layout.jsp"><i class="glyphicon glyphicon-th-large"></i><span> Layout</span></a></li>
-                <li><a href="settings.jsp"><i class="fa fa-gears"></i><span> Einstellungen</span></a></li>
-                <li><a href="doc.jsp"><i class="fa fa-book"></i><span> Dokumentation</span></a></li>
+                <li><a href="https://docs.google.com/document/d/1seCkIL7SKh_SAxDSIQMt2DWRzL-nFGUZPwthGmAfbCc/edit?usp=sharing"><i class="fa fa-book"></i><span> Dokumentation</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>
@@ -185,109 +189,62 @@
         <!-- Main content -->
         <section class="content container-fluid">
 
-            <!-- Main content -->
-        <!-- Main content -->
-        <section class="content container-fluid">
-			  <div class="row">
-                <div class="col-xs-12">
-                  <div class="box">
-                    <div class="box-header">
-                      <h3 class="box-title">Mitgliederliste</h3>
+            <div class="login-box">
+                <div class="login-logo">
+                    <a href="#"><b>News</b>letter</a>
+                </div>
+                <!-- /.login-logo -->
+                <div class="login-box-body">
+                    <a type="submit"><p class="login-box-msg">Speichern</p></a>
+                    <div id="fg">
+                        <%
+
+                            for(ResultSet r : results) {
+                                r.next();
+                            }
+
+                            for(int i = 0; i < results.length; i++) {
+                                out.println("<div class=\"form-group \">");
+                                out.println("<input data-toggle=\"modal\" data-target=\"#modal-default\" placeholder=\"Klick mich\" class=\"form-control\" readonly>");
+                                out.println("</div>");
+                            }
+                        %>
                     </div>
-                    <!-- /.box-header -->
-                      <div class="box-body">
-                      <table id="table-layout" class="table table-bordered table-striped">
-                            <thead>
-                            <tr>
-                              	<th>Edit</th>
-                              	<th>ID</th>
-                              	<th>Name</th>
-                              	<th>Text</th>
-                              	<th>Position</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-
-                                <!-- Inhalte -->
-                              <%
-                                while(rs.next()) {
-                                    out.println("<tr>");
-                                    out.println("<td class=\"col-sm-1\"><a href=\"../RemoveLayout?id=" + rs.getString("id") +"\"><i class=\"fa fa-trash\"></i></a>  <a href=\"../MoveLayout?id=" + rs.getString("id") +"&pos=" + rs.getString("pos") + "&direction=up\"><i class=\"fa fa-toggle-up\"></i></a>  <a href=\"../MoveLayout?id=" + rs.getString("id") +"&pos=" + rs.getString("pos") + "&direction=down\"><i class=\"fa fa-toggle-down\"></i></a></td>");
-                                    out.println("<td>" +  rs.getString("id") + "</td>");
-                                    out.println("<td>" +  rs.getString("name")+"</td>");
-                                    out.println("<td>" +  rs.getString("text") + "</td>");
-                                    out.println("<td>" +  rs.getString("pos")+"</td>");
-                                    out.println("</tr>");
-                                }
-                               %>
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <!-- Ueberschriften Unten -->
-                              	<th>Edit</th>
-                              	<th>ID</th>
-                              	<th>Name</th>
-                              	<th>Text</th>
-                              	<th>Position</th>
-                            </tr>
-                            </tfoot>
-                          </table>
-                          
-                          <button type="button" data-toggle="modal" data-target="#modal-layout"><i class="fa fa-edit fa-2x"></i></button>
-                          
-                          <!-- Das Modal mit dem man die erstellte Email speichern kann-->
-                        <div class="modal fade" id="modal-layout">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title">Newsletter speichern</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label for="name" class="control-label">Name</label>
-                                            <input name="name" type="text" class="form-control" id="name" placeholder="name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="text" class="control-label">Text</label>
-                                            <input name="text" type="text" class="form-control" id="text" placeholder="text">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="pos" class="control-label">Position</label>
-                                            <%
-											sql = "SELECT COUNT(*) FROM layout";
-                                            st = con.prepareStatement(sql);
-                                            rs = st.executeQuery();
-                                            %>
-                                            <input name="pos" type="text" class="form-control" id="pos" value=" <% out.print(rs.getString(1)); %>" readonly>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Beenden</button>
-                                        <button type="button submit" value="../AddLayout" class="btn btn-primary">Hinzuf&uuml;gen</button>
-                                    </div>
-                                </div>
-                                <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
-                        </div>
-                        <!-- /.modal -->
-                    </form>
-                          
+                    <button class="addInput btn btn-primary btn-block btn-flat" onclick="plus()">+</button>
+                </div>
+                <!-- /.login-box-body -->
             </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-      <!-- /.col -->
-    </div>
-  <!-- /.row -->
+            <div id="modals">
+                <div class="modal fade" id="modal-$id">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">$id</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="$id-name">Name</label>
+                                    <input type="text" class="form-control" id="$id-name" name="$id-name" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="$id-text">Text</label>
+                                    <input type="text" class="form-control" id="$id-text" name="$id-text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+            </div>
+            <input id="counter" name="text" style="width:1px; height:1px; visibility: hidden;" value="0">
 
-
-        </section>
-        <!-- /.content -->
         </section>
         <!-- /.content -->
     </div>
@@ -314,18 +271,18 @@
 <script src="../bootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../bootstrap/dist/js/adminlte.min.js"></script>
-<!-- DataTables -->
-<script src="../bootstrap/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../bootstrap/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-
-<!-- Table jQuery -->
-<script>
-  $(function () {
-    $('#table-layout').DataTable()
-  })
-</script>
 
 </body>
+<script>
+    function plus(){
+        document.getElementById("counter").value = parseInt(document.getElementById("counter").value) + 1;
+        var id = document.getElementById("counter").value;
+        document.getElementById("fg").innerHTML = document.getElementById("fg").innerHTML + "<div class=\"form-group \"><input data-toggle=\"modal\" data-target=\"#modal-"+id+"\" placeholder=\"Klick mich\" class=\"form-control\" readonly></div>";
+        console.log(document.getElementById("modals").innerHTML);
+        document.getElementById("modals").innerHTML = document.getElementById("modals").innerHTML + "<div id=\"modals\"> <div class=\"modal fade\" id=\"modal-"+id+"\"> <div class=\"modal-dialog\"> <div class=\"modal-content\"> <div class=\"modal-header\"> <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"> <span aria-hidden=\"true\">&times;</span></button> <h4 class=\"modal-title\">"+id+"</h4> </div> <div class=\"modal-body\"> <div class=\"form-group\"> <label for=\""+id+"-name\">Name</label> <input type=\"text\" class=\"form-control\" id=\""+id+"-name\" name=\""+id+"-name\" placeholder=\"\"> </div> <div class=\"form-group\"> <label for=\""+id+"-text\">Text</label> <input type=\"text\" class=\"form-control\" id=\""+id+"-text\" name=\""+id+"-text\" placeholder=\"\"> </div> </div> <div class=\"modal-footer\"> <button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">Ok</button> </div> </div> <!-- /.modal-content --> </div> <!-- /.modal-dialog --> </div> <!-- /.modal --> </div>"
+    }
+
+</script>
 
 <%
     rs.close();

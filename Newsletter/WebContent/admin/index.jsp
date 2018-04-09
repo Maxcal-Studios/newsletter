@@ -153,8 +153,7 @@
                     </ul>
                 </li>
                 <li><a href="layout.jsp"><i class="glyphicon glyphicon-th-large"></i><span> Layout</span></a></li>
-                <li><a href="settings.jsp"><i class="fa fa-gears"></i><span> Einstellungen</span></a></li>
-                <li><a href="doc.jsp"><i class="fa fa-book"></i><span> Dokumentation</span></a></li>
+                <li><a href="https://docs.google.com/document/d/1seCkIL7SKh_SAxDSIQMt2DWRzL-nFGUZPwthGmAfbCc/edit?usp=sharing"><i class="fa fa-book"></i><span> Dokumentation</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>
@@ -310,8 +309,9 @@
 
              <div class="col-md-3">
                            <div class="callout callout-success">
-                             <h4>Neue Funktionen</h4>
+                             <h4>Version</h4>
                              <p>
+				Aktuell installiert ist die Version 1 des Newslettersystems. Hierbei handelt es sich um die finale Version, welche f&uumlr den GFOS-Innovations-Award-Wettbewerb konzipiert ist.
 
                              </p>
                            </div>

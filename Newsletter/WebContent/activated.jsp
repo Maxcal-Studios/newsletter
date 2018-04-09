@@ -52,7 +52,7 @@
 	</div>
 	<!-- /.login-logo -->
 	<div class="login-box-body">
-		<p class="login-box-msg">Ihre Email wure bestätigt! Sie können nun Newsletter erhalten.</p>
+		<p class="login-box-msg">Ihre Email wure best&aumltigt! Sie k&oumlnnen nun Newsletter erhalten.</p>
 		<a class="btn btn-primary btn-block btn-flat" href="/">Zur&uumlck</a>
 	</div>
 	<!-- /.login-box-body -->
